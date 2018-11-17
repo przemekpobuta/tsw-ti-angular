@@ -1,0 +1,55 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="flex-center router-margin">
+        <form class="text-center border border-light p-5" [formGroup]="loginForm">
+
+          <p class="h4 mb-4">Login</p>
+
+          <!-- Email -->
+          <div class="form-row mb-4">
+            <input
+              type="email"
+              id="defaultLoginFormEmail"
+              class="form-control"
+              formControlName="email"
+              placeholder="E-mail"
+              [ngClass]="{ 'is-invalid': f.email.touched && f.email.invalid }"
+              required>
+            <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Please input your email!</div>
+              <div *ngIf="f.email.errors.pattern">Email not valid!</div>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-row mb-4">
+            <input
+              type="password"
+              id="defaultLoginFormPassword"
+              class="form-control"
+              formControlName="password"
+              placeholder="Password"
+              [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }"
+              required>
+            <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Please input your Password!</div>
+            </div>
+          </div>
+
+          <!-- Sign in button -->
+          <button type="button" role="button" class="btn btn-primary btn-block my-4" (click)="onSubmit()">Login</button>
+
+          <!--&lt;!&ndash; Register &ndash;&gt;-->
+          <!--<p>Not a member?-->
+            <!--<a routerLink="/register">Register</a>-->
+          <!--</p>-->
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
