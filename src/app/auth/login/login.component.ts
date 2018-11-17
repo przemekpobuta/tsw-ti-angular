@@ -30,8 +30,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     // reset login status
     this.authService.logout();
-
-    setTimeout(() => this.alertService.success('sup'));
   }
   ngOnDestroy() {
   }
