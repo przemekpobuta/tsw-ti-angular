@@ -53,7 +53,7 @@ export class AuthService {
   private setSession(authResult) {
     localStorage.setItem('accessToken', authResult.accessToken);
 
-    this.http.get(environment.api_url + 'users/me')
+    this.http.get(environment.api_url + 'auth/me')
       .pipe(first())
       .subscribe(
         (user: User) => {

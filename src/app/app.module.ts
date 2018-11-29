@@ -16,6 +16,8 @@ import {AuthGuard} from './auth/guards/auth-guard.service';
 import {ToastrModule} from 'ngx-toastr';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { PanelComponent } from './sites/panel/panel.component';
+import { FilesComponent } from './sites/panel/files/files.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HomeComponent,
     PageNotFoundComponent,
     LoginComponent,
-    AccountComponent
+    AccountComponent,
+    PanelComponent,
+    FilesComponent
   ],
   imports: [
     BrowserModule,
