@@ -44,9 +44,12 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.authService.login(this.f.email.value, this.f.password.value)
         .pipe(first())
         .subscribe(
-          () => this.router.navigate(['/']),
+          result => {},
           error => {
             this.alertService.error(error);
+          },
+          () => {
+            this.router.navigate(['/panel']);
           });
     }
   }
