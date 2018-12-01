@@ -1,0 +1,97 @@
+<nav class="navbar navbar-expand-lg navbar-light scrolling-navbar" id="toolbar">
+  <!--<a class="navbar-brand" href="#"><strong>Pliki</strong></a>-->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"> <!-- powrót do katalogu wyżej -->
+        <a class="nav-link" (click)="navigateUp()" *ngIf="canNavigateUp">
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </a>
+        <!---->
+      </li>
+      <li class="nav-item mr-auto">
+        <span class="nav-link">{{path || 'Pliki'}}</span>
+      </li>
+    </ul>
+    <ul class="navbar-nav nav-flex-icons">
+      <li class="nav-item">
+        <a class="nav-link" (click)="openNewFolderDialog()">
+          <i class="fa fa-folder-o" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="fa fa-upload" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-files">
+
+  <table mdbTable ><!-- striped="true" -->
+    <!--<thead>-->
+    <!--<tr>-->
+      <!--<th scope="col"></th>-->
+      <!--<th scope="col">Nazwa</th>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <tbody>
+    <tr mdbTableCol *ngFor="let element of fileElements" >
+      <td class="file-icon" ><!-- scope="row" -->
+        <i class="fa fa-folder file-or-folder-icon" aria-hidden="true" *ngIf="element.isFolder"></i>
+        <i class="fa fa-file file-or-folder-icon" aria-hidden="true" *ngIf="!element.isFolder"></i>
+      </td>
+      <td class="file-name">
+        <a (click)="navigate(element)">{{ element.name }}</a>
+      </td>
+      <td class="file-modified">
+        <span>21 lis 2018 15:32</span>
+      </td>
+      <td class="file-menu">
+
+        <div class="btn-group" placement="right" mdbDropdown>
+          <a mdbDropdownToggle color="primary" class="waves-light" placement="right" mdbWavesEffect>
+            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+          </a>
+
+          <div class="dropdown-menu dropdown-primary dropdown-menu-right">
+            <a class="dropdown-item" href="#">Przenieś</a>
+            <a class="dropdown-item" href="#">Zmień nazwę</a>
+            <a class="dropdown-item" href="#">Usuń</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Pobierz</a>
+          </div>
+        </div>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+
+
+  <!--<div class="content">-->
+    <!--<div class="grid-list d-flex align-content-start flex-nowrap">-->
+      <!--<div class="grid-tile file-or-folder" *ngFor="let element of fileElements">-->
+        <!--<span></span>&lt;!&ndash; [matMenuTriggerFor]="rootMenu" [matMenuTriggerData]="{element: element}" #menuTrigger="matMenuTrigger" &ndash;&gt;-->
+        <!--<div (click)="navigate(element)" class="file-icon-inner">&lt;!&ndash; (contextmenu)="openMenu($event, menuTrigger)" &ndash;&gt;-->
+          <!--<i class="fa fa-folder file-or-folder-icon pointer" aria-hidden="true" *ngIf="element.isFolder"></i>-->
+          <!--<i class="fa fa-file file-or-folder-icon pointer" aria-hidden="true" *ngIf="!element.isFolder"></i>-->
+          <!--&lt;!&ndash;<mat-icon color="primary" class="file-or-folder-icon pointer" >folder</mat-icon>&ndash;&gt;-->
+          <!--&lt;!&ndash;<mat-icon color="primary" class="file-or-folder-icon pointer" >insert_drive_file</mat-icon>&ndash;&gt;-->
+          <!--<div class="file-name">-->
+            <!--<span>{{ element.name }}</span>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+</div>
+
+<!--rootMenu-->
+<!--moveToMenu-->

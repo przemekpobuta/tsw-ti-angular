@@ -1,0 +1,83 @@
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#toolbar {
+  background: rgba(0,0,0,0.1);
+}
+.container-files {
+  background-color: rgba(0,0,0,0.01);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-top: 0;
+}
+.container-files table {
+  margin-bottom: 0;
+}
+.container-files table tr:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+.container .content {
+
+}
+.container .content .grid-list {
+
+}
+.grid-list .grid-tile {
+  padding: 10px;
+  //background-color: #2196f3;
+
+}
+.grid-tile .file-or-folder-icon {
+  //font-size: 46px;
+}
+.file-name {
+
+}
+.file-icon {
+  width: 25px;
+}
+.file-icon {
+
+}
+
+.file-or-folder {
+  padding: 8px;
+  overflow: hidden;
+  text-align: center;
+  //width: 75px;
+}
+
+.file-or-folder-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  text-align: center;
+  padding-left: 0.5rem;
+  color: rgba(0,0,0,0.7);
+}
+
+.pointer {
+  cursor: pointer;
+}
+.file-menu {
+  text-align: right;
+  width: 25px;
+}
+.file-modified {
+  text-align: center;
+}
+.file-menu i {
+  padding: 0 10px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+

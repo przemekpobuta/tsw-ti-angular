@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './sites/home/home.component';
 import { PageNotFoundComponent } from './sites/page-not-found/page-not-found.component';
 import { LoginComponent } from './auth/login/login.component';
-import { AccountComponent } from './auth/account/account.component';
+import { AccountComponent } from './sites/panel/account/account.component';
 import {AuthService} from './auth/auth.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptor} from './auth/iterceptors/token.interceptor';
@@ -18,6 +18,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PanelComponent } from './sites/panel/panel.component';
 import { FilesComponent } from './sites/panel/files/files.component';
+import { FileExplorerComponent } from './sites/panel/files/file-explorer/file-explorer.component';
+import { NewFolerDialogComponent } from './sites/panel/files/file-explorer/modals/new-foler-dialog/new-foler-dialog.component';
+import { RenameDialogComponent } from './sites/panel/files/file-explorer/modals/rename-dialog/rename-dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { FilesComponent } from './sites/panel/files/files.component';
     LoginComponent,
     AccountComponent,
     PanelComponent,
-    FilesComponent
+    FilesComponent,
+    FileExplorerComponent,
+    NewFolerDialogComponent,
+    RenameDialogComponent
   ],
   imports: [
     BrowserModule,

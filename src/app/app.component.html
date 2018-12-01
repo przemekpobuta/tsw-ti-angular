@@ -18,7 +18,39 @@
 
           <div class="col-3">
             <div id="user-menu">
-              <button mdbBtn type="button" size="md" rounded="false" routerLink="/login" mdbWavesEffect><i class="fa fa-user" aria-hidden="true"></i> Zaloguj</button>
+
+              <button
+                mdbBtn
+                type="button"
+                size="md"
+                rounded="false"
+                routerLink="/login"
+                *ngIf="!authService.isLoggedIn()"
+                mdbWavesEffect>
+                <i class="fa fa-user" aria-hidden="true"></i> Zaloguj
+              </button><!-- Wyloguj (Marcin Witek) fa-sign-out -->
+
+              <button
+                mdbBtn
+                type="button"
+                size="md"
+                rounded="false"
+                (click)="onLogout()"
+                *ngIf="authService.isLoggedIn()"
+                mdbWavesEffect>
+                <i class="fa fa-sign-out" aria-hidden="true"></i> Wyloguj <span *ngIf="user">({{user.name}})</span>
+              </button>
+
+              <button
+                mdbBtn
+                type="button"
+                size="md"
+                rounded="false"
+                routerLink="/panel"
+                *ngIf="authService.isLoggedIn()"
+                mdbWavesEffect>
+                <i class="fa fa-user" aria-hidden="true"></i> Panel
+              </button>
             </div>
           </div>
 
@@ -86,7 +118,7 @@
   <!-- /.Main -->
 </header>
 <!--Main Layout-->
-<main class="text-center py-5 mt-3">
+<main class="py-5 mt-3">
 
   <router-outlet></router-outlet>
 

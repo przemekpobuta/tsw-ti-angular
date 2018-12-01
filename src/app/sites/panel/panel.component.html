@@ -1,3 +1,29 @@
-<p>
-  panel works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 col-sm-12 col-xl-2">
+      <!--<nav class="nav flex-column lighten-3 py-4 mb-r font-weight-bold z-depth-1">-->
+        <!--<a class="nav-link active indigo-text" >Pliki</a>-->
+        <!--<a class="nav-link indigo-text" href="#">Link 1</a>-->
+        <!--<a class="nav-link indigo-text" href="#">Link 2</a>-->
+        <!--<a class="nav-link indigo-text" href="#">Link 3</a>-->
+      <!--</nav>-->
+
+      <nav class="list-group">
+        <a class="list-group-item waves-light" routerLinkActive="active" routerLink="/panel/files" mdbWavesEffect>
+          <i class="fa fa-folder" aria-hidden="true"></i> Pliki
+        </a>
+        <a class="list-group-item waves-light" routerLinkActive="active"  mdbWavesEffect>
+          <i class="fa fa-users" aria-hidden="true"></i> Użytkownicy
+        </a>
+        <a class="list-group-item waves-light" routerLinkActive="active" routerLink="/panel/account" mdbWavesEffect>
+          <i class="fa fa-user" aria-hidden="true"></i> Konto
+        </a>
+      </nav>
+
+    </div>
+    <div class="col-md-8 col-sm-12 col-xl-10">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
