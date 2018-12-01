@@ -1,0 +1,28 @@
+<div class="modal-dialog modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+        <span aria-hidden="true">×</span>
+      </button>
+      <h4 class="modal-title w-100" id="myModalLabel">Create a new folder</h4>
+    </div>
+    <div class="modal-body">
+      <input placeholder="Nazwa folderu" [(ngModel)]="folderName">
+    </div>
+    <div class="modal-footer">
+      <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Anuluj</button>
+      <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Utwórz!</button>
+    </div>
+  </div>
+</div>
+
+<!--<mat-dialog-content>-->
+  <!--<mat-form-field class="example-full-width">-->
+    <!--<input matInput placeholder="Folder Name" [(ngModel)]="folderName">-->
+  <!--</mat-form-field>-->
+<!--</mat-dialog-content>-->
+
+<!--<mat-dialog-actions>-->
+  <!--<button mat-raised-button mat-dialog-close>Cancel</button>-->
+  <!--<button mat-raised-button [mat-dialog-close]="folderName" color="primary">OK</button>-->
+<!--</mat-dialog-actions>-->

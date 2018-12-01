@@ -51,7 +51,8 @@ export class AuthService {
   }
 
   private setSession(authResult) {
-    localStorage.setItem('accessToken', authResult.accessToken);
+    // console.log(authResult);
+    localStorage.setItem('accessToken', authResult.access_token);
 
     this.http.get(environment.api_url + 'auth/me')
       .pipe(first())
@@ -59,6 +60,7 @@ export class AuthService {
         (user: User) => {
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUser$.next(user);
+          console.log(this.getCurrentUser());
         },
         error => {
           console.log(error);
