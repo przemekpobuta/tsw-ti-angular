@@ -1,130 +1,131 @@
-<header class="h-100" id="header-top">
+<header class="" id="header-top">
 
-  <div class="container-fluid">
-    <div class="row justify-content-center">
+  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav" [containerInside]="true">
+    <!--blue-->
+    <mdb-navbar-brand>
+    <a class="logo navbar-brand" routerLink="/"><strong>Technologie internetowe</strong></a>
+    </mdb-navbar-brand>
+    <!--<links>-->
+      <!--<ul class="navbar-nav mr-auto">-->
 
-      <!--<div class="container no-gutters" >-->
-
-        <div class="row no-gutters" id="header-container">
-
-          <div class="col-9"><!--  mt-md-0 mt-3 -->
-            <div id="logo" class="">
-              <h5 class="h5-responsive">Politechnika Rzeszowska im. Ignacego Łukasiewicza</h5>
-              <h1 class="h1-responsive">Technologie Internetowe</h1>
-              <h4 class="h4-responsive">Studia podyplomowe</h4>
-
-            </div>
-          </div>
-
-          <div class="col-3">
-            <div id="user-menu">
-
-              <button
-                mdbBtn
-                type="button"
-                size="md"
-                rounded="false"
-                routerLink="/login"
-                *ngIf="!authService.isLoggedIn()"
-                mdbWavesEffect>
-                <i class="fa fa-user" aria-hidden="true"></i> Zaloguj
-              </button><!-- Wyloguj (Marcin Witek) fa-sign-out -->
-
-              <button
-                mdbBtn
-                type="button"
-                size="md"
-                rounded="false"
-                (click)="onLogout()"
-                *ngIf="authService.isLoggedIn()"
-                mdbWavesEffect>
-                <i class="fa fa-sign-out" aria-hidden="true"></i> Wyloguj <span *ngIf="user">({{user.name}})</span>
-              </button>
-
-              <button
-                mdbBtn
-                type="button"
-                size="md"
-                rounded="false"
-                routerLink="/panel"
-                *ngIf="authService.isLoggedIn()"
-                mdbWavesEffect>
-                <i class="fa fa-user" aria-hidden="true"></i> Panel
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-      <!--</div>-->
-
-    </div>
-
-  </div>
-
-  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark blue" [containerInside]="true">
-    <!--<mdb-navbar-brand>-->
-      <!--<a class="logo navbar-brand" href="#"><strong>Technologie internetowe</strong></a>-->
-    <!--</mdb-navbar-brand>-->
+      <!--</ul>-->
+    <!--</links>-->
     <links>
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav ml-auto nav-flex-icons"><!-- -->
         <li class="nav-item active waves-light" mdbWavesEffect>
-          <a class="nav-link" routerLink="/home">Strona główna <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/home">Strona główna <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item waves-light" mdbWavesEffect>
-          <a class="nav-link">O studiach</a>
+        <a class="nav-link">O studiach</a>
         </li>
         <li class="nav-item waves-light" mdbWavesEffect>
-          <a class="nav-link">Organizacja</a>
+        <a class="nav-link">Organizacja</a>
         </li>
         <li class="nav-item waves-light" mdbWavesEffect>
-          <a class="nav-link">Plan studiów</a>
+        <a class="nav-link">Plan studiów</a>
         </li>
         <li class="nav-item waves-light" mdbWavesEffect>
-          <a class="nav-link">Programy</a>
+        <a class="nav-link">Programy</a>
         </li>
         <li class="nav-item waves-light" mdbWavesEffect>
-          <a class="nav-link">Rekrutacja</a>
+        <a class="nav-link">Rekrutacja</a>
         </li>
+        <!--<li class="nav-item waves-light" mdbWavesEffect>-->
+        <!--<a class="nav-link">FAQ</a>-->
+        <!--</li>-->
         <li class="nav-item waves-light" mdbWavesEffect>
-          <a class="nav-link">FAQ</a>
+        <a class="nav-link">Kontakt</a>
         </li>
-        <li class="nav-item waves-light" mdbWavesEffect>
-          <a class="nav-link">Kontakt</a>
+        <li class="nav-item waves-light" routerLinkActive="active" routerLink="/login" *ngIf="!authService.isLoggedIn()" mdbWavesEffect>
+          <a class="nav-link"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav-item waves-light" routerLinkActive="active" routerLink="/panel" *ngIf="authService.isLoggedIn()" mdbWavesEffect>
+          <a class="nav-link"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav-item waves-light" (click)="onLogout()" *ngIf="authService.isLoggedIn()" mdbWavesEffect>
+          <a class="nav-link"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
         </li>
       </ul>
     </links>
     <!--<form class="form-inline">-->
-      <!--<div class="md-form mt-0">-->
-        <!--<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
-      <!--</div>-->
+    <!--<div class="md-form mt-0">-->
+    <!--<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
+    <!--</div>-->
     <!--</form>-->
   </mdb-navbar>
-  <!-- Main -->
-  <div class="view" *ngIf="isHomePage">
-    <div class="full-bg-img">
-      <div class="mask flex-center rgba-blue-strong">
-        <div class="container">
-          <div class="white-text text-right wow fadeInUp">
-            <h2>Zdobądź wiedzę pożądaną na rynku pracy!</h2>
 
-            <h5>Najbliższa planowana edycja studiów podyplomowych<br/>"Technologie Internetowe" - październik 2019.</h5><br/>
-            <button mdbBtn type="button" color="white" outline="true" mdbWavesEffect><mdb-icon icon="external-link-square" class="mr-1"></mdb-icon>Rekrutacja</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /.Main -->
+
+  <!--<div class="container-fluid">-->
+    <!--<div class="row justify-content-center">-->
+
+      <!--&lt;!&ndash;<div class="container no-gutters" >&ndash;&gt;-->
+
+        <!--<div class="row no-gutters" id="header-container">-->
+
+          <!--<div class="col-9">&lt;!&ndash;  mt-md-0 mt-3 &ndash;&gt;-->
+            <!--<div id="logo" class="">-->
+              <!--<h5 class="h5-responsive">Politechnika Rzeszowska im. Ignacego Łukasiewicza</h5>-->
+              <!--<h1 class="h1-responsive">Technologie Internetowe</h1>-->
+              <!--<h4 class="h4-responsive">Studia podyplomowe</h4>-->
+
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--<div class="col-3">-->
+            <!--<div id="user-menu">-->
+
+              <!--<button-->
+                <!--mdbBtn-->
+                <!--type="button"-->
+                <!--size="md"-->
+                <!--rounded="false"-->
+                <!--routerLink="/login"-->
+                <!--*ngIf="!authService.isLoggedIn()"-->
+                <!--mdbWavesEffect>-->
+                <!--<i class="fa fa-user" aria-hidden="true"></i> Zaloguj-->
+              <!--</button>&lt;!&ndash; Wyloguj (Marcin Witek) fa-sign-out &ndash;&gt;-->
+
+              <!--<button-->
+                <!--mdbBtn-->
+                <!--type="button"-->
+                <!--size="md"-->
+                <!--rounded="false"-->
+                <!--(click)="onLogout()"-->
+                <!--*ngIf="authService.isLoggedIn()"-->
+                <!--mdbWavesEffect>-->
+                <!--<i class="fa fa-sign-out" aria-hidden="true"></i> Wyloguj <span *ngIf="user">({{user.name}})</span>-->
+              <!--</button>-->
+
+              <!--<button-->
+                <!--mdbBtn-->
+                <!--type="button"-->
+                <!--size="md"-->
+                <!--rounded="false"-->
+                <!--routerLink="/panel"-->
+                <!--*ngIf="authService.isLoggedIn()"-->
+                <!--mdbWavesEffect>-->
+                <!--<i class="fa fa-user" aria-hidden="true"></i> Panel-->
+              <!--</button>-->
+            <!--</div>-->
+          <!--</div>-->
+
+        <!--</div>-->
+
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+    <!--</div>-->
+
+  <!--</div>-->
+
 </header>
+
 <!--Main Layout-->
-<main class="py-5 mt-3">
+<main id="main-container">
 
   <router-outlet></router-outlet>
 
 </main>
 <!--Main Layout-->
-
 
 
 <!-- Footer -->

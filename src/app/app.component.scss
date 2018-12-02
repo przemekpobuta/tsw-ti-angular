@@ -1,10 +1,4 @@
-.view {
-  background: url("/assets/prz_bg75.jpg") no-repeat;
-  background-color: rgba(33, 150, 243, 0.3);
-  background-size: 115%;
-  height: 50vh;
-}
-
+@import '~angular-bootstrap-md/scss/core/_mixins';
 
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575px) {
@@ -12,8 +6,8 @@
     width: 100%;
   }
   .view {
-    background-position: 0 0;
-    background-size: cover;
+    //background-position: 0 0;
+    //background-size: cover;
   }
 }
 
@@ -23,8 +17,8 @@
     width: 540px;
   }
   .view {
-    background-position: 0 0;
-    background-size: 115%;
+    //background-position: 0 0;
+    //background-size: 115%;
   }
 }
 
@@ -41,11 +35,11 @@
     width: 930px;
   }
   .view {
-    background-position: 0vh -35vh;
-    -webkit-animation-name: MOVE-BG;
-    -webkit-animation-duration: 10s;
-    -webkit-animation-timing-function: ease;
-    -webkit-animation-iteration-count: initial;
+    //background-position: 0vh -35vh;
+    //-webkit-animation-name: MOVE-BG;
+    //-webkit-animation-duration: 10s;
+    //-webkit-animation-timing-function: ease;
+    //-webkit-animation-iteration-count: initial;
   }
 }
 
@@ -65,8 +59,6 @@
     background-position: 0vh -35vh;
   }
 }
-
-
 
 .navbar {
   z-index: 1;
@@ -91,9 +83,12 @@
 #logo h1 {
   //font-size: 1em;
 }
+
+
+
 #user-menu {
   text-align: right;
-  padding: 7px 0 7px 0px;
+  padding: 7px 0 7px 0;
   margin: 12px 0;
 }
 #user-menu button {

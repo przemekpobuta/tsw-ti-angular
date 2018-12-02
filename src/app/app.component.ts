@@ -10,8 +10,8 @@ import {User} from './shared/models/user.model';
 })
 export class AppComponent implements OnInit {
 
-  isHomePage: boolean;
   user: User;
+
 
   constructor(
     private router: Router,
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
         // return true if route is homepage
-        this.isHomePage = (event.urlAfterRedirects === '/home');
+        // this.isHomePage = (event.urlAfterRedirects === '/home');
       }
     });
   }
@@ -40,6 +40,7 @@ export class AppComponent implements OnInit {
     }
 
   }
+
   onLogout() {
     this.authService.logout();
     this.router.navigate(['']);

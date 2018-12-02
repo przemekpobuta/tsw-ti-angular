@@ -1,55 +1,126 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
+<div class="view view-page-100vh">
+  <div class="full-bg-img">
+    <div class="mask flex-center rgba-blue-strong"><!-- -->
+      <div class="container wow fadeInLeftBig">
+        <div class="white-text" >
 
-      <div class="flex-center router-margin">
-        <form class="text-center border border-light p-5" [formGroup]="loginForm">
+          <h1 class="header-page">Logowanie</h1>
 
-          <p class="h4 mb-4">Login</p>
+        </div>
 
-          <!-- Email -->
-          <div class="form-row mb-4">
-            <input
-              type="email"
-              id="defaultLoginFormEmail"
-              class="form-control"
-              formControlName="email"
-              placeholder="E-mail"
-              [ngClass]="{ 'is-invalid': f.email.touched && f.email.invalid }"
-              required>
-            <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
-              <div *ngIf="f.email.errors.required">Please input your email!</div>
-              <div *ngIf="f.email.errors.pattern">Email not valid!</div>
+        <div class="content-100vh">
+
+          <form class="text-center" [formGroup]="loginForm"><!-- py-5 -->
+
+            <!--<p class="h4 mb-4">Login</p>-->
+
+            <!-- Email -->
+            <div class="form-row mb-4">
+              <input
+                type="email"
+                id="defaultLoginFormEmail"
+                class="form-control"
+                formControlName="email"
+                placeholder="E-mail"
+                [ngClass]="{ 'is-invalid': f.email.touched && f.email.invalid }"
+                required>
+              <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Please input your email!</div>
+                <div *ngIf="f.email.errors.pattern">Email not valid!</div>
+              </div>
             </div>
-          </div>
 
-          <!-- Password -->
-          <div class="form-row mb-4">
-            <input
-              type="password"
-              id="defaultLoginFormPassword"
-              class="form-control"
-              formControlName="password"
-              placeholder="Password"
-              [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }"
-              required>
-            <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
-              <div *ngIf="f.password.errors.required">Please input your Password!</div>
+            <!-- Password -->
+            <div class="form-row mb-4">
+              <input
+                type="password"
+                id="defaultLoginFormPassword"
+                class="form-control"
+                formControlName="password"
+                placeholder="Password"
+                [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }"
+                required>
+              <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Please input your Password!</div>
+              </div>
             </div>
-          </div>
 
-          <!-- Sign in button -->
-          <button type="button" role="button" class="btn btn-primary btn-block my-4" (click)="onSubmit()">Login</button>
+            <!-- Sign in button -->
+            <button type="button" role="button" class="btn btn-white btn-block my-4" (click)="onSubmit()">Zaloguj</button>
 
-          <!--&lt;!&ndash; Register &ndash;&gt;-->
-          <!--<p>Not a member?-->
+            <!--&lt;!&ndash; Register &ndash;&gt;-->
+            <!--<p>Not a member?-->
             <!--<a routerLink="/register">Register</a>-->
-          <!--</p>-->
+            <!--</p>-->
 
-        </form>
+          </form>
+
+        </div>
+
       </div>
-
     </div>
   </div>
 </div>
+
+<!--<div class="py-5 mt-3">-->
+
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-md-12">-->
+
+        <!--<div class="flex-center router-margin">-->
+          <!--<form class="text-center border border-light p-5" [formGroup]="loginForm">-->
+
+            <!--<p class="h4 mb-4">Login</p>-->
+
+            <!--&lt;!&ndash; Email &ndash;&gt;-->
+            <!--<div class="form-row mb-4">-->
+              <!--<input-->
+                <!--type="email"-->
+                <!--id="defaultLoginFormEmail"-->
+                <!--class="form-control"-->
+                <!--formControlName="email"-->
+                <!--placeholder="E-mail"-->
+                <!--[ngClass]="{ 'is-invalid': f.email.touched && f.email.invalid }"-->
+                <!--required>-->
+              <!--<div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">-->
+                <!--<div *ngIf="f.email.errors.required">Please input your email!</div>-->
+                <!--<div *ngIf="f.email.errors.pattern">Email not valid!</div>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--&lt;!&ndash; Password &ndash;&gt;-->
+            <!--<div class="form-row mb-4">-->
+              <!--<input-->
+                <!--type="password"-->
+                <!--id="defaultLoginFormPassword"-->
+                <!--class="form-control"-->
+                <!--formControlName="password"-->
+                <!--placeholder="Password"-->
+                <!--[ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }"-->
+                <!--required>-->
+              <!--<div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">-->
+                <!--<div *ngIf="f.password.errors.required">Please input your Password!</div>-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--&lt;!&ndash; Sign in button &ndash;&gt;-->
+            <!--<button type="button" role="button" class="btn btn-primary btn-block my-4" (click)="onSubmit()">Login</button>-->
+
+            <!--&lt;!&ndash;&lt;!&ndash; Register &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<p>Not a member?&ndash;&gt;-->
+            <!--&lt;!&ndash;<a routerLink="/register">Register</a>&ndash;&gt;-->
+            <!--&lt;!&ndash;</p>&ndash;&gt;-->
+
+          <!--</form>-->
+        <!--</div>-->
+
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+<!--</div>-->
+
+
+
 
