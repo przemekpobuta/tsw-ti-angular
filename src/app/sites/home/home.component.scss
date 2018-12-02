@@ -64,7 +64,29 @@
   background-color: rgba(33, 150, 243, 1);
   background-image: url("/assets/alex-kotliarskyi-361081-unsplash.jpg");
   background-position: 50% 45%;
+  text-align: center;
+  font-size: 1em;
 }
+#home-3 p {
+  font-size: 1.2em;
+  padding: 1em;
+}
+#home-3 ul {
+  text-align: center;
+  padding: 1em 0;
+  height: 20vh;
+}
+#home-3 ul li {
+  list-style: none;
+  width: 100%;
+  //background-color: rgba(255,255,255,0.9);
+  color: rgba(255,255,255, 1);
+  padding: 2vh 20vh;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+
 #home-4 {
   background-color: rgba(33, 150, 243, 1);
   background-image: url("/assets/rawpixel-653764-unsplash.jpg");
