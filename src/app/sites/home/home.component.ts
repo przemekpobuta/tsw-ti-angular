@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LoaderService} from '../../shared/components/loader/loader.service';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,9 @@ export class HomeComponent implements OnInit {
   activeIconCounter = -1;
   startedHome1Animation = false;
 
-  constructor() { }
+  constructor(
+    private loaderService: LoaderService
+  ) { }
 
   ngOnInit() {
 
@@ -39,6 +42,8 @@ export class HomeComponent implements OnInit {
       }
       this.activeIcon = this.home1Icons[this.activeIconCounter];
     }, 3000);
+
+    // this.loaderService.show();
 
   }
 

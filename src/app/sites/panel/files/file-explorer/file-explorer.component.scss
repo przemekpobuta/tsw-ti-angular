@@ -68,7 +68,10 @@
 }
 .file-menu {
   text-align: right;
-  width: 25px;
+  //width: 25px;
+}
+.file-menu .btn-group {
+  display: inline;
 }
 .file-modified {
   text-align: center;

@@ -7,10 +7,12 @@ import {AccountComponent} from './sites/panel/account/account.component';
 import {AuthGuard} from './auth/guards/auth-guard.service';
 import {PanelComponent} from './sites/panel/panel.component';
 import {FilesComponent} from './sites/panel/files/files.component';
+import {AboutComponent} from './sites/about/about.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
+  {path: 'o-studiach', component: AboutComponent},
   {path: 'login', component: LoginComponent},
   {path: 'panel', component: PanelComponent, canActivate: [AuthGuard], children: [
       {path: '', redirectTo: 'files', pathMatch: 'full' },

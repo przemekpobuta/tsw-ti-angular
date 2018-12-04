@@ -1,69 +1,69 @@
+<app-loading-bar></app-loading-bar>
 <header class="" id="header-top">
 
-  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav" [containerInside]="true">
+  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav"
+              [containerInside]="true">
     <!--blue-->
     <mdb-navbar-brand>
-    <a class="logo navbar-brand" routerLink="/"><strong>Technologie internetowe</strong></a>
+      <a class="logo navbar-brand" routerLink="/home"><strong><i class="fa fa-cloud" aria-hidden="true"></i> Technologie
+        internetowe</strong></a>
     </mdb-navbar-brand>
     <!--<links>-->
-      <!--<ul class="navbar-nav mr-auto">-->
+    <!--<ul class="navbar-nav mr-auto">-->
 
-      <!--</ul>-->
+    <!--</ul>-->
     <!--</links>-->
     <links>
-      <ul class="navbar-nav ml-auto nav-flex-icons"><!-- -->
-        <li class="nav-item waves-light" routerLinkActive="active" routerLink="/home" mdbWavesEffect>
-        <a class="nav-link" >O studiach <span class="sr-only">(current)</span></a>
+      <ul class="navbar-nav ml-auto "><!-- nav-flex-icons -->
+        <li class="nav-item waves-light" routerLinkActive="active" routerLink="/o-studiach" mdbWavesEffect>
+          <a class="nav-link">O studiach <span class="sr-only">(current)</span></a>
         </li>
         <!--<li class="nav-item waves-light" mdbWavesEffect>-->
         <!--<a class="nav-link">O studiach</a>-->
         <!--</li>-->
         <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">Organizacja</a>
+          <a class="nav-link">Organizacja</a>
         </li>
         <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">Plan studiów</a>
+          <a class="nav-link">Plan studiów</a>
         </li>
+        <!--<li class="nav-item waves-light" mdbWavesEffect>-->
+        <!--<a class="nav-link">Programy</a>-->
+        <!--</li>-->
         <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">Programy</a>
-        </li>
-        <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">Rekrutacja</a>
+          <a class="nav-link">Rekrutacja</a>
         </li>
         <!--<li class="nav-item waves-light" mdbWavesEffect>-->
         <!--<a class="nav-link">FAQ</a>-->
         <!--</li>-->
         <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">Kontakt</a>
+          <a class="nav-link">Kontakt</a>
         </li>
         <li
           class="nav-item waves-light"
           routerLinkActive="active"
           routerLink="/login"
           *ngIf="!authService.isLoggedIn()"
-          mdbTooltip="Zaloguj"
-          placement="bottom"
           mdbWavesEffect>
-          <a class="nav-link"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+          <a class="nav-link"><i class="fa fa-user-circle-o" aria-hidden="true" mdbTooltip="Zaloguj"
+                                 placement="bottom"></i></a>
         </li>
         <li
           class="nav-item waves-light"
           routerLinkActive="active"
           routerLink="/panel"
           *ngIf="authService.isLoggedIn()"
-          mdbTooltip="Panel użytkownika"
-          placement="bottom"
           mdbWavesEffect>
-          <a class="nav-link"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+          <a class="nav-link"><i class="fa fa-user-circle-o" aria-hidden="true" mdbTooltip="Panel użytkownika"
+                                 placement="bottom"></i></a>
         </li>
         <li
           class="nav-item waves-light"
           (click)="onLogout()"
           *ngIf="authService.isLoggedIn()"
-          mdbTooltip="Wyloguj"
-          placement="bottom"
+
           mdbWavesEffect>
-          <a class="nav-link"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+          <a class="nav-link"><i class="fa fa-sign-out" aria-hidden="true" mdbTooltip="Wyloguj" placement="bottom"></i></a>
         </li>
       </ul>
     </links>
@@ -76,64 +76,64 @@
 
 
   <!--<div class="container-fluid">-->
-    <!--<div class="row justify-content-center">-->
+  <!--<div class="row justify-content-center">-->
 
-      <!--&lt;!&ndash;<div class="container no-gutters" >&ndash;&gt;-->
+  <!--&lt;!&ndash;<div class="container no-gutters" >&ndash;&gt;-->
 
-        <!--<div class="row no-gutters" id="header-container">-->
+  <!--<div class="row no-gutters" id="header-container">-->
 
-          <!--<div class="col-9">&lt;!&ndash;  mt-md-0 mt-3 &ndash;&gt;-->
-            <!--<div id="logo" class="">-->
-              <!--<h5 class="h5-responsive">Politechnika Rzeszowska im. Ignacego Łukasiewicza</h5>-->
-              <!--<h1 class="h1-responsive">Technologie Internetowe</h1>-->
-              <!--<h4 class="h4-responsive">Studia podyplomowe</h4>-->
+  <!--<div class="col-9">&lt;!&ndash;  mt-md-0 mt-3 &ndash;&gt;-->
+  <!--<div id="logo" class="">-->
+  <!--<h5 class="h5-responsive">Politechnika Rzeszowska im. Ignacego Łukasiewicza</h5>-->
+  <!--<h1 class="h1-responsive">Technologie Internetowe</h1>-->
+  <!--<h4 class="h4-responsive">Studia podyplomowe</h4>-->
 
-            <!--</div>-->
-          <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
 
-          <!--<div class="col-3">-->
-            <!--<div id="user-menu">-->
+  <!--<div class="col-3">-->
+  <!--<div id="user-menu">-->
 
-              <!--<button-->
-                <!--mdbBtn-->
-                <!--type="button"-->
-                <!--size="md"-->
-                <!--rounded="false"-->
-                <!--routerLink="/login"-->
-                <!--*ngIf="!authService.isLoggedIn()"-->
-                <!--mdbWavesEffect>-->
-                <!--<i class="fa fa-user" aria-hidden="true"></i> Zaloguj-->
-              <!--</button>&lt;!&ndash; Wyloguj (Marcin Witek) fa-sign-out &ndash;&gt;-->
+  <!--<button-->
+  <!--mdbBtn-->
+  <!--type="button"-->
+  <!--size="md"-->
+  <!--rounded="false"-->
+  <!--routerLink="/login"-->
+  <!--*ngIf="!authService.isLoggedIn()"-->
+  <!--mdbWavesEffect>-->
+  <!--<i class="fa fa-user" aria-hidden="true"></i> Zaloguj-->
+  <!--</button>&lt;!&ndash; Wyloguj (Marcin Witek) fa-sign-out &ndash;&gt;-->
 
-              <!--<button-->
-                <!--mdbBtn-->
-                <!--type="button"-->
-                <!--size="md"-->
-                <!--rounded="false"-->
-                <!--(click)="onLogout()"-->
-                <!--*ngIf="authService.isLoggedIn()"-->
-                <!--mdbWavesEffect>-->
-                <!--<i class="fa fa-sign-out" aria-hidden="true"></i> Wyloguj <span *ngIf="user">({{user.name}})</span>-->
-              <!--</button>-->
+  <!--<button-->
+  <!--mdbBtn-->
+  <!--type="button"-->
+  <!--size="md"-->
+  <!--rounded="false"-->
+  <!--(click)="onLogout()"-->
+  <!--*ngIf="authService.isLoggedIn()"-->
+  <!--mdbWavesEffect>-->
+  <!--<i class="fa fa-sign-out" aria-hidden="true"></i> Wyloguj <span *ngIf="user">({{user.name}})</span>-->
+  <!--</button>-->
 
-              <!--<button-->
-                <!--mdbBtn-->
-                <!--type="button"-->
-                <!--size="md"-->
-                <!--rounded="false"-->
-                <!--routerLink="/panel"-->
-                <!--*ngIf="authService.isLoggedIn()"-->
-                <!--mdbWavesEffect>-->
-                <!--<i class="fa fa-user" aria-hidden="true"></i> Panel-->
-              <!--</button>-->
-            <!--</div>-->
-          <!--</div>-->
+  <!--<button-->
+  <!--mdbBtn-->
+  <!--type="button"-->
+  <!--size="md"-->
+  <!--rounded="false"-->
+  <!--routerLink="/panel"-->
+  <!--*ngIf="authService.isLoggedIn()"-->
+  <!--mdbWavesEffect>-->
+  <!--<i class="fa fa-user" aria-hidden="true"></i> Panel-->
+  <!--</button>-->
+  <!--</div>-->
+  <!--</div>-->
 
-        <!--</div>-->
+  <!--</div>-->
 
-      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
 
-    <!--</div>-->
+  <!--</div>-->
 
   <!--</div>-->
 
@@ -149,12 +149,12 @@
 
 
 <!-- Footer -->
-  <footer class="page-footer font-small blue pt-5">
+<footer class="page-footer font-small blue pt-5">
 
   <!--<div class="container text-center text-md-left">-->
-    <!--<div class="row">-->
-      <!--<h5 class="text-uppercase">Uczelnia</h5>-->
-    <!--</div>-->
+  <!--<div class="row">-->
+  <!--<h5 class="text-uppercase">Uczelnia</h5>-->
+  <!--</div>-->
   <!--</div>-->
 
   <!-- Footer Links -->
@@ -189,7 +189,6 @@
           </li>
 
         </ul>
-
 
 
       </div>
@@ -240,8 +239,8 @@
 
         <!-- Content -->
         <div id="univ-footer-img">
-          <a href="https://prz.edu.pl/" target="_blank"><img src="/assets/prz_footer.png" alt="WEII" /></a>
-          <a href="https://weii.prz.edu.pl/" target="_blank"><img src="/assets/weii.png" alt="WEII" /></a>
+          <a href="https://prz.edu.pl/" target="_blank"><img src="/assets/prz_footer.png" alt="WEII"/></a>
+          <a href="https://weii.prz.edu.pl/" target="_blank"><img src="/assets/weii.png" alt="WEII"/></a>
         </div>
 
         <div class="row">
@@ -267,7 +266,9 @@
   <!-- Footer Links -->
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">Copyright © 2002 - 2018 Wydział Elektrotechniki i Informatyki, Politechnika Rzeszowska im. Ignacego Łukasiewicza</div>
+  <div class="footer-copyright text-center py-3">Copyright © 2002 - 2018 Wydział Elektrotechniki i Informatyki,
+    Politechnika Rzeszowska im. Ignacego Łukasiewicza
+  </div>
   <div class="footer-copyright text-center py-3">Wszystkie prawa zastrzeżone</div>
 
 

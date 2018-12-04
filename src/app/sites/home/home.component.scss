@@ -1,18 +1,214 @@
-.view-100vh {
-  background-repeat: no-repeat;
-  height: 100vh;
-  background-attachment: fixed;
-  background-size: cover;
+#home-3 ul {
+  text-align: center;
+  //padding
+  //height
 }
+#home-3 ul li {
+  list-style: none;
+  width: 100%;
+  color: rgba(255,255,255, 1);
+  font-weight: bold;
+  //padding
+  //font-size
+}
+
+#home-4 {
+  background-color: #2196f3;
+  background-image: url("/assets/rawpixel-653764-unsplash.jpg");
+  background-position: 50% 45%;
+}
+#home-4 ul {
+  text-align: left;
+  //padding: 1em 0;
+
+}
+#home-4 ul li {
+  list-style: none;
+  //padding: 0.4em 0;
+  //font-size: 1.25em;
+
+}
+#home-4 ul li i {
+  //font-size: 1.5em;
+  //padding-right: 0.75em;
+  //width: 2em;
+}
+
+@media (max-width: 575px) {
+  body {
+  }
+  .navbar-dark {
+    background: linear-gradient(45deg, #45cafc, #303f9f) !important;
+  }
+  #home-1 .icon-slider i {
+    font-size: 18vh;
+  }
+  #home-1 h2 {
+    font-size: 2em;
+  }
+  #home-1 h5 {
+    font-size: 1em;
+    display: none;
+  }
+
+  .view-100vh-longer {
+    min-height: 100vh;
+    //height: auto;
+  }
+  #home-2 h2, #home-4 h2 {
+    padding: 6vh 0 4vh 0;
+    text-align: center;
+  }
+  #home-3 h2 {
+    padding: 5vh 0;
+  }
+  #home-3 p {
+    font-size: 1em;
+    padding: 0.5em;
+  }
+  #home-3 ul {
+    padding: 3vh 0;
+    margin: 0;
+    height: 20vh;
+  }
+  #home-3 ul li {
+    font-size: 1.2em;
+  }
+  #home-4 {
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  #home-4 h2 {
+    padding-top: 12vh;
+  }
+  #home-4 ul {
+    padding: 1em 1em;
+
+  }
+  #home-4 ul li:first-child {
+    padding-top: 0;
+  }
+  #home-4 ul li {
+    padding: 1.2em 0.5em;
+    font-size: 1.2em;
+    text-align: center;
+
+  }
+  #home-4 ul li i {
+    font-size: 3em;
+    padding: 0.5em;
+    //width: 3em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #home-technology h2 {
+    //font-size: 1;
+    font-weight: bold;
+  }
+
+
+} // max-width: 575px END
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  #home-1 .icon-slider i {
+    font-size: 25vh;
+  }
+  .mask-longer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+  }
+  #home-3 p {
+    font-size: 1.2em;
+    padding: 1em;
+  }
+  #home-3 ul {
+    padding: 1em 0;
+    height: 20vh;
+  }
+  #home-3 ul li {
+    padding: 2vh 20vh;
+    font-size: 1.5em;
+  }
+  #home-4 ul {
+    padding: 1em 0;
+
+  }
+  #home-4 ul li {
+    padding: 0.4em 0;
+    font-size: 1.25em;
+
+  }
+  #home-4 ul li i {
+    font-size: 1.5em;
+    padding-right: 0.75em;
+    width: 2em;
+  }
+
+} // min-width: 576px END
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .view-100vh-longer {
+    min-height: 100vh;
+  }
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}
+
 #home-1 {
-  background-color: #303f9f;
+  background-color: #2196f3;
   background-image: url("/assets/stefan-stefancik-297983-unsplash.jpg");
   background-position: 50% 45%;
 }
+
+#home-1 {
+
+}
+
+#home-1 .icon-slider {
+  transform: translateX(0vh);
+  //height: 25vh !important;
+  padding: 20vh 0 8vh 0;
+  opacity: 0;
+}
+
+.animateLeftRight {
+  opacity: 0;
+  -webkit-animation-name: MOVE-IMG;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-timing-function: ease-in;
+  -webkit-animation-iteration-count: infinite;
+}
+.icon-slider i {
+  -webkit-transition: width 2s; /* Safari */
+  transition: width 2s;
+}
+
 #home-technology {
   background-color: #ffffff;
   //background-image: url("/assets/StockSnap_URLDYQKROW.jpg");
   //background-position: 50% 45%;
+}
+#home-technology h2 {
+  //font-size: 1.75em;
 }
 #home-technology .text {
   color: rgba(0,0,0,0.95);
@@ -41,6 +237,7 @@
 }
 #home-2 .card-image {
   background-size: cover;
+  background-position: 50% 50%;
 }
 #home-2 .card1 {background-image: url("/assets/home2/iot.jpg");}
 #home-2 .card2 {background-image: url("/assets/home2/cloud.jpg");}
@@ -61,53 +258,15 @@
 
 
 #home-3 {
-  background-color: rgba(33, 150, 243, 1);
+  background-color: #2196f3;
   background-image: url("/assets/alex-kotliarskyi-361081-unsplash.jpg");
   background-position: 50% 45%;
   text-align: center;
   font-size: 1em;
 }
-#home-3 p {
-  font-size: 1.2em;
-  padding: 1em;
-}
-#home-3 ul {
-  text-align: center;
-  padding: 1em 0;
-  height: 20vh;
-}
-#home-3 ul li {
-  list-style: none;
-  width: 100%;
-  //background-color: rgba(255,255,255,0.9);
-  color: rgba(255,255,255, 1);
-  padding: 2vh 20vh;
-  font-weight: bold;
-  font-size: 1.5em;
-}
 
 
-#home-4 {
-  background-color: rgba(33, 150, 243, 1);
-  background-image: url("/assets/rawpixel-653764-unsplash.jpg");
-  background-position: 50% 45%;
-}
-#home-4 ul {
-  text-align: left;
-  padding: 1em 0;
 
-}
-#home-4 ul li {
-  list-style: none;
-  padding: 0.4em 0;
-  font-size: 1.25em;
-
-}
-#home-4 ul li i {
-  font-size: 1.5em;
-  padding-right: 0.75em;
-  width: 2em;
-}
 @-webkit-keyframes MOVE-IMG {
   0% {
     transform: translateX(-5vh);
@@ -128,31 +287,7 @@
 
 }
 
-#home-1 {
 
-}
-
-#home-1 .icon-slider {
-  transform: translateX(0vh);
-  //height: 25vh !important;
-  padding: 20vh 0 8vh 0;
-  opacity: 0;
-}
-#home-1 .icon-slider i {
-  font-size: 25vh;
-  //width: 25vh;
-}
-.animateLeftRight {
-  opacity: 0;
-  -webkit-animation-name: MOVE-IMG;
-  -webkit-animation-duration: 3s;
-  -webkit-animation-timing-function: ease-in;
-  -webkit-animation-iteration-count: infinite;
-}
-.icon-slider i {
-  -webkit-transition: width 2s; /* Safari */
-  transition: width 2s;
-}
 
 
 mdb-card-body p {

@@ -11,6 +11,54 @@
 // ::-webkit-scrollbar-corner the bottom corner of the scrollbar, where both horizontal and vertical scrollbars meet.
 // ::-webkit-resizer the draggable resizing handle that appears at the bottom corner of some elements.
 
+html {
+  //font-size: 100%;
+}
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575px) {
+  body {
+
+  }
+  .navbar-dark {
+    background: linear-gradient(45deg, #45cafc, #303f9f) !important;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .view-100vh-longer {
+    min-height: 100vh;
+  }
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}
+
+.navbar-collapse.show, .navbar-collapse.collapsing {
+
+}
+
+
+.view-100vh {
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 .top-nav-collapse {
   //background-color: #2196f3;
   background: linear-gradient(45deg, #45cafc, #303f9f) !important;
@@ -21,24 +69,21 @@
   //background-image: url("/assets/anders-jilden-478920-unsplash.jpg");
   background-position: 100% 100%;
   background-repeat: no-repeat;
-  height: 25vh;
+  height: 27vh;
   background-attachment: fixed;
   background-size: cover;
-  background-color: rgba(33, 150, 243, 1);
+  background-color: #2196f3;
 }
 .view-page-header .header-page {
-  padding-top: 6vh;
+  padding-top: 64px;
+  font-size: 1.5em;
 }
 
 
 .view-page-100vh {
-  background-image: url("/assets/rawpixel-678089-unsplash.jpg");
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
   height: 100vh;
-  background-attachment: fixed;
+  background: #2196f3 url("/assets/rawpixel-678089-unsplash.jpg") no-repeat fixed;
   background-size: cover;
-  background-color: rgba(33, 150, 243, 1);
 }
 .view-page-100vh .header-page {
   padding: 3vh 0;

@@ -1,21 +1,22 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {NavigationEnd, NavigationStart, Router} from '@angular/router';
+import {AfterContentInit, Component, OnInit} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
 import {AuthService} from './auth/auth.service';
 import {User} from './shared/models/user.model';
+import {LoaderService} from './shared/components/loader/loader.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterContentInit {
 
   user: User;
 
-
   constructor(
     private router: Router,
-    public authService: AuthService
+    public authService: AuthService,
+    private loaderService: LoaderService
   ) {
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
@@ -38,6 +39,9 @@ export class AppComponent implements OnInit {
         }
       );
     }
+
+  }
+  ngAfterContentInit() {
 
   }
 
