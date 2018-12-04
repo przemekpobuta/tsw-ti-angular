@@ -45,8 +45,10 @@
           routerLink="/login"
           *ngIf="!authService.isLoggedIn()"
           mdbWavesEffect>
-          <a class="nav-link"><i class="fa fa-user-circle-o" aria-hidden="true" mdbTooltip="Zaloguj"
-                                 placement="bottom"></i></a>
+          <a class="nav-link">
+            <i class="fa fa-user-circle-o" aria-hidden="true" mdbTooltip="Zaloguj" placement="bottom"></i>
+            <span class="mobile-only"> Zaloguj</span>
+          </a>
         </li>
         <li
           class="nav-item waves-light"
@@ -54,16 +56,20 @@
           routerLink="/panel"
           *ngIf="authService.isLoggedIn()"
           mdbWavesEffect>
-          <a class="nav-link"><i class="fa fa-user-circle-o" aria-hidden="true" mdbTooltip="Panel użytkownika"
-                                 placement="bottom"></i></a>
+          <a class="nav-link">
+            <i class="fa fa-user-circle-o" aria-hidden="true" mdbTooltip="Panel użytkownika" placement="bottom"></i>
+            <span class="mobile-only"> Panel użytkownika</span>
+          </a>
         </li>
         <li
           class="nav-item waves-light"
           (click)="onLogout()"
           *ngIf="authService.isLoggedIn()"
-
           mdbWavesEffect>
-          <a class="nav-link"><i class="fa fa-sign-out" aria-hidden="true" mdbTooltip="Wyloguj" placement="bottom"></i></a>
+          <a class="nav-link">
+            <i class="fa fa-sign-out" aria-hidden="true" mdbTooltip="Wyloguj" placement="bottom"></i>
+            <span class="mobile-only"> Wyloguj</span>
+          </a>
         </li>
       </ul>
     </links>
