@@ -9,6 +9,9 @@
   -ms-user-select: none;
   user-select: none;
 }
+.text-red {
+  color: #CC0000 !important;
+}
 #toolbar {
   background: rgba(0,0,0,0.1);
 }
@@ -83,4 +86,9 @@
 .spacer {
   flex: 1 1 auto;
 }
-
+.dropdown-item {}
+.dropdown-item i {
+  padding: 0;
+  margin: 0;
+  width: 25px;
+}

@@ -26,6 +26,8 @@ import {ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
 import { AboutComponent } from './sites/about/about.component';
 import { LoadingBarComponent } from './shared/components/loader/loading-bar/loading-bar.component';
 import {LoaderService} from './shared/components/loader/loader.service';
+import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
+import { MoveDialogComponent } from './sites/panel/files/file-explorer/modals/move-dialog/move-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import {LoaderService} from './shared/components/loader/loader.service';
     NewFolerDialogComponent,
     RenameDialogComponent,
     AboutComponent,
-    LoadingBarComponent
+    LoadingBarComponent,
+    MoveDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import {LoaderService} from './shared/components/loader/loader.service';
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
+    NgbModalModule,
     ReactiveFormsModule,
     ProgressbarModule.forRoot(),
     ScrollToModule.forRoot(),
@@ -65,6 +69,10 @@ import {LoaderService} from './shared/components/loader/loader.service';
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     LoaderService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    NewFolerDialogComponent,
+    RenameDialogComponent
+  ]
 })
 export class AppModule { }

@@ -1,8 +1,9 @@
 export class FileElement {
-  id?: string; // uuid v4
+  uuid?: string; // id
   name: string;
-  parent: string; // "root" or id
-  isFolder: boolean;
-  fileType?: string;
-  url?: string;
+  file_extension: string; // isFolder
+  file_type: string;
+  parent_uuid: string; // parent / "root" or id
+  owner?: number;
+  updated_at?: string;
 }

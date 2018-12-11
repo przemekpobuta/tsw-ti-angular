@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {FileElement} from '../models/file-element.model';
 import {BehaviorSubject, Observable} from 'rxjs';
-import { v4 } from 'uuid';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../../../../environments/environment';
 
 export interface IFileService {
   add(fileElement: FileElement);
@@ -16,32 +17,48 @@ export interface IFileService {
 })
 export class FileService implements IFileService {
 
+  // string?, fileElement
   private map = new Map<string, FileElement>();
   private querySubject: BehaviorSubject<FileElement[]>;
 
-  constructor() {
+  constructor(
+    private http: HttpClient
+  ) {
+  }
+
+  getFiles() {
+    return this.http.get(environment.api_url + 'files/');
+  }
+  createFolder(name: string, parent_uuid: string) {
+    return this.http.post(environment.api_url + 'files/', {parent: parent_uuid, name: name});
   }
 
   add(fileElement: FileElement) {
-    fileElement.id = v4();
-    this.map.set(fileElement.id, this.clone(fileElement));
+    // fileElement.uuid = v4(); // generowny po stronie serwera
+    this.map.set(fileElement.uuid, this.clone(fileElement));
     return fileElement;
   }
 
-  delete(id: string) {
-    this.map.delete(id);
+  delete(uuid: string) {
+    return this.http.delete(environment.api_url + 'files/' + uuid);
+  }
+  deleteLocal(uuid: string) {
+    this.map.delete(uuid);
   }
 
-  update(id: string, update: Partial<FileElement>) {
-    let element = this.map.get(id);
+  update(uuid: string, update: Partial<FileElement>) {
+    let element = this.map.get(uuid);
     element = Object.assign(element, update);
-    this.map.set(element.id, element);
+
+    return this.http.put(environment.api_url + 'files/' + element.uuid, {name: element.name, parent: element.parent_uuid});
+    // this.map.set(element.uuid, element);
   }
 
   queryInFolder(folderId: string) {
+    // TODO: co to robi?
     const result: FileElement[] = [];
     this.map.forEach(element => {
-      if (element.parent === folderId) {
+      if (element.parent_uuid === folderId) {
         result.push(this.clone(element));
       }
     });
@@ -55,11 +72,11 @@ export class FileService implements IFileService {
 
   get(id: string) {
     return this.map.get(id);
-    console.log(this.map);
+    // console.log(this.map);
   }
 
   clone(element: FileElement) {
-    console.log(JSON.stringify(element));
+    // console.log(JSON.stringify(element));
     return JSON.parse(JSON.stringify(element));
   }
 }

@@ -14,7 +14,7 @@ export class TokenInterceptor implements HttpInterceptor {
         }
       });
     }
-    console.log(accessToken);
+    // console.log(accessToken);
 
     console.log(request);
 

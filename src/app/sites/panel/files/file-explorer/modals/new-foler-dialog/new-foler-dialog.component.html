@@ -1,21 +1,16 @@
-<div class="modal-dialog modal-sm" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close pull-right" aria-label="Close" >
-        <!--(click)="basicModal.hide()"-->
-        <span aria-hidden="true">×</span>
-      </button>
-      <h4 class="modal-title w-100" id="myModalLabel">Create a new folder</h4>
-    </div>
-    <div class="modal-body">
-      <input placeholder="Nazwa folderu" [(ngModel)]="folderName">
-    </div>
-    <div class="modal-footer">
-      <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close"  mdbWavesEffect>Anuluj</button>
-      <!-- (click)="basicModal.hide()" -->
-      <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Utwórz!</button>
-    </div>
-  </div>
+<div class="modal-header">
+  <h4 class="modal-title">Tworzenie nowego folderu</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <input class="form-control" placeholder="Nazwa nowego folderu" [(ngModel)]="folderName">
+</div>
+<div class="modal-footer">
+  <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="activeModal.dismiss('Anuluj click')" mdbWavesEffect>Anuluj</button>
+  <!-- (click)="basicModal.hide()" -->
+  <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="onClickCreate()" mdbWavesEffect>Utwórz</button>
 </div>
 
 <!--<mat-dialog-content>-->

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-rename-dialog',
@@ -7,13 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RenameDialogComponent implements OnInit {
 
-  folderName: string;
+  @Input() folderName: string;
 
   constructor(
-    // dialogRef?
+    public activeModal: NgbActiveModal
   ) { }
 
   ngOnInit() {
+  }
+
+  onClickRename() {
+    this.activeModal.close(this.folderName);
   }
 
 }
