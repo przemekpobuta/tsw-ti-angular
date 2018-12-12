@@ -1,3 +1,4 @@
+<script src="models/file-element.model.ts"></script>
 <nav class="navbar navbar-expand-lg navbar-light scrolling-navbar" id="toolbar">
   <!--<a class="navbar-brand" href="#"><strong>Pliki</strong></a>-->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -23,7 +24,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link">
+        <a class="nav-link" (click)="openUploadDialog()">
           <i class="fa fa-upload" aria-hidden="true"></i>
         </a>
       </li>
@@ -41,18 +42,25 @@
     <!--</tr>-->
     <!--</thead>-->
     <tbody>
+
     <tr mdbTableCol *ngFor="let element of fileElements" >
       <td class="file-icon" ><!-- scope="row" -->
-        <i class="fa fa-folder file-or-folder-icon" aria-hidden="true" *ngIf="element.isFolder"></i>
-        <i class="fa fa-file file-or-folder-icon" aria-hidden="true" *ngIf="!element.isFolder"></i>
+        <i class="fa fa-folder file-or-folder-icon" aria-hidden="true" *ngIf="element.file_type == 'folder' && element.file_extension == null"></i>
+        <i
+          class="fa fa-file file-or-folder-icon"
+          aria-hidden="true"
+          *ngIf="element.file_type != 'folder'">
+
+        </i>
       </td>
       <td class="file-name">
-        <a (click)="navigate(element)">{{ element.name }} {{element?.file_extension}}</a>
+        <a (click)="navigate(element)">{{ element.name }}{{element?.file_extension ? '.' + element.file_extension : '' }}</a>
       </td>
       <td class="file-modified">
         <span>{{element.updated_at}}</span>
       </td>
       <td class="file-menu">
+
         <div class="btn-group">
           <a color="primary" class="waves-light" (click)="toogleElementVisibility(element)" mdbTooltip="Widoczność elementu dla użytkownika" placement="bottom">
             <i class="fa fa-eye" aria-hidden="true"></i>
@@ -75,14 +83,16 @@
             <a class="dropdown-item text-red" (click)="deleteElement(element)">
               <i class="fa fa-trash-o" aria-hidden="true"></i>Usuń
             </a>
-            <div class="divider dropdown-divider"></div>
-            <a class="dropdown-item" (click)="downloadElement(element)">
+            <div class="divider dropdown-divider" *ngIf="element.file_type != 'folder'"></div>
+            <a class="dropdown-item" *ngIf="element.file_type != 'folder'" (click)="downloadFile(element)">
               <i class="fa fa-download" aria-hidden="true"></i>Pobierz
             </a>
           </div>
         </div>
       </td>
-
+    </tr>
+    <tr mdbTableCol *ngIf="fileElements == null || fileElements == undefined || fileElements.length == 0">
+      <td class="text-left">Pusty folder</td>
     </tr>
     </tbody>
   </table>
@@ -106,6 +116,10 @@
   <!--</div>-->
 
 </div>
+
+<ng-template #noItems>
+
+</ng-template>
 
 <!--rootMenu-->
 <!--moveToMenu-->

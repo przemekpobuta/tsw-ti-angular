@@ -3,6 +3,7 @@ import {FileElement} from './file-explorer/models/file-element.model';
 import {Observable, Subscription} from 'rxjs';
 import {FileService} from './file-explorer/services/file.service';
 import {ToastrService} from 'ngx-toastr';
+import {elementEnd} from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-files',
@@ -133,6 +134,54 @@ export class FilesComponent implements OnInit, OnDestroy {
     // this.fileService.update(event.element.id, { parent: event.moveTo.id });
     // this.updateFileElementQuery();
   }
+  downloadFile(element: FileElement) {
+    this.fileService.downloadFile(element.uuid).subscribe(
+      res => {
+        console.log(res);
+        // It is necessary to create a new blob object with mime-type explicitly set
+        // otherwise only Chrome works like it should
+        const newBlob = new Blob([res], { type: res.type });
+
+        // IE doesn't allow using a blob object directly as link href
+        // instead it is necessary to use msSaveOrOpenBlob
+        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+          window.navigator.msSaveOrOpenBlob(newBlob);
+          return;
+        }
+
+        // For other browsers:
+        // Create a link pointing to the ObjectURL containing the blob.
+        const data = window.URL.createObjectURL(newBlob);
+
+        const link = document.createElement('a');
+        link.href = data;
+        link.download = element.name + '.' + element.file_extension;
+        // this is necessary as link.click() does not work on the latest firefox
+        link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+
+        setTimeout(function () {
+          // For Firefox it is necessary to delay revoking the ObjectURL
+          window.URL.revokeObjectURL(data);
+        }, 100);
+      },
+      error => {
+        console.error(error);
+        this.alertService.error(error);
+      },
+      () => {
+        this.getFilesRequest();
+      }
+    );
+
+    // this.pservice.downloadfile(this.rundata.name, type)
+    //   .subscribe(data => thefile = new Blob([data], { type: "application/octet-stream" }), //console.log(data),
+    //     error => console.log("Error downloading the file."),
+    //     () => console.log('Completed file download.'));
+    //
+    // let url = window.URL.createObjectURL(thefile);
+    // window.open(url);
+
+  }
 
   renameElement(element: FileElement) {
     // TODO: API rename
@@ -153,6 +202,10 @@ export class FilesComponent implements OnInit, OnDestroy {
 
   updateFileElementQuery() {
     this.fileElements = this.fileService.queryInFolder(this.currentRoot ? this.currentRoot.uuid : null);
+  }
+  uploadedFiles() {
+    this.getFilesRequest();
+    // this.alertService.success('Poprawnie przesłano plik/pliki');
   }
 
   pushToPath(path: string, folderName: string) {

@@ -21,6 +21,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         // not tested in secured route
         // location.reload(true);
       }
+      console.error(err.status);
       const error = err.error.message || err.statusText;
       console.log(error);
       return throwError(error);

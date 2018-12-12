@@ -3,6 +3,7 @@ import {FileElement} from './models/file-element.model';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {NewFolerDialogComponent} from './modals/new-foler-dialog/new-foler-dialog.component';
 import {RenameDialogComponent} from './modals/rename-dialog/rename-dialog.component';
+import {UploadDialogComponent} from './modals/upload-dialog/upload-dialog.component';
 
 @Component({
   selector: 'app-file-explorer',
@@ -14,6 +15,7 @@ export class FileExplorerComponent implements OnInit {
   @Input() fileElements: FileElement[];
   @Input() canNavigateUp: string;
   @Input() path: string;
+  @Input() currentRoot: FileElement;
 
   @Output() folderAdded = new EventEmitter<{ name: string }>();
   @Output() elementRemoved = new EventEmitter<FileElement>();
@@ -21,10 +23,13 @@ export class FileExplorerComponent implements OnInit {
   @Output() elementMoved = new EventEmitter<{ element: FileElement; moveTo: FileElement }>();
   @Output() navigatedDown = new EventEmitter<FileElement>();
   @Output() navigatedUp = new EventEmitter();
+  @Output() fileDownloaded = new EventEmitter<FileElement>();
+  @Output() filesUploaded = new EventEmitter();
 
   constructor(
     private modalService: NgbModal
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
   }
@@ -35,16 +40,19 @@ export class FileExplorerComponent implements OnInit {
 
   downloadElement(element: FileElement) {
     console.log('Download element');
-  //  TODO: request downloadElement
+    //  TODO: request downloadElement
   }
+
   toogleElementVisibility(element) {
     console.log('Toogle visibility');
-  //  TODO: toogle visibility
+    //  TODO: toogle visibility
   }
 
   navigate(element: FileElement) {
     if (element.file_type === 'folder') {
       this.navigatedDown.emit(element);
+    } else {
+      this.downloadFile(element);
     }
   }
 
@@ -53,19 +61,19 @@ export class FileExplorerComponent implements OnInit {
   }
 
   moveElement(element: FileElement, moveTo: FileElement) {
-    this.elementMoved.emit({ element: element, moveTo: moveTo });
+    this.elementMoved.emit({element: element, moveTo: moveTo});
   }
 
   openNewFolderDialog() {
     const newFolderDialogRef = this.modalService.open(NewFolerDialogComponent);
     newFolderDialogRef.result.then(res => {
-      if (res) {
-        this.folderAdded.emit({ name: res });
-      }
-      // console.log(res);
-    },
+        if (res) {
+          this.folderAdded.emit({name: res});
+        }
+        // console.log(res);
+      },
       dismiss => {
-      console.log(dismiss);
+        console.log(dismiss);
       });
     // newFolderDialogRef.
 
@@ -86,6 +94,33 @@ export class FileExplorerComponent implements OnInit {
         console.log(dismiss);
       }
     );
+  }
+
+  openUploadDialog() {
+    const uploadDialogRef = this.modalService.open(UploadDialogComponent);
+    if (this.currentRoot == null || this.currentRoot === undefined) {
+      uploadDialogRef.componentInstance.parent_uuid = '';
+    } else {
+      uploadDialogRef.componentInstance.parent_uuid = this.currentRoot.uuid;
+    }
+
+    // console.log(this.currentRoot);
+    uploadDialogRef.result.then(res => {
+        if (res) {
+          // this.folderAdded.emit({ name: res });
+        }
+        console.log(res);
+        this.filesUploaded.emit();
+      },
+      dismiss => {
+        console.log(dismiss);
+        this.filesUploaded.emit();
+        console.log();
+      });
+  }
+
+  downloadFile(element: FileElement) {
+    this.fileDownloaded.emit(element);
   }
 
   // openMenu(event: MouseEvent, viewChild: any) { // viewChild: MatMenuTrigger

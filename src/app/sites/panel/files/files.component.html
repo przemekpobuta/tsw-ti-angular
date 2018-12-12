@@ -3,12 +3,15 @@
   <app-file-explorer
     [fileElements]="fileElements | async" [path]="currentPath"
     [canNavigateUp]="canNavigateUp"
+    [currentRoot]="currentRoot"
     (folderAdded)="addFolder($event)"
     (elementRemoved)="removeElement($event)"
     (navigatedDown)="navigateToFolder($event)"
     (navigatedUp)="navigateUp()"
     (elementRenamed)="renameElement($event)"
-    (elementMoved)="moveElement($event)">
+    (elementMoved)="moveElement($event)"
+    (fileDownloaded)="downloadFile($event)"
+    (filesUploaded)="uploadedFiles()">
   </app-file-explorer>
 
 </div>

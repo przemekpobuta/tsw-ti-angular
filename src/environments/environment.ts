@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://104.248.19.255/api/'
+  api_url: 'http://104.248.19.255/api/',
+  maxFileSize: 2000000
 };
 
 /*

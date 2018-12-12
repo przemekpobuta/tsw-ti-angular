@@ -1,0 +1,56 @@
+<div class="modal-header">
+  <h4 class="modal-title">Wstaw pliki</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')" [disabled]="disableClose">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <input type="file" #file style="display: none" (change)="onFilesAdded()" multiple />
+  <button mdbBtn [disabled]="uploading || uploadSuccessful" gradient="blue" block="true" class="add-files-btn" (click)="addFiles()">
+    Wybierz pliki
+  </button>
+  <div>
+
+    <!--<ul>-->
+      <!--<li >-->
+        <!--{{file.name}} <span *ngIf="progress"><b>{{ progress[file.name].progress | async }}%</b></span>-->
+      <!--</li>-->
+    <!--</ul>-->
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let file of files">
+        <div class="filename">{{file.name}}</div>
+        <div class="progress" *ngIf="!progress">
+          <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <!--<div class="progress" *ngIf="">-->
+          <!--<div class="progress-bar error" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>-->
+        <!--</div>-->
+
+        <div class="progress" *ngIf="progress">
+          <div class="progress-bar" role="progressbar" [ngStyle]="{'width': (progress[file.name].progress | async) + '%' }" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+      </li>
+    </ul>
+
+  </div>
+  <div class="alert alert-danger mt-2" role="alert" *ngIf="error">
+    {{error}}
+  </div>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    mdbBtn
+    color="secondary"
+    class="waves-light"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Anuluj click')"
+    *ngIf="!uploadSuccessful"
+    [disabled]="disableClose"
+    mdbWavesEffect>
+    Anuluj
+  </button>
+  <!-- (click)="basicModal.hide()" -->
+  <button type="button" mdbBtn color="primary" class="relative waves-light" [disabled]="!canBeClosed" (click)="closeDialog()" mdbWavesEffect>{{ primaryButtonText }}</button>
+</div>

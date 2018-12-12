@@ -28,6 +28,7 @@ import { LoadingBarComponent } from './shared/components/loader/loading-bar/load
 import {LoaderService} from './shared/components/loader/loader.service';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import { MoveDialogComponent } from './sites/panel/files/file-explorer/modals/move-dialog/move-dialog.component';
+import { UploadDialogComponent } from './sites/panel/files/file-explorer/modals/upload-dialog/upload-dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MoveDialogComponent } from './sites/panel/files/file-explorer/modals/mo
     RenameDialogComponent,
     AboutComponent,
     LoadingBarComponent,
-    MoveDialogComponent
+    MoveDialogComponent,
+    UploadDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,9 @@ import { MoveDialogComponent } from './sites/panel/files/file-explorer/modals/mo
   bootstrap: [AppComponent],
   entryComponents: [
     NewFolerDialogComponent,
-    RenameDialogComponent
+    RenameDialogComponent,
+    UploadDialogComponent,
+    MoveDialogComponent
   ]
 })
 export class AppModule { }
