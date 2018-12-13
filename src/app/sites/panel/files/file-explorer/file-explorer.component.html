@@ -47,10 +47,22 @@
       <td class="file-icon" ><!-- scope="row" -->
         <i class="fa fa-folder file-or-folder-icon" aria-hidden="true" *ngIf="element.file_type == 'folder' && element.file_extension == null"></i>
         <i
-          class="fa fa-file file-or-folder-icon"
+          class="fa file-or-folder-icon"
+          [ngClass]="{
+            'fa-file-o': element.file_type === 'file',
+            'fa-file-archive-o': element.file_type === 'archive',
+            'fa-file-audio-o': element.file_type === 'audio',
+            'fa-file-code-o': element.file_type === 'code',
+            'fa-file-excel-o': element.file_type === 'excel',
+            'fa-file-image-o': element.file_type === 'image',
+            'fa-file-pdf-o': element.file_type === 'pdf',
+            'fa-file-powerpoint-o': element.file_type === 'powerpoint',
+            'fa-file-text-o': element.file_type === 'text',
+            'fa-file-video-o': element.file_type === 'video',
+            'fa-file-word-o': element.file_type === 'word'
+          }"
           aria-hidden="true"
           *ngIf="element.file_type != 'folder'">
-
         </i>
       </td>
       <td class="file-name">
@@ -63,7 +75,8 @@
 
         <div class="btn-group">
           <a color="primary" class="waves-light" (click)="toogleElementVisibility(element)" mdbTooltip="Widoczność elementu dla użytkownika" placement="bottom">
-            <i class="fa" [ngClass]="{'fa-eye': element.is_visible, 'fa-eye-slash': !element.is_visible}" aria-hidden="true"></i>
+            <i
+              class="fa" [ngClass]="{'fa-eye': element.is_visible, 'fa-eye-slash': !element.is_visible}" aria-hidden="true"></i>
             <!-- fa-eye-slash -->
           </a>
         </div>
