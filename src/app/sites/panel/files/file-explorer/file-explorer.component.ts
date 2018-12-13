@@ -4,6 +4,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {NewFolerDialogComponent} from './modals/new-foler-dialog/new-foler-dialog.component';
 import {RenameDialogComponent} from './modals/rename-dialog/rename-dialog.component';
 import {UploadDialogComponent} from './modals/upload-dialog/upload-dialog.component';
+import {MoveDialogComponent} from './modals/move-dialog/move-dialog.component';
 
 @Component({
   selector: 'app-file-explorer',
@@ -21,7 +22,7 @@ export class FileExplorerComponent implements OnInit {
   @Output() elementRemoved = new EventEmitter<FileElement>();
   @Output() elementRenamed = new EventEmitter<FileElement>();
   @Output() elementToggledVisibility = new EventEmitter<FileElement>();
-  @Output() elementMoved = new EventEmitter<{ element: FileElement; moveTo: FileElement }>();
+  @Output() elementMoved = new EventEmitter<FileElement>();
   @Output() navigatedDown = new EventEmitter<FileElement>();
   @Output() navigatedUp = new EventEmitter();
   @Output() fileDownloaded = new EventEmitter<FileElement>();
@@ -63,9 +64,9 @@ export class FileExplorerComponent implements OnInit {
     this.navigatedUp.emit();
   }
 
-  moveElement(element: FileElement, moveTo: FileElement) {
-    this.elementMoved.emit({element: element, moveTo: moveTo});
-  }
+  // moveElement(element: FileElement, moveTo: FileElement) {
+  //   this.elementMoved.emit({element: element, moveTo: moveTo});
+  // }
 
   openNewFolderDialog() {
     const newFolderDialogRef = this.modalService.open(NewFolerDialogComponent);
@@ -116,6 +117,25 @@ export class FileExplorerComponent implements OnInit {
         this.filesUploaded.emit();
         console.log();
       });
+  }
+
+  openMoveDialog(element: FileElement) {
+    const moveDialogRef = this.modalService.open(MoveDialogComponent);
+    moveDialogRef.componentInstance.parentUuid = element.parent_uuid;
+    moveDialogRef.result.then(
+      res => {
+        console.log(res);
+        if (res || res === null) {
+          console.log('move:');
+          console.log(res);
+          element.parent_uuid = res;
+          this.elementMoved.emit(element);
+        }
+      },
+      dismiss => {
+        console.log(dismiss);
+      }
+    );
   }
 
   downloadFile(element: FileElement) {

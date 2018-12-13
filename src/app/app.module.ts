@@ -29,6 +29,7 @@ import {LoaderService} from './shared/components/loader/loader.service';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import { MoveDialogComponent } from './sites/panel/files/file-explorer/modals/move-dialog/move-dialog.component';
 import { UploadDialogComponent } from './sites/panel/files/file-explorer/modals/upload-dialog/upload-dialog.component';
+import {FilterPipeModule} from 'ngx-filter-pipe';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { UploadDialogComponent } from './sites/panel/files/file-explorer/modals/
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    FilterPipeModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 10000,

@@ -130,9 +130,21 @@ export class FilesComponent implements OnInit, OnDestroy {
     this.currentPath = this.popFromPath(this.currentPath);
   }
 
-  moveElement(event: { element: FileElement; moveTo: FileElement }) {
+  moveElement(moveTo: FileElement) {
     // this.fileService.update(event.element.id, { parent: event.moveTo.id });
-    // this.updateFileElementQuery();
+    this.fileService.update(moveTo.uuid, {parent_uuid: moveTo.parent_uuid}).subscribe(
+      res => {
+        this.alertService.success('Przeniesiono plik/folder!');
+      },
+      error => {
+        console.error(error);
+        this.alertService.error(error);
+      },
+      () => {
+        this.getFilesRequest();
+      }
+    );
+    this.updateFileElementQuery();
   }
   downloadFile(element: FileElement) {
     this.fileService.downloadFile(element.uuid).subscribe(

@@ -1,3 +1,25 @@
-<p>
-  move-dialog works!
-</p>
+<div class="modal-header">
+  <h4 class="modal-title">Przenieś folder/plik</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <!--<p>Rodzic: {{parent_uuid}}</p>-->
+  <ul>
+    <li>
+      <a (click)="selectNewParent(null)" [ngClass]="{'bold': selectedFileUUID === null }">Katalog główny</a>
+    </li>
+    <ul>
+      <li *ngFor="let file of fileElements | filterBy: folderFilter">
+        <a (click)="selectNewParent(file.uuid)" [ngClass]="{'bold': selectedFileUUID === file.uuid }">{{file.name}}</a>
+      </li>
+    </ul>
+  </ul>
+
+</div>
+<div class="modal-footer">
+  <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="activeModal.dismiss('Cancel click')"  mdbWavesEffect>Anuluj</button>
+  <!-- (click)="basicModal.hide()" -->
+  <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="onClickMove(selectedFileUUID)" mdbWavesEffect>Przenieś</button>
+</div>
