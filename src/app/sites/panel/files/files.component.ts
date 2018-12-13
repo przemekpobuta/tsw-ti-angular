@@ -45,7 +45,7 @@ export class FilesComponent implements OnInit, OnDestroy {
 
   getFilesRequest() {
     this.getFilesSub = this.fileService.getFiles().subscribe((res: FileElement[]) => {
-        // console.log(res);
+        console.log(res);
         res.forEach(value => {
           this.fileService.add(value);
         });
@@ -188,6 +188,22 @@ export class FilesComponent implements OnInit, OnDestroy {
     this.fileService.update(element.uuid, {name: element.name}).subscribe(
       res => {
         this.alertService.success('Zmieniono nazwę!');
+      },
+      error => {
+        console.error(error);
+        this.alertService.error(error);
+      },
+      () => {
+        this.getFilesRequest();
+      }
+    );
+    this.updateFileElementQuery();
+  }
+  toggleVisibilityElement(element: FileElement) {
+    // TODO: API rename
+    this.fileService.update(element.uuid, {is_visible: element.is_visible}).subscribe(
+      res => {
+        this.alertService.success('Zmieniono widoczność!');
       },
       error => {
         console.error(error);

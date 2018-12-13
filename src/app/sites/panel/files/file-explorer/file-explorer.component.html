@@ -63,7 +63,7 @@
 
         <div class="btn-group">
           <a color="primary" class="waves-light" (click)="toogleElementVisibility(element)" mdbTooltip="Widoczność elementu dla użytkownika" placement="bottom">
-            <i class="fa fa-eye" aria-hidden="true"></i>
+            <i class="fa" [ngClass]="{'fa-eye': element.is_visible, 'fa-eye-slash': !element.is_visible}" aria-hidden="true"></i>
             <!-- fa-eye-slash -->
           </a>
         </div>

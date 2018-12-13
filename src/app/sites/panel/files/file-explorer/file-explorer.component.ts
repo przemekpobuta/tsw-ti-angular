@@ -20,6 +20,7 @@ export class FileExplorerComponent implements OnInit {
   @Output() folderAdded = new EventEmitter<{ name: string }>();
   @Output() elementRemoved = new EventEmitter<FileElement>();
   @Output() elementRenamed = new EventEmitter<FileElement>();
+  @Output() elementToggledVisibility = new EventEmitter<FileElement>();
   @Output() elementMoved = new EventEmitter<{ element: FileElement; moveTo: FileElement }>();
   @Output() navigatedDown = new EventEmitter<FileElement>();
   @Output() navigatedUp = new EventEmitter();
@@ -46,6 +47,8 @@ export class FileExplorerComponent implements OnInit {
   toogleElementVisibility(element) {
     console.log('Toogle visibility');
     //  TODO: toogle visibility
+    element.is_visible = !element.is_visible;
+    this.elementToggledVisibility.emit(element);
   }
 
   navigate(element: FileElement) {
@@ -98,11 +101,7 @@ export class FileExplorerComponent implements OnInit {
 
   openUploadDialog() {
     const uploadDialogRef = this.modalService.open(UploadDialogComponent);
-    if (this.currentRoot == null || this.currentRoot === undefined) {
-      uploadDialogRef.componentInstance.parent_uuid = '';
-    } else {
-      uploadDialogRef.componentInstance.parent_uuid = this.currentRoot.uuid;
-    }
+    uploadDialogRef.componentInstance.parent_uuid = this.currentRoot ? this.currentRoot.uuid : '';
 
     // console.log(this.currentRoot);
     uploadDialogRef.result.then(res => {

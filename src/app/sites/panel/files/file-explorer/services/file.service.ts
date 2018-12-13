@@ -112,7 +112,13 @@ export class FileService implements IFileService {
     let element = this.map.get(uuid);
     element = Object.assign(element, update);
 
-    return this.http.put(environment.api_url + 'files/' + element.uuid, {name: element.name, parent: element.parent_uuid});
+    return this.http.put(
+      environment.api_url + 'files/' + element.uuid,
+      {
+        name: element.name,
+        parent: element.parent_uuid,
+        is_visible: element.is_visible
+      });
     // this.map.set(element.uuid, element);
   }
 

@@ -6,4 +6,5 @@ export class FileElement {
   parent_uuid: string; // parent / "root" or id
   owner?: number;
   updated_at?: string;
+  is_visible: boolean;
 }
