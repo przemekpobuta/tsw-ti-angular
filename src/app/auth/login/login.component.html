@@ -17,16 +17,16 @@
             <!-- Email -->
             <div class="form-row mb-4">
               <input
-                type="email"
+                type="text"
                 id="defaultLoginFormEmail"
                 class="form-control"
-                formControlName="email"
-                placeholder="E-mail"
-                [ngClass]="{ 'is-invalid': f.email.touched && f.email.invalid }"
+                formControlName="login"
+                placeholder="login"
+                [ngClass]="{ 'is-invalid': f.login.touched && f.login.invalid }"
                 required>
-              <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
-                <div *ngIf="f.email.errors.required">Please input your email!</div>
-                <div *ngIf="f.email.errors.pattern">Email not valid!</div>
+              <div *ngIf="f.login.touched && f.login.errors" class="invalid-feedback">
+                <div *ngIf="f.login.errors.required">Please input your email!</div>
+                <!--<div *ngIf="f.login.errors.pattern">Email not valid!</div>-->
               </div>
             </div>
 

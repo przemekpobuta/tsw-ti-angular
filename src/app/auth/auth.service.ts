@@ -22,8 +22,8 @@ export class AuthService {
     return this.http.post(environment.api_url + 'auth/signup', user);
   }
 
-  login(email: string, password: string) {
-    return this.http.post<any>(environment.api_url + 'auth/signin', {'email': email, 'password': password})
+  login(login: string, password: string) {
+    return this.http.post<any>(environment.api_url + 'auth/signin', {'login': login, 'password': password})
     // this is just the HTTP call,
     // we still need to handle the reception of the token
       .pipe(tap(res => this.setSession(res)), // handles the auth result
@@ -43,8 +43,8 @@ export class AuthService {
     return !!localStorage.getItem('accessToken');
   }
 
-  getUserProfile(email): any {
-    return this.http.get(environment.api_url + `users/${email}`);
+  getUserProfile(login): any {
+    return this.http.get(environment.api_url + `users/${login}`);
   }
 
   getCurrentUser(): User {

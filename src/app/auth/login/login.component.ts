@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
+      login: ['', [Validators.required, Validators.minLength(3)]],
       password: ['', Validators.required]
     });
 
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.loginForm.invalid) {
       this.alertService.error('Invalid form!');
     } else {
-      this.authService.login(this.f.email.value, this.f.password.value)
+      this.authService.login(this.f.login.value, this.f.password.value)
         .pipe(first())
         .subscribe(
           result => {},
