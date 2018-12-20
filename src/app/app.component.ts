@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, OnInit} from '@angular/core';
+import {AfterContentInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {AuthService} from './auth/auth.service';
 import {User} from './shared/models/user.model';
@@ -7,11 +7,13 @@ import {LoaderService} from './shared/components/loader/loader.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AppComponent implements OnInit, AfterContentInit {
 
   user: User;
+  isPanel = true;
 
   constructor(
     private router: Router,

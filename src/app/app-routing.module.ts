@@ -8,6 +8,7 @@ import {AuthGuard} from './auth/guards/auth-guard.service';
 import {PanelComponent} from './sites/panel/panel.component';
 import {FilesComponent} from './sites/panel/files/files.component';
 import {AboutComponent} from './sites/about/about.component';
+import {AccountsComponent} from './sites/panel/accounts/accounts.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'panel', component: PanelComponent, canActivate: [AuthGuard], children: [
       {path: '', redirectTo: 'files', pathMatch: 'full' },
       {path: 'files', component: FilesComponent},
+      {path: 'accounts', component: AccountsComponent},
       {path: 'account', component: AccountComponent}
     ]},
   {path: '**', component: PageNotFoundComponent} // musi być ostatnie

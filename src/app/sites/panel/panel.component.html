@@ -1,12 +1,12 @@
-<div class="view view-page-header">
+<div class="view view-admin-header">
   <div class="full-bg-img">
-    <div class="mask flex-center rgba-blue-strong"><!-- -->
+    <div class="mask flex-center"><!--  rgba-blue-strong-->
       <div class="container">
-        <div class="white-text wow fadeInRight" >
+        <!--<div class="white-text wow fadeInRight" >-->
 
           <h2 class="header-page">Panel administratora</h2>
 
-        </div>
+        <!--</div>-->
       </div>
     </div>
   </div>
@@ -14,32 +14,50 @@
 
 <div class="panel-container">
 
-<div class="py-5 mt-3">
+<div class="mt-3">
 
   <div class="container">
   <div class="row">
-    <div class="col-md-4 col-sm-12 col-xl-2">
+    <div class="col-md-4 col-sm-12 col-xl-3">
       <!--<nav class="nav flex-column lighten-3 py-4 mb-r font-weight-bold z-depth-1">-->
         <!--<a class="nav-link active indigo-text" >Pliki</a>-->
         <!--<a class="nav-link indigo-text" href="#">Link 1</a>-->
         <!--<a class="nav-link indigo-text" href="#">Link 2</a>-->
         <!--<a class="nav-link indigo-text" href="#">Link 3</a>-->
-      <!--</nav>-->
+
+         <!--</nav>-->
+
+      <nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar blue-gradient" id="toolbar">
+        <!--<a class="navbar-brand" href="#"><strong>Pliki</strong></a>-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item mr-auto">
+              <span class="nav-link">Menu</span>
+            </li>
+          </ul>
+
+        </div>
+      </nav>
 
       <nav class="list-group">
         <a class="list-group-item waves-light" routerLinkActive="active" routerLink="/panel/files" mdbWavesEffect>
           <i class="fa fa-folder" aria-hidden="true"></i> Pliki
         </a>
-        <a class="list-group-item waves-light" routerLinkActive="active"  mdbWavesEffect>
+        <a class="list-group-item waves-light" routerLinkActive="active" routerLink="/panel/accounts" mdbWavesEffect>
           <i class="fa fa-users" aria-hidden="true"></i> Użytkownicy
         </a>
         <a class="list-group-item waves-light" routerLinkActive="active" routerLink="/panel/account" mdbWavesEffect>
           <i class="fa fa-user" aria-hidden="true"></i> Konto
         </a>
+
       </nav>
 
     </div>
-    <div class="col-md-8 col-sm-12 col-xl-10">
+    <div class="col-md-8 col-sm-12 col-xl-9">
       <router-outlet></router-outlet>
     </div>
   </div>

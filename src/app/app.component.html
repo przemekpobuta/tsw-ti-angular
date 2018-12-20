@@ -1,5 +1,5 @@
 <app-loading-bar></app-loading-bar>
-<header class="" id="header-top">
+<header class="" id="header-top" [ngClass]="isPanel ? 'panel-nav' : ''">
 
   <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav"
               [containerInside]="true">

@@ -1,7 +1,11 @@
 export interface User {
-  // name: string;
+  id: number;
   login: string;
   role?: string;
   password ?: string;
-  id: number;
+  password_confirmation ?: string;
+  home_dir ?: string;
+  created_at ?: string;
+  updated_at ?: string;
+
 }

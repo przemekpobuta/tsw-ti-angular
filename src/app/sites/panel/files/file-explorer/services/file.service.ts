@@ -62,6 +62,7 @@ export class FileService implements IFileService {
       const formData: FormData = new FormData();
       formData.append('file', file, file.name);
       formData.append('parent', parent_uuid);
+      console.log(parent_uuid);
 
       // create a http-post request and pass the form
       // tell it to report the upload progress
@@ -84,7 +85,7 @@ export class FileService implements IFileService {
             // calculate the progress percentage
 
             console.log('Size:');
-            console.log(event.total > 2000000);
+            console.log(event.total > 19000000);
 
             const percentDone = Math.round((100 * event.loaded) / event.total);
             // pass the percentage into the progress-stream

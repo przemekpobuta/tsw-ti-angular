@@ -30,6 +30,18 @@ import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import { MoveDialogComponent } from './sites/panel/files/file-explorer/modals/move-dialog/move-dialog.component';
 import { UploadDialogComponent } from './sites/panel/files/file-explorer/modals/upload-dialog/upload-dialog.component';
 import {FilterPipeModule} from 'ngx-filter-pipe';
+import { AccountsComponent } from './sites/panel/accounts/accounts.component';
+import {AccountsService} from './sites/panel/accounts/accounts.service';
+import { EditAccountComponent } from './sites/panel/accounts/modals/edit-account/edit-account.component';
+import { DeleteAccountComponent } from './sites/panel/accounts/modals/delete-account/delete-account.component';
+import {OrderModule} from 'ngx-order-pipe';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 @NgModule({
   declarations: [
@@ -46,13 +58,18 @@ import {FilterPipeModule} from 'ngx-filter-pipe';
     AboutComponent,
     LoadingBarComponent,
     MoveDialogComponent,
-    UploadDialogComponent
+    UploadDialogComponent,
+    AccountsComponent,
+    EditAccountComponent,
+    DeleteAccountComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    OrderModule,
+    PerfectScrollbarModule,
     FilterPipeModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
@@ -69,16 +86,23 @@ import {FilterPipeModule} from 'ngx-filter-pipe';
   providers: [
     AuthService,
     AuthGuard,
+    AccountsService,
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    LoaderService
+    LoaderService,
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
   ],
   bootstrap: [AppComponent],
   entryComponents: [
     NewFolerDialogComponent,
     RenameDialogComponent,
     UploadDialogComponent,
-    MoveDialogComponent
+    MoveDialogComponent,
+    DeleteAccountComponent,
+    EditAccountComponent
   ]
 })
 export class AppModule { }

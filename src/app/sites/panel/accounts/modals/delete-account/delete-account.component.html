@@ -1,0 +1,15 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">Usuwanie użytkownika</h4>
+  <button type="button" class="close" aria-describedby="modal-title" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p><strong>Czy jesteś pewny że chcesz usunąć konto <b><span class="text-primary">{{login}}</span></b>?</strong></p>
+  <p>Wszystkie informacje i pliki powiązane z tym kontem zostaną usunięte. <span class="text-danger">Ta operacja jest nieodwracalna.</span>
+  </p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss('cancel click')">Anuluj</button>
+  <button type="button" class="btn btn-danger" (click)="onClickDelete()">Usuń</button>
+</div>

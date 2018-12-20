@@ -1,0 +1,42 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">{{ newUser ? 'Tworzenie' : 'Edytowanie' }} użytkownika</h4>
+  <button type="button" class="close" aria-describedby="modal-title" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <form [formGroup]="accountForm">
+
+    <div class="md-form">
+      <input type="text" id="inputLogin" class="form-control" formControlName="login" mdbInputDirective>
+      <label for="inputLogin">Login</label>
+    </div>
+
+    <div class="md-form">
+      <input type="password" id="inputPassword" class="form-control" formControlName="password" mdbInputDirective>
+      <label for="inputPassword">Hasło</label>
+    </div>
+
+    <div class="md-form">
+      <input type="password" id="inputPasswordRepeat" class="form-control" formControlName="password_confirmation" mdbInputDirective>
+      <label for="inputPasswordRepeat">Powtórz hasło</label>
+    </div>
+
+    <div class="md-form">
+      <select class="browser-default custom-select" id="inputRole" formControlName="role">
+        <option selected disabled>Wybierz rolę</option>
+        <!--<option value="1">Administrator</option>-->
+        <option value="moderator">Moderator</option>
+        <option value="user">Zwykły użytkownik</option>
+      </select>
+    </div>
+
+  </form>
+
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-blue-grey" (click)="activeModal.dismiss('cancel click')">Anuluj</button>
+  <button type="button" class="btn btn-primary" (click)="onClickSave()" [disabled]="!accountForm.valid">Zapisz</button>
+</div>

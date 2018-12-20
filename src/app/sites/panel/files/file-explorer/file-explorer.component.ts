@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {FileElement} from './models/file-element.model';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {NewFolerDialogComponent} from './modals/new-foler-dialog/new-foler-dialog.component';
@@ -9,7 +9,8 @@ import {MoveDialogComponent} from './modals/move-dialog/move-dialog.component';
 @Component({
   selector: 'app-file-explorer',
   templateUrl: './file-explorer.component.html',
-  styleUrls: ['./file-explorer.component.scss']
+  styleUrls: ['./file-explorer.component.scss'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class FileExplorerComponent implements OnInit {
 
@@ -27,6 +28,8 @@ export class FileExplorerComponent implements OnInit {
   @Output() navigatedUp = new EventEmitter();
   @Output() fileDownloaded = new EventEmitter<FileElement>();
   @Output() filesUploaded = new EventEmitter();
+
+  orderType = ['file_extension'];
 
   constructor(
     private modalService: NgbModal
@@ -104,7 +107,8 @@ export class FileExplorerComponent implements OnInit {
     const uploadDialogRef = this.modalService.open(UploadDialogComponent);
     uploadDialogRef.componentInstance.parent_uuid = this.currentRoot ? this.currentRoot.uuid : '';
 
-    // console.log(this.currentRoot);
+    console.log(this.currentRoot.uuid);
+
     uploadDialogRef.result.then(res => {
         if (res) {
           // this.folderAdded.emit({ name: res });

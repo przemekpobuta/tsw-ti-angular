@@ -13,8 +13,7 @@
   color: #CC0000 !important;
 }
 #toolbar {
-  //background: rgba(0,0,0,0.1);
-  color: white;
+  background: rgba(0,0,0,0.1);
 }
 .container-files {
   background-color: rgba(0,0,0,0.01);
@@ -24,7 +23,7 @@
 .container-files table {
   margin-bottom: 0;
 }
-.container-files table tbody tr:hover {
+.container-files table tr:hover {
   background-color: rgba(0,0,0,0.05);
 }
 .container .content {
@@ -41,24 +40,21 @@
 .grid-tile .file-or-folder-icon {
   //font-size: 46px;
 }
-.file-name {
+.account_login {
 
 }
-.file-icon {
+.account_icon {
   width: 25px;
 }
-.file-icon {
 
-}
+//.fa-user {
+//  padding: 8px;
+//  overflow: hidden;
+//  text-align: center;
+//  //width: 75px;
+//}
 
-.file-or-folder {
-  padding: 8px;
-  overflow: hidden;
-  text-align: center;
-  //width: 75px;
-}
-
-.file-or-folder-icon {
+.fa-user {
   width: 18px;
   height: 18px;
   font-size: 18px;
@@ -70,17 +66,14 @@
 .pointer {
   cursor: pointer;
 }
-.file-menu {
+.account_menu {
   text-align: right;
-  width: 90px;
+  //width: 25px;
 }
-.file-menu .btn-group {
+.account_menu .btn-group {
   display: inline;
 }
-.file-modified {
-  text-align: left;
-}
-.file-menu i {
+.account_menu i {
   padding: 0 10px;
 }
 
@@ -92,26 +85,4 @@
   padding: 0;
   margin: 0;
   width: 25px;
-}
-.back-button {
-  //margin-right: 0.3em;
-}
-.back-button a {
-  //background-color: rgba(255,255,255,0.75);
-  width: 2.5em;
-  height: 2.5em;
-  text-align: center;
-  border-radius: 50%;
-}
-.back-button a:hover {
-  //background-color: rgba(255,255,255,0.95);
-}
-.back-button a i {
-  font-size: 1.25em;
-  color: white;
-  padding-top: 0.08em;
-}
-
-.pusty-folder:hover {
-  background-color: inherit !important;
 }

@@ -1,0 +1,97 @@
+<nav class="navbar navbar-expand-lg navbar-light scrolling-navbar" id="toolbar">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <!--<li class="nav-item"> &lt;!&ndash; powrót do katalogu wyżej &ndash;&gt;-->
+        <!--<a class="nav-link" *ngIf="canNavigateUp">-->
+          <!--<i class="fa fa-angle-left" aria-hidden="true"></i>-->
+        <!--</a>-->
+        <!--&lt;!&ndash;&ndash;&gt;-->
+      <!--</li>-->
+      <li class="nav-item mr-auto">
+        <span class="nav-link">Użytkownicy</span>
+      </li>
+    </ul>
+    <ul class="navbar-nav nav-flex-icons">
+    <li class="nav-item">
+      <a class="nav-link" (click)="openClickNewAccount()">
+        <i class="fa fa-user-plus" aria-hidden="true"></i>
+      </a>
+    </li>
+    <!--<li class="nav-item">-->
+      <!--<a class="nav-link" (click)="openUploadDialog()">-->
+        <!--<i class="fa fa-upload" aria-hidden="true"></i>-->
+      <!--</a>-->
+    <!--</li>-->
+  </ul>
+  </div>
+</nav>
+
+<div class="container-files">
+
+  <table mdbTable ><!-- striped="true" -->
+    <thead>
+      <tr>
+        <th scope="col">Login</th>
+        <th scope="col">Rola</th>
+        <th scope="col">Stworzono</th>
+        <th scope="col">Zmodyfikowano</th>
+        <th scope="col"></th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+    <tr mdbTableCol *ngFor="let account of accounts" >
+      <!--<td class="account_icon" >&lt;!&ndash; scope="row" &ndash;&gt;-->
+        <!--<i class="fa fa-user" aria-hidden="true"></i>-->
+        <!--&lt;!&ndash;<i&ndash;&gt;-->
+          <!--&lt;!&ndash;class="fa file-or-folder-icon"&ndash;&gt;-->
+          <!--&lt;!&ndash;aria-hidden="true"&ndash;&gt;-->
+          <!--&lt;!&ndash;*ngIf="element.file_type != 'folder'">&ndash;&gt;-->
+        <!--&lt;!&ndash;</i>&ndash;&gt;-->
+      <!--</td>-->
+      <td class="account_login">
+        <a>{{ account?.login }}</a>
+      </td>
+      <td class="account_role">
+        <a>{{ account?.role }}</a>
+      </td>
+      <td class="account_created_at">
+        <span>{{account?.created_at ? account.created_at : '-' }}</span>
+      </td>
+      <td class="account_updated_at">
+        <span>{{account?.updated_at ? account.updated_at : '-' }}</span>
+      </td>
+      <td class="account_menu">
+
+        <div class="btn-group" placement="right" mdbDropdown>
+
+          <a mdbDropdownToggle color="primary" class="waves-light" placement="right">
+            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+          </a>
+
+          <div class="dropdown-menu dropdown-primary dropdown-menu-right">
+            <a class="dropdown-item" (click)="openClickEdit(account)">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edytuj
+            </a>
+            <a class="dropdown-item text-red" (click)="onClickDelete(account)">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>Usuń
+            </a>
+            <!--<div class="divider dropdown-divider"></div>-->
+          </div>
+
+        </div>
+      </td>
+    </tr>
+    <tr mdbTableCol *ngIf="accounts == null || accounts == undefined || accounts.length == 0">
+      <td class="text-left">Brak użytkowników</td>
+    </tr>
+    </tbody>
+  </table>
+
+
+</div>

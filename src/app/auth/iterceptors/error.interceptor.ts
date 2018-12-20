@@ -13,6 +13,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(catchError(err => {
+      console.log(err);
       if (err.status === 401) {
         // auto logout if 401 response returned from api
         this.router.navigate(['/']);
@@ -20,6 +21,9 @@ export class ErrorInterceptor implements HttpInterceptor {
 
         // not tested in secured route
         // location.reload(true);
+      }
+      if (err.status === 422) {
+        console.error('Za duży plik!');
       }
       console.error(err.status);
       const error = err.error.message || err.statusText;

@@ -1,5 +1,5 @@
 <script src="models/file-element.model.ts"></script>
-<nav class="navbar navbar-expand-lg navbar-light scrolling-navbar" id="toolbar">
+<nav class="navbar navbar-expand-lg navbar-dark scrolling-navbar blue-gradient" id="toolbar">
   <!--<a class="navbar-brand" href="#"><strong>Pliki</strong></a>-->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,9 +7,9 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item"> <!-- powrót do katalogu wyżej -->
+      <li class="nav-item back-button"> <!-- powrót do katalogu wyżej -->
         <a class="nav-link" (click)="navigateUp()" *ngIf="canNavigateUp">
-          <i class="fa fa-angle-left" aria-hidden="true"></i>
+          <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
         </a>
         <!---->
       </li>
@@ -35,16 +35,20 @@
 <div class="container-files">
 
   <table mdbTable ><!-- striped="true" -->
-    <!--<thead>-->
-    <!--<tr>-->
-      <!--<th scope="col"></th>-->
-      <!--<th scope="col">Nazwa</th>-->
-    <!--</tr>-->
-    <!--</thead>-->
+    <thead>
+      <tr>
+        <!--<th scope="col"></th>-->
+        <th scope="col" colspan="2">Nazwa</th>
+        <th scope="col" class="file-modified">Data modyfikacji</th>
+        <th scope="col" class="file-menu">
+          <!--Akcje-->
+        </th>
+      </tr>
+    </thead>
     <tbody>
 
-    <tr mdbTableCol *ngFor="let element of fileElements" >
-      <td class="file-icon" ><!-- scope="row" -->
+    <tr mdbTableCol *ngFor="let element of fileElements | orderBy: orderType : true " >
+      <td class="file-icon tr-click" (click)="navigate(element)" ><!-- scope="row" -->
         <i class="fa fa-folder file-or-folder-icon" aria-hidden="true" *ngIf="element.file_type == 'folder' && element.file_extension == null"></i>
         <i
           class="fa file-or-folder-icon"
@@ -65,10 +69,10 @@
           *ngIf="element.file_type != 'folder'">
         </i>
       </td>
-      <td class="file-name">
-        <a (click)="navigate(element)">{{ element.name }}{{element?.file_extension ? '.' + element.file_extension : '' }}</a>
+      <td class="file-name tr-click" (click)="navigate(element)">
+        <a>{{ element.name }}{{element?.file_extension ? '.' + element.file_extension : '' }}</a>
       </td>
-      <td class="file-modified">
+      <td class="file-modified tr-click" (click)="navigate(element)">
         <span>{{element.updated_at}}</span>
       </td>
       <td class="file-menu">
@@ -104,8 +108,12 @@
         </div>
       </td>
     </tr>
-    <tr mdbTableCol *ngIf="fileElements == null || fileElements == undefined || fileElements.length == 0">
-      <td class="text-left">Pusty folder</td>
+    <tr mdbTableCol class="pusty-folder" *ngIf="fileElements == null || fileElements == undefined || fileElements.length == 0">
+      <!--<td class="text-left"></td>-->
+      <td class="file-icon">
+        <i class="fa file-or-folder-icon fa-folder-open-o" aria-hidden="true"></i>
+      </td>
+      <td class="file-name text-left">Pusty folder</td>
     </tr>
     </tbody>
   </table>
