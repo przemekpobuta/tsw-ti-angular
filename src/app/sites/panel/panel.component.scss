@@ -20,4 +20,12 @@
   color: rgba(0,0,0,0.7);
   //border-color: ;
 }
-.list-group-item {}
+.list-group-item {
+  padding: 0.95rem 1.25rem;
+}
+.list-group-item i {
+  width: 1.5em;
+  text-align: center;
+}
+
+

@@ -5,21 +5,21 @@
   </button>
 </div>
 <div class="modal-body">
-  <!--<p>Rodzic: {{parent_uuid}}</p>-->
   <ul>
     <li>
-      <a (click)="selectNewParent(null)" [ngClass]="{'bold': selectedFileUUID === null }">Katalog główny</a>
+      <a (click)="selectNewParent(null)" [ngClass]="{'bold': selectedFileParentUUID === null }">Katalog główny</a>
     </li>
     <ul>
       <li *ngFor="let file of fileElements | filterBy: folderFilter">
-        <a (click)="selectNewParent(file.uuid)" [ngClass]="{'bold': selectedFileUUID === file.uuid }">{{file.name}}</a>
+        <a (click)="selectNewParent(file.uuid)" [ngClass]="{'bold': selectedFileParentUUID === file.uuid }">
+          {{ file.name }}
+        </a>
       </li>
     </ul>
   </ul>
-
 </div>
 <div class="modal-footer">
   <button type="button" mdbBtn class="waves-light btn btn-grey" aria-label="Close" (click)="activeModal.dismiss('Cancel click')" mdbWavesEffect>Anuluj</button>
   <!-- (click)="basicModal.hide()" -->
-  <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="onClickMove(selectedFileUUID)" mdbWavesEffect>Przenieś</button>
+  <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="onClickMove(selectedFileParentUUID)" mdbWavesEffect>Przenieś</button>
 </div>

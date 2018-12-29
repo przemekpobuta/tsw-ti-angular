@@ -11,7 +11,7 @@ import {FileElement} from '../../models/file-element.model';
 export class MoveDialogComponent implements OnInit, OnDestroy {
 
   @Input() parentUuid: string;
-  selectedFileUUID: string;
+  selectedFileParentUUID: string;
   getFilesSub: any;
   fileElements: FileElement[] = [];
   folderFilter: any = { file_type: 'folder' };
@@ -22,7 +22,7 @@ export class MoveDialogComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.selectedFileUUID = this.parentUuid;
+    this.selectedFileParentUUID = this.parentUuid;
     this.getFilesSub = this.fileService.getFiles().subscribe(
       (res: FileElement[]) => {
         console.log(res);
@@ -43,7 +43,7 @@ export class MoveDialogComponent implements OnInit, OnDestroy {
     }
   }
   selectNewParent(file_uuid: string) {
-    this.selectedFileUUID = file_uuid;
+    this.selectedFileParentUUID = file_uuid;
     console.log('Selected file');
     console.log(file_uuid);
   }

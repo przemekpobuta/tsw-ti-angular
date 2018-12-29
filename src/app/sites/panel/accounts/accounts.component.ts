@@ -3,23 +3,26 @@ import {AccountsService} from './accounts.service';
 import {Subscription} from 'rxjs';
 import {User} from '../../../shared/models/user.model';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {UploadDialogComponent} from '../files/file-explorer/modals/upload-dialog/upload-dialog.component';
 import {DeleteAccountComponent} from './modals/delete-account/delete-account.component';
 import {EditAccountComponent} from './modals/edit-account/edit-account.component';
+import {LoaderService} from '../../../shared/components/loader/loader.service';
 
 @Component({
   selector: 'app-accounts',
   templateUrl: './accounts.component.html',
-  styleUrls: ['./accounts.component.scss']
+  styleUrls: ['./accounts.component.scss'],
+  providers: [AccountsComponent]
 })
 export class AccountsComponent implements OnInit, OnDestroy {
 
   accountsSub: Subscription;
   accounts: User[] = [];
+  isLoadingData: boolean;
 
   constructor(
     private accountsService: AccountsService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private loaderService: LoaderService
   ) { }
 
   ngOnInit() {
@@ -27,16 +30,19 @@ export class AccountsComponent implements OnInit, OnDestroy {
   }
 
   getAccountsReq() {
+    this.isLoadingData = true;
+    this.loaderService.showLoader();
     this.accountsSub = this.accountsService.getAccounts().subscribe(
-      (res: User[]) => {
-        console.log(res);
-        this.accounts = res;
+      (data: User[]) => {
+        console.log(data);
+        this.accounts = data;
       },
-      err => {
-        console.log(err);
+      error => {
+        console.log(error);
       },
       () => {
-
+        this.loaderService.hideLoader();
+        this.isLoadingData = false;
       }
     );
   }
@@ -63,12 +69,11 @@ export class AccountsComponent implements OnInit, OnDestroy {
 
   openClickEdit(account: User) {
     const editDialogRef = this.modalService.open(EditAccountComponent);
-    editDialogRef.componentInstance.account = account;
+    editDialogRef.componentInstance.account_id = account.id;
     editDialogRef.componentInstance.newUser = false;
 
     editDialogRef.result.then(
       (res: User) => {
-        this.accountsService.updateAccount(res);
         // console.log(res);
         this.getAccountsReq();
       },

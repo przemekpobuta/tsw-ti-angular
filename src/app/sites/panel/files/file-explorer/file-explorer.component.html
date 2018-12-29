@@ -17,8 +17,8 @@
         <span class="nav-link">{{path || 'Pliki'}}</span>
       </li>
     </ul>
-    <ul class="navbar-nav nav-flex-icons">
-      <li class="nav-item">
+    <ul class="navbar-nav nav-flex-icons" *ngIf="user.role === 'admin' || user.role === 'moderator'">
+      <li class="nav-item" >
         <a class="nav-link" (click)="openNewFolderDialog()">
           <i class="fa fa-folder-o" aria-hidden="true"></i>
         </a>
@@ -35,7 +35,7 @@
 <div class="container-files">
 
   <table mdbTable ><!-- striped="true" -->
-    <thead>
+    <thead *ngIf="!isLoadingData">
       <tr>
         <!--<th scope="col"></th>-->
         <th scope="col" colspan="2">Nazwa</th>
@@ -77,7 +77,7 @@
       </td>
       <td class="file-menu">
 
-        <div class="btn-group">
+        <div class="btn-group" *ngIf="user.role === 'admin' || user.role === 'moderator'">
           <a color="primary" class="waves-light" (click)="toogleElementVisibility(element)" mdbTooltip="Widoczność elementu dla użytkownika" placement="bottom">
             <i
               class="fa" [ngClass]="{'fa-eye': element.is_visible, 'fa-eye-slash': !element.is_visible}" aria-hidden="true"></i>
@@ -85,7 +85,13 @@
           </a>
         </div>
 
-        <div class="btn-group" placement="right" mdbDropdown>
+        <div class="btn-group" *ngIf="user.role === 'user' && element.file_type != 'folder'">
+          <a color="primary" class="waves-light" (click)="downloadFile(element)" mdbTooltip="Pobierz" placement="bottom">
+            <i class="fa fa-download" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <div class="btn-group" placement="right" *ngIf="user.role === 'admin' || user.role === 'moderator'" mdbDropdown>
           <a mdbDropdownToggle color="primary" class="waves-light" placement="right">
             <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
           </a>
@@ -108,12 +114,20 @@
         </div>
       </td>
     </tr>
-    <tr mdbTableCol class="pusty-folder" *ngIf="fileElements == null || fileElements == undefined || fileElements.length == 0">
+    <tr mdbTableCol class="pusty-folder" *ngIf="(fileElements == null || fileElements == undefined || fileElements.length == 0) && !isLoadingData">
       <!--<td class="text-left"></td>-->
       <td class="file-icon">
         <i class="fa file-or-folder-icon fa-folder-open-o" aria-hidden="true"></i>
       </td>
       <td class="file-name text-left">Pusty folder</td>
+    </tr>
+    <tr mdbTableCol class="ladowanie wow fadeIn" *ngIf="isLoadingData">
+      <!--<td class="text-left"></td>-->
+      <td colspan="4" class="">
+        <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0s"></i>
+        <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0.2s"></i>
+        <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0.4s"></i>
+      </td>
     </tr>
     </tbody>
   </table>

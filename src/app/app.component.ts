@@ -1,8 +1,9 @@
 import {AfterContentInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router, RouterStateSnapshot, NavigationStart} from '@angular/router';
 import {AuthService} from './auth/auth.service';
 import {User} from './shared/models/user.model';
 import {LoaderService} from './shared/components/loader/loader.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -13,22 +14,29 @@ import {LoaderService} from './shared/components/loader/loader.service';
 export class AppComponent implements OnInit, AfterContentInit {
 
   user: User;
-  isPanel = true;
+  isPanel = false;
 
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     public authService: AuthService,
-    private loaderService: LoaderService
-  ) {
-    router.events.forEach((event) => {
-      if (event instanceof NavigationEnd) {
-        // return true if route is homepage
-        // this.isHomePage = (event.urlAfterRedirects === '/home');
-      }
-    });
-  }
+    private loaderService: LoaderService,
+    private alertService: ToastrService,
+    private route: ActivatedRoute
+    ) {
+    }
 
   ngOnInit() {
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        if (event.url.substr(0, 6) === '/panel') {
+          this.isPanel = true;
+        } else {
+          this.isPanel = false;
+        }
+      }
+    });
 
     if (this.authService.getCurrentUser()) {
       this.user = this.authService.getCurrentUser();
@@ -50,5 +58,6 @@ export class AppComponent implements OnInit, AfterContentInit {
   onLogout() {
     this.authService.logout();
     this.router.navigate(['']);
+    this.alertService.success('Wylogowano pomyślnie!');
   }
 }

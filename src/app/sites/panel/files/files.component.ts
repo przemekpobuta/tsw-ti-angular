@@ -4,6 +4,7 @@ import {Observable, Subscription} from 'rxjs';
 import {FileService} from './file-explorer/services/file.service';
 import {ToastrService} from 'ngx-toastr';
 import {elementEnd} from '@angular/core/src/render3';
+import {LoaderService} from '../../../shared/components/loader/loader.service';
 
 @Component({
   selector: 'app-files',
@@ -16,7 +17,8 @@ export class FilesComponent implements OnInit, OnDestroy {
 
   constructor(
     public fileService: FileService,
-    private alertService: ToastrService
+    private alertService: ToastrService,
+    private loaderService: LoaderService
   ) {
   }
 
@@ -24,9 +26,9 @@ export class FilesComponent implements OnInit, OnDestroy {
   currentPath: string;
   canNavigateUp = false;
   getFilesSub: Subscription;
+  isLoadingData = false;
 
   ngOnInit() {
-
     this.getFilesRequest();
 
     // const folderA = this.fileService.add({ name: 'Folder A', isFolder: true, parent: 'root' });
@@ -44,18 +46,22 @@ export class FilesComponent implements OnInit, OnDestroy {
   }
 
   getFilesRequest() {
+    this.loaderService.showLoader();
+    this.isLoadingData = true;
     this.getFilesSub = this.fileService.getFiles().subscribe((res: FileElement[]) => {
-        console.log(res);
-        res.forEach(value => {
-          this.fileService.add(value);
-        });
-      },
+      console.log(res);
+      res.forEach(value => {
+        this.fileService.add(value);
+      });
+    },
       error => {
         console.error(error);
         this.alertService.error(error);
       },
       () => {
         this.updateFileElementQuery();
+        this.loaderService.hideLoader();
+        this.isLoadingData = false;
       });
   }
 

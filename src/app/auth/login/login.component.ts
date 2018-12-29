@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
 
 import {AuthService} from '../auth.service';
+import {LoaderService} from '../../shared/components/loader/loader.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private alertService: ToastrService
+    private alertService: ToastrService,
+    private loaderService: LoaderService
   ) { }
 
   ngOnInit() {
@@ -39,17 +41,23 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     if (this.loginForm.invalid) {
-      this.alertService.error('Invalid form!');
+      this.alertService.error('Niewłaściwe dane logowania!', 'Błąd logowania');
     } else {
+      this.loaderService.showLoader();
       this.authService.login(this.f.login.value, this.f.password.value)
         .pipe(first())
         .subscribe(
           result => {},
           error => {
-            this.alertService.error(error);
+            this.alertService.error(error, 'Błąd logowania');
           },
           () => {
-            this.router.navigate(['/panel']);
+            this.authService.currentUser$.subscribe(res => {
+              this.router.navigate(['/panel']);
+              this.alertService.clear();
+            }, () => {
+              this.loaderService.hideLoader();
+            });
           });
     }
   }

@@ -18,10 +18,12 @@ export class LoadingBarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.subscription = this.loaderService.loaderState
-      .subscribe((state: boolean) => {
+    // console.log('loader state: ' + this.show);
+    this.subscription = this.loaderService.navItem$.subscribe(state => {
         this.show = state;
+        // console.log('loader state changed: ' + state);
       });
+
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

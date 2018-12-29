@@ -4,6 +4,7 @@
     [fileElements]="fileElements | async" [path]="currentPath"
     [canNavigateUp]="canNavigateUp"
     [currentRoot]="currentRoot"
+    [isLoadingData]="isLoadingData"
     (folderAdded)="addFolder($event)"
     (elementRemoved)="removeElement($event)"
     (navigatedDown)="navigateToFolder($event)"
@@ -12,7 +13,8 @@
     (elementToggledVisibility)="toggleVisibilityElement($event)"
     (elementMoved)="moveElement($event)"
     (fileDownloaded)="downloadFile($event)"
-    (filesUploaded)="uploadedFiles()">
+    (filesUploaded)="uploadedFiles()"
+    >
   </app-file-explorer>
 
 </div>

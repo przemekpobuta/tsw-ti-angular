@@ -61,7 +61,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     UploadDialogComponent,
     AccountsComponent,
     EditAccountComponent,
-    DeleteAccountComponent
+    DeleteAccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +73,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FilterPipeModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 10000,
+      timeOut: 8000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
@@ -87,9 +87,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AuthService,
     AuthGuard,
     AccountsService,
+    LoaderService,
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    LoaderService,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
@@ -98,8 +98,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   bootstrap: [AppComponent],
   entryComponents: [
     NewFolerDialogComponent,
-    RenameDialogComponent,
     UploadDialogComponent,
+    RenameDialogComponent,
     MoveDialogComponent,
     DeleteAccountComponent,
     EditAccountComponent

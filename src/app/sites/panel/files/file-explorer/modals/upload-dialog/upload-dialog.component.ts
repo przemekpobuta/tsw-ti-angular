@@ -7,7 +7,8 @@ import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-upload-dialog',
   templateUrl: './upload-dialog.component.html',
-  styleUrls: ['./upload-dialog.component.scss']
+  styleUrls: ['./upload-dialog.component.scss'],
+  providers: [FileService]
 })
 export class UploadDialogComponent implements OnInit {
 

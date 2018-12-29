@@ -33,7 +33,7 @@
 <div class="container-files">
 
   <table mdbTable ><!-- striped="true" -->
-    <thead>
+    <thead *ngIf="!isLoadingData">
       <tr>
         <th scope="col">Login</th>
         <th scope="col">Rola</th>
@@ -55,10 +55,10 @@
         <!--&lt;!&ndash;</i>&ndash;&gt;-->
       <!--</td>-->
       <td class="account_login">
-        <a>{{ account?.login }}</a>
+        <span>{{ account?.login }}</span>
       </td>
       <td class="account_role">
-        <a>{{ account?.role }}</a>
+        <span>{{ account?.role }}</span>
       </td>
       <td class="account_created_at">
         <span>{{account?.created_at ? account.created_at : '-' }}</span>
@@ -87,8 +87,16 @@
         </div>
       </td>
     </tr>
-    <tr mdbTableCol *ngIf="accounts == null || accounts == undefined || accounts.length == 0">
+    <tr mdbTableCol *ngIf="(accounts == null || accounts == undefined || accounts.length == 0) && !isLoadingData">
       <td class="text-left">Brak użytkowników</td>
+    </tr>
+    <tr mdbTableCol class="ladowanie wow fadeIn" *ngIf="isLoadingData">
+      <!--<td class="text-left"></td>-->
+      <td colspan="5" class="">
+        <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0s"></i>
+        <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0.2s"></i>
+        <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0.4s"></i>
+      </td>
     </tr>
     </tbody>
   </table>

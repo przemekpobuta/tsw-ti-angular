@@ -5,6 +5,8 @@ import {NewFolerDialogComponent} from './modals/new-foler-dialog/new-foler-dialo
 import {RenameDialogComponent} from './modals/rename-dialog/rename-dialog.component';
 import {UploadDialogComponent} from './modals/upload-dialog/upload-dialog.component';
 import {MoveDialogComponent} from './modals/move-dialog/move-dialog.component';
+import { AuthService } from 'src/app/auth/auth.service';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-file-explorer',
@@ -18,6 +20,7 @@ export class FileExplorerComponent implements OnInit {
   @Input() canNavigateUp: string;
   @Input() path: string;
   @Input() currentRoot: FileElement;
+  @Input() isLoadingData: boolean;
 
   @Output() folderAdded = new EventEmitter<{ name: string }>();
   @Output() elementRemoved = new EventEmitter<FileElement>();
@@ -30,13 +33,17 @@ export class FileExplorerComponent implements OnInit {
   @Output() filesUploaded = new EventEmitter();
 
   orderType = ['file_extension'];
+  user: User;
 
   constructor(
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private authService: AuthService
   ) {
   }
 
   ngOnInit() {
+    console.log(this.currentRoot);
+    this.user = this.authService.getCurrentUser();
   }
 
   deleteElement(element: FileElement) {

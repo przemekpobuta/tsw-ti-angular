@@ -1,24 +1,22 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoaderService {
 
-  // private loaderSubject = new Subject<LoaderState>();
-  // loaderState = this.loaderSubject.asObservable();
-  public loaderState = new EventEmitter<boolean>();
-
+  private _loaderState = new BehaviorSubject<boolean>(false);
+  navItem$ = this._loaderState.asObservable();
   constructor() { }
 
-  show() {
-    console.log('onShow Loader');
-    this.loaderState.emit(true);
+  showLoader() {
+    // this._loaderState.next(true);
+    // console.log('onShow Loader');
   }
 
-  hide() {
-    console.log('onHide Loader');
-    this.loaderState.emit(false);
+  hideLoader() {
+    // console.log('onHide Loader');
+    // this._loaderState.next(false);
   }
 }

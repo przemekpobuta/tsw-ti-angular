@@ -9,24 +9,35 @@
   <form [formGroup]="accountForm">
 
     <div class="md-form">
-      <input type="text" id="inputLogin" class="form-control" formControlName="login" mdbInputDirective>
+      <input type="text" id="inputLogin" class="form-control" formControlName="login" [validateSuccess]="false" mdbInputDirective>
       <label for="inputLogin">Login</label>
     </div>
 
     <div class="md-form">
-      <input type="password" id="inputPassword" class="form-control" formControlName="password" mdbInputDirective>
+      <input type="password" id="inputPassword" class="form-control" formControlName="password" [validateSuccess]="false" mdbInputDirective>
       <label for="inputPassword">Hasło</label>
     </div>
 
     <div class="md-form">
-      <input type="password" id="inputPasswordRepeat" class="form-control" formControlName="password_confirmation" mdbInputDirective>
+      <input type="password" id="inputPasswordRepeat" class="form-control" formControlName="password_confirmation" [validateSuccess]="false" mdbInputDirective>
       <label for="inputPasswordRepeat">Powtórz hasło</label>
+      <p *ngIf="passwordConfirmationInput.value != passwordInput.value && passwordConfirmationInput.touched && passwordInput.touched" class="text-danger">Podane hasła muszą być identyczne!</p>
+      <p *ngIf="
+        passwordConfirmationInput.value.length < 6 &&
+        passwordInput.value.length < 6 &&
+        passwordConfirmationInput.touched &&
+        passwordInput.touched &&
+        passwordConfirmationInput.value != '' &&
+        passwordInput.value != ''"
+         class="text-danger">
+        Podane hasło jest za krótkie!
+      </p>
     </div>
 
     <div class="md-form">
       <select class="browser-default custom-select" id="inputRole" formControlName="role">
         <option selected disabled>Wybierz rolę</option>
-        <!--<option value="1">Administrator</option>-->
+        <option value="admin" *ngIf="role == 'admin'">Administrator</option>
         <option value="moderator">Moderator</option>
         <option value="user">Zwykły użytkownik</option>
       </select>
@@ -37,6 +48,17 @@
 </div>
 
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-blue-grey" (click)="activeModal.dismiss('cancel click')">Anuluj</button>
-  <button type="button" class="btn btn-primary" (click)="onClickSave()" [disabled]="!accountForm.valid">Zapisz</button>
+  <button type="button" class="btn btn-grey" (click)="activeModal.dismiss('cancel click')">Anuluj</button>
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="onClickSave()"
+    [disabled]="
+      !accountForm.valid ||
+      passwordConfirmationInput.value != passwordInput.value ||
+      roleInput.value == 'Wybierz rolę' ||
+      (passwordInput.value.length < 6 && passwordInput.value != '')
+    ">
+    Zapisz
+  </button>
 </div>

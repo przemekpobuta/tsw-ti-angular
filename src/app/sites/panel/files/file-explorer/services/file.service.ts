@@ -5,6 +5,7 @@ import {HttpClient, HttpEventType, HttpRequest, HttpResponse} from '@angular/com
 import {environment} from '../../../../../../environments/environment';
 import {tap} from 'rxjs/operators';
 import {ResponseContentType} from '@angular/http';
+import {PanelComponent} from '../../../panel.component';
 
 export interface IFileService {
   add(fileElement: FileElement);
@@ -14,9 +15,7 @@ export interface IFileService {
   get(id: string): FileElement;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FileService implements IFileService {
 
   // string?, fileElement
@@ -31,6 +30,7 @@ export class FileService implements IFileService {
   getFiles() {
     return this.http.get(environment.api_url + 'files/');
   }
+
   createFolder(name: string, parent_uuid: string) {
     return this.http.post(environment.api_url + 'files/', {parent: parent_uuid, name: name});
   }

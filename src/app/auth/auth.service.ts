@@ -36,7 +36,6 @@ export class AuthService {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('currentUser');
     this.currentUser$.next(undefined);
-
   }
 
   isLoggedIn(): boolean {
@@ -67,4 +66,5 @@ export class AuthService {
           console.log(error);
         });
   }
+
 }
