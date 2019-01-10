@@ -6,7 +6,8 @@ import {FileElement} from '../../models/file-element.model';
 @Component({
   selector: 'app-move-dialog',
   templateUrl: './move-dialog.component.html',
-  styleUrls: ['./move-dialog.component.scss']
+  styleUrls: ['./move-dialog.component.scss'],
+  providers: [FileService]
 })
 export class MoveDialogComponent implements OnInit, OnDestroy {
 

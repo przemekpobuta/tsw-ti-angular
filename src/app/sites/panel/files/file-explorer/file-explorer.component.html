@@ -35,19 +35,22 @@
 <div class="container-files">
 
   <table mdbTable ><!-- striped="true" -->
-    <thead *ngIf="!isLoadingData">
+    <thead>
+      <!-- *ngIf="!isLoadingData" -->
       <tr>
         <!--<th scope="col"></th>-->
         <th scope="col" colspan="2">Nazwa</th>
         <th scope="col" class="file-modified">Data modyfikacji</th>
         <th scope="col" class="file-menu">
-          <!--Akcje-->
+          <!--Akcje-->  
         </th>
       </tr>
     </thead>
     <tbody>
 
-    <tr mdbTableCol *ngFor="let element of fileElements | orderBy: orderType : true " >
+    <tr mdbTableCol 
+      *ngFor="let element of fileElements | orderBy: orderType : true"
+      [ngClass]="{'file-visible': element.is_visible, 'file-invisible': !element.is_visible}">
       <td class="file-icon tr-click" (click)="navigate(element)" ><!-- scope="row" -->
         <i class="fa fa-folder file-or-folder-icon" aria-hidden="true" *ngIf="element.file_type == 'folder' && element.file_extension == null"></i>
         <i
@@ -78,7 +81,7 @@
       <td class="file-menu">
 
         <div class="btn-group" *ngIf="user.role === 'admin' || user.role === 'moderator'">
-          <a color="primary" class="waves-light" (click)="toogleElementVisibility(element)" mdbTooltip="Widoczność elementu dla użytkownika" placement="bottom">
+          <a color="primary" class="waves-light" (click)="toogleElementVisibility(element)" [mdbTooltip]="visibilityToggleTooltip" placement="bottom">
             <i
               class="fa" [ngClass]="{'fa-eye': element.is_visible, 'fa-eye-slash': !element.is_visible}" aria-hidden="true"></i>
             <!-- fa-eye-slash -->
@@ -121,7 +124,7 @@
       </td>
       <td class="file-name text-left">Pusty folder</td>
     </tr>
-    <tr mdbTableCol class="ladowanie wow fadeIn" *ngIf="isLoadingData">
+    <tr mdbTableCol class="ladowanie wow fadeIn" *ngIf="isLoadingData && fileElements == []">
       <!--<td class="text-left"></td>-->
       <td colspan="4" class="">
         <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0s"></i>
@@ -152,8 +155,14 @@
 
 </div>
 
-<ng-template #noItems>
+<!-- <ng-template #noItems>
 
+</ng-template> -->
+
+<ng-template #visibilityToggleTooltip>
+  <div class="visibilityToggleTooltip">
+    Widoczność elementu dla użytkownika
+  </div>
 </ng-template>
 
 <!--rootMenu-->

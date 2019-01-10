@@ -1,12 +1,13 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {FileElement} from './models/file-element.model';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 import {NewFolerDialogComponent} from './modals/new-foler-dialog/new-foler-dialog.component';
 import {RenameDialogComponent} from './modals/rename-dialog/rename-dialog.component';
 import {UploadDialogComponent} from './modals/upload-dialog/upload-dialog.component';
 import {MoveDialogComponent} from './modals/move-dialog/move-dialog.component';
 import { AuthService } from 'src/app/auth/auth.service';
 import { User } from 'src/app/shared/models/user.model';
+import { ScrollService } from 'src/app/shared/services/scroll.service';
 
 @Component({
   selector: 'app-file-explorer',
@@ -34,10 +35,14 @@ export class FileExplorerComponent implements OnInit {
 
   orderType = ['file_extension'];
   user: User;
+  modalOptions: NgbModalOptions = {
+    centered: false
+  };
 
   constructor(
     private modalService: NgbModal,
-    private authService: AuthService
+    private authService: AuthService,
+    private scrollService: ScrollService
   ) {
   }
 
@@ -68,10 +73,12 @@ export class FileExplorerComponent implements OnInit {
     } else {
       this.downloadFile(element);
     }
+    this.scrollService.triggerScrollToTop();
   }
 
   navigateUp() {
     this.navigatedUp.emit();
+    this.scrollService.triggerScrollToTop();
   }
 
   // moveElement(element: FileElement, moveTo: FileElement) {
@@ -79,7 +86,7 @@ export class FileExplorerComponent implements OnInit {
   // }
 
   openNewFolderDialog() {
-    const newFolderDialogRef = this.modalService.open(NewFolerDialogComponent);
+    const newFolderDialogRef = this.modalService.open(NewFolerDialogComponent, this.modalOptions);
     newFolderDialogRef.result.then(res => {
         if (res) {
           this.folderAdded.emit({name: res});
@@ -94,7 +101,7 @@ export class FileExplorerComponent implements OnInit {
   }
 
   openRenameDialog(element: FileElement) {
-    const renameDialogRef = this.modalService.open(RenameDialogComponent);
+    const renameDialogRef = this.modalService.open(RenameDialogComponent, this.modalOptions);
     renameDialogRef.componentInstance.folderName = element.name;
     renameDialogRef.result.then(
       res => {
@@ -111,7 +118,7 @@ export class FileExplorerComponent implements OnInit {
   }
 
   openUploadDialog() {
-    const uploadDialogRef = this.modalService.open(UploadDialogComponent);
+    const uploadDialogRef = this.modalService.open(UploadDialogComponent, this.modalOptions);
     uploadDialogRef.componentInstance.parent_uuid = this.currentRoot ? this.currentRoot.uuid : '';
 
     console.log(this.currentRoot.uuid);
@@ -131,7 +138,7 @@ export class FileExplorerComponent implements OnInit {
   }
 
   openMoveDialog(element: FileElement) {
-    const moveDialogRef = this.modalService.open(MoveDialogComponent);
+    const moveDialogRef = this.modalService.open(MoveDialogComponent, this.modalOptions);
     moveDialogRef.componentInstance.parentUuid = element.parent_uuid;
     moveDialogRef.result.then(
       res => {

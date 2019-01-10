@@ -67,6 +67,11 @@
 
 }
 
+.main-inner {
+  min-height: 100vh;
+  padding: 0;
+}
+
 #logo {
   //background-image: url("/assets/prz_logo.png");
   //background-position: center left; /* Center the image */
@@ -75,6 +80,20 @@
   //padding: 7px 0 7px 80px;
   margin: 12px 0;
   //background-color: coral;
+}
+.logo .brand {
+  font-size: 0.6em;
+  margin: 0;
+  padding: 0;
+  margin-bottom: -5px;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,0.8)
+  // position: absolute;
+  // top: 3px;
+}
+.logo strong {
+  padding: 0;
+  margin: 0;
 }
 #logo h1, #logo h4, #logo h5 {
   padding: 2px 0;
@@ -86,6 +105,16 @@
 }
 
 
+footer.page-footer {
+  color: #000;
+}
+footer.page-footer a {
+  color: #000;
+}
+.footer-logo {
+
+}
+
 
 #user-menu {
   text-align: right;
@@ -96,19 +125,52 @@
   border-radius: 20px;
   background-color: #2196f3 !important;
 }
-#univ-footer-img {
-  padding: 10px 0 20px 0;
+#footer-landing {
+  height: 40vh;
+  color: white;
+  background-image: url("https://images.unsplash.com/photo-1524508762098-fd966ffb6ef9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  background-size: cover;
+  background-attachment: fixed;
 }
-#univ-footer-img a {
-  display: inline;
+#footer-landing h2 {
+  padding: 0.5em 0;
 
 }
-#univ-footer-img img {
-  padding: 15px 10px;
+#footer-landing button {
+  font-size: 1.25em;
+  text-transform: none;
+}
+.contact-link {
+  margin: 1em 0;
+}
+.contact-link a {
+  color: white !important;
+}
+footer.page-footer .footer-copyright {
+  overflow: hidden;
+  background-color: rgba(255,255,255,1);
+  color: rgba(0,0,0, 0.5);
+}
+
+#univ-footer-img {
+}
+#univ-footer-img .img {
+  // display: inline;
   text-align: center;
+  width: 100%;
+  background-color: #2196f3;
+  padding: 1.5em;
+}
+#univ-footer-img a img {
+  // padding: 15px 10px;
+  height: auto;
+  width: auto;
 }
 #univ-footer-img img:first-child {
   padding-left: 0;
+}
+.university-data {
+  padding: 1em 0 0 0;
 }
 footer h5.text-uppercase {
   padding: 5px 0;
@@ -128,3 +190,16 @@ footer h5.text-uppercase {
   padding-bottom: 20px;
 }
 
+#scroll-to-top {
+  position: fixed;
+  bottom: 1em;
+  right: 1.5em;
+  
+}
+#scroll-to-top a {
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  background-color: #2196f3;
+  color: #45cafc;
+}

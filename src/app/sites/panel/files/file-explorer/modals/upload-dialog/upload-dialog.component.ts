@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 import {FileService} from '../../services/file.service';
 import {forkJoin} from 'rxjs';
 import {ToastrService} from 'ngx-toastr';
@@ -10,7 +10,7 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./upload-dialog.component.scss'],
   providers: [FileService]
 })
-export class UploadDialogComponent implements OnInit {
+export class  UploadDialogComponent implements OnInit {
 
   @ViewChild('file') file;
   @Input() parent_uuid;

@@ -9,39 +9,53 @@ import { HomeComponent } from './sites/home/home.component';
 import { PageNotFoundComponent } from './sites/page-not-found/page-not-found.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AccountComponent } from './sites/panel/account/account.component';
-import {AuthService} from './auth/auth.service';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {TokenInterceptor} from './auth/iterceptors/token.interceptor';
-import {ErrorInterceptor} from './auth/iterceptors/error.interceptor';
-import {AuthGuard} from './auth/guards/auth-guard.service';
-import {ToastrModule} from 'ngx-toastr';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AuthService} from './auth/auth.service';
+import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { TokenInterceptor} from './auth/iterceptors/token.interceptor';
+import { ErrorInterceptor} from './auth/iterceptors/error.interceptor';
+import { AuthGuard} from './auth/guards/auth-guard.service';
+import { ToastrModule} from 'ngx-toastr';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PanelComponent } from './sites/panel/panel.component';
 import { FilesComponent } from './sites/panel/files/files.component';
 import { FileExplorerComponent } from './sites/panel/files/file-explorer/file-explorer.component';
 import { NewFolerDialogComponent } from './sites/panel/files/file-explorer/modals/new-foler-dialog/new-foler-dialog.component';
 import { RenameDialogComponent } from './sites/panel/files/file-explorer/modals/rename-dialog/rename-dialog.component';
-import {ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
+import { ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
 import { AboutComponent } from './sites/about/about.component';
 import { LoadingBarComponent } from './shared/components/loader/loading-bar/loading-bar.component';
-import {LoaderService} from './shared/components/loader/loader.service';
-import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
+import { LoaderService} from './shared/components/loader/loader.service';
+import { NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import { MoveDialogComponent } from './sites/panel/files/file-explorer/modals/move-dialog/move-dialog.component';
 import { UploadDialogComponent } from './sites/panel/files/file-explorer/modals/upload-dialog/upload-dialog.component';
-import {FilterPipeModule} from 'ngx-filter-pipe';
+import { FilterPipeModule} from 'ngx-filter-pipe';
 import { AccountsComponent } from './sites/panel/accounts/accounts.component';
-import {AccountsService} from './sites/panel/accounts/accounts.service';
+import { AccountsService} from './sites/panel/accounts/accounts.service';
 import { EditAccountComponent } from './sites/panel/accounts/modals/edit-account/edit-account.component';
 import { DeleteAccountComponent } from './sites/panel/accounts/modals/delete-account/delete-account.component';
-import {OrderModule} from 'ngx-order-pipe';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
-import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
-const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  suppressScrollX: true
-};
+import { OrderModule} from 'ngx-order-pipe';
+import { ScrollEventModule } from 'ngx-scroll-event';
+import { ScrollService } from './shared/services/scroll.service';
+import { OrganisationComponent } from './sites/organisation/organisation.component';
+import { StudyPlanComponent } from './sites/study-plan/study-plan.component';
+import { ProgramsComponent } from './sites/programs/programs.component';
+import { RecruitmentComponent } from './sites/recruitment/recruitment.component';
+import { ContactComponent } from './sites/contact/contact.component';
+import { ProgramowanieObiektoweComponent } from './sites/programs/programowanie-obiektowe/programowanie-obiektowe.component';
+import { TechnologieSieciWebComponent } from './sites/programs/technologie-sieci-web/technologie-sieci-web.component';
+import { ProjektowanieBazDanychComponent } from './sites/programs/projektowanie-baz-danych/projektowanie-baz-danych.component';
+import { SystemyRozproszoneComponent } from './sites/programs/systemy-rozproszone/systemy-rozproszone.component';
+import { ProgramowanieWJezykuJavaComponent } from './sites/programs/programowanie-w-jezyku-java/programowanie-w-jezyku-java.component';
+import { SieciKomputeroweComponent } from './sites/programs/sieci-komputerowe/sieci-komputerowe.component';
+import { AplikacjeBazodanoweComponent } from './sites/programs/aplikacje-bazodanowe/aplikacje-bazodanowe.component';
+import { PrzedmiotObieralnyComponent } from './sites/programs/przedmiot-obieralny/przedmiot-obieralny.component';
+import { GrafikaKomputerowaComponent } from './sites/programs/grafika-komputerowa/grafika-komputerowa.component';
+import { ProgramowanieSystemowEkspertowychComponent } from './sites/programs/programowanie-systemow-ekspertowych/programowanie-systemow-ekspertowych.component';
+import { SztucznaInteligencjaComponent } from './sites/programs/sztuczna-inteligencja/sztuczna-inteligencja.component';
+import { TechnologieProgramistyczneUslugInternetowychComponent } from './sites/programs/technologie-programistyczne-uslug-internetowych/technologie-programistyczne-uslug-internetowych.component';
+import { DefaultComponent } from './sites/programs/default/default.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -62,14 +76,35 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AccountsComponent,
     EditAccountComponent,
     DeleteAccountComponent,
+    OrganisationComponent,
+    StudyPlanComponent,
+    ProgramsComponent,
+    RecruitmentComponent,
+    ContactComponent,
+    ProgramowanieObiektoweComponent,
+    TechnologieSieciWebComponent,
+    ProjektowanieBazDanychComponent,
+    SystemyRozproszoneComponent,
+    ProgramowanieWJezykuJavaComponent,
+    SieciKomputeroweComponent,
+    AplikacjeBazodanoweComponent,
+    PrzedmiotObieralnyComponent,
+    GrafikaKomputerowaComponent,
+    ProgramowanieSystemowEkspertowychComponent,
+    SztucznaInteligencjaComponent,
+    TechnologieProgramistyczneUslugInternetowychComponent,
+    DefaultComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ScrollEventModule,
     OrderModule,
-    PerfectScrollbarModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'YOUR_KEY'
+    }),
     FilterPipeModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
@@ -88,12 +123,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AuthGuard,
     AccountsService,
     LoaderService,
-    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    {
-      provide: PERFECT_SCROLLBAR_CONFIG,
-      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    }
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    ScrollService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

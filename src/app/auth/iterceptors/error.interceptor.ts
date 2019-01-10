@@ -26,7 +26,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         console.error('Za duży plik!');
       }
       console.error(err.status);
-      const error = err.error.message || err.statusText;
+      const error = err.error.message || err.error.error || err.statusText;
       console.log(error);
       return throwError(error);
     }));

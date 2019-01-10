@@ -1,12 +1,18 @@
 <app-loading-bar></app-loading-bar>
-<header class="" id="header-top" [ngClass]="isPanel ? 'panel-nav' : ''">
+<header class="" id="header-top" [ngClass]="{'panel-nav' : isPanel, 'page-nav' : isPage}">
 
   <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav"
               [containerInside]="true">
     <!--blue-->
     <mdb-navbar-brand>
-      <a class="logo navbar-brand" routerLink="/home"><strong><i class="fa fa-cloud" aria-hidden="true"></i> Technologie
-        internetowe</strong></a>
+      <a class="logo navbar-brand" routerLink="/home">
+        <div class="brand">Studia podyplomowe</div>
+        <strong>
+          <!-- <i class="fa fa-cloud" aria-hidden="true"></i> -->
+          Technologie Internetowe
+          </strong>
+          
+      </a>
       <!--TODO: dodać coś o studiach podyplomowych-->
     </mdb-navbar-brand>
     <!--TODO: zmienić paski na po rozwinięciu menu-->
@@ -25,22 +31,22 @@
         <!--<li class="nav-item waves-light" mdbWavesEffect>-->
         <!--<a class="nav-link">O studiach</a>-->
         <!--</li>-->
-        <li class="nav-item waves-light" mdbWavesEffect>
+        <li class="nav-item waves-light" routerLinkActive="active" routerLink="/organizacja" mdbWavesEffect>
           <a class="nav-link">Organizacja</a>
         </li>
-        <li class="nav-item waves-light" mdbWavesEffect>
+        <li class="nav-item waves-light" routerLinkActive="active" routerLink="/plan-studiow" mdbWavesEffect>
           <a class="nav-link">Plan studiów</a>
         </li>
-        <!--<li class="nav-item waves-light" mdbWavesEffect>-->
-        <!--<a class="nav-link">Programy</a>-->
-        <!--</li>-->
-        <li class="nav-item waves-light" mdbWavesEffect>
+        <li class="nav-item waves-light" routerLinkActive="active" routerLink="/programy" mdbWavesEffect>
+        <a class="nav-link">Programy</a>
+        </li>
+        <li class="nav-item waves-light" routerLinkActive="active" routerLink="/rekrutacja" mdbWavesEffect>
           <a class="nav-link">Rekrutacja</a>
         </li>
         <!--<li class="nav-item waves-light" mdbWavesEffect>-->
         <!--<a class="nav-link">FAQ</a>-->
         <!--</li>-->
-        <li class="nav-item waves-light" mdbWavesEffect>
+        <li class="nav-item waves-light" routerLinkActive="active" routerLink="/kontakt" mdbWavesEffect>
           <a class="nav-link">Kontakt</a>
         </li>
         <li
@@ -150,22 +156,55 @@
 </header>
 
 <!--Main Layout-->
-<main id="main-container">
-
-  <router-outlet></router-outlet>
+<main id="main-container" detect-scroll (onScroll)="handleScroll($event)">
+  <div class="main-inner">
+      <div id="page-top"></div>
+      <router-outlet></router-outlet>
+  </div>
+  
 
 </main>
 <!--Main Layout-->
 
 
-<!-- Footer -->
-<footer class="page-footer font-small blue pt-5">
+<!-- Footer blue -->
+<footer class="page-footer font-small pt-5">
 
   <!--<div class="container text-center text-md-left">-->
   <!--<div class="row">-->
   <!--<h5 class="text-uppercase">Uczelnia</h5>-->
   <!--</div>-->
   <!--</div>-->
+
+  <div id="footer-landing" class="view mb-4">
+  
+    <!-- <div class="view"> -->
+      <!-- <div class="full-bg-img"> -->
+        <div class="mask flex-center rgba-blue-strong">
+          <div class="container">
+            <div class="text-center">
+              <!--  wow fadeInUp" data-wow-delay="0.6s" -->
+
+              <h2>Zainteresowany studiami?</h2>
+
+              <button type="button" class="btn btn-white btn-rounded waves-effect waves-light" mdbWavesEffect>Sprawdź aktualną rekrutację</button>
+
+              <!-- <button type="button" mdbBtn color="white" mdbWavesEffect>Rekrutacja</button> -->
+
+              <div class="contact-link">
+                  <a>lub skontaktuj się z nami</a>
+              </div>
+              
+
+              <!-- <p>lub skontaktuj się z nami</p> -->
+
+            </div>
+          </div>
+        </div>
+      <!-- </div> -->
+    <!-- </div> -->
+  
+  </div>
 
   <!-- Footer Links -->
   <div id="footer-menu" class="container text-center text-md-left">
@@ -174,37 +213,45 @@
     <div class="row">
 
       <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-3 footer-menu">
+      <div class="col-md-6 mt-md-0 mt-3 footer-logo">
 
-        <h5 class="text-uppercase">O studiach</h5>
+          <h5 class="text-uppercase">Uczelnia</h5>
+  
+          <!-- Content -->
+          <div id="univ-footer-img">
+            <div class="row">
+              <div class="col-6">
+                <div class="img">
+                    <a href="https://prz.edu.pl/" target="_blank"><img src="/assets/prz_footer.png" alt="WEII"/></a>
+                </div>
+              </div>
+              <div class="col-6">
+                  <div class="img">
+                    <a href="https://weii.prz.edu.pl/" target="_blank"><img src="/assets/weii.png" alt="WEII"/></a>
+                  </div>
+              </div>
+            </div>
+            
+          </div>
+  
+          <div class="row university-data">
+            <div class="col">
+              <p>Dziekanat Wydziału<br/>
+                Elektrotechniki i Informatyki<br/>
+                Budynek A, pok. 104</p>
+                <p>Tel. +48 17 865 12 89<br/>
+                  Fax. +48 17 854 20 88<br/>
+                  E-mail: <a href="mailto:dwe@prz.edu.pl">dwe@prz.edu.pl</a></p>
+            </div>
+            <div class="col">
+              <!-- coś -->
+            </div>
+          </div>
+  
+        </div>
+        <!-- Grid column -->
 
-        <ul class="">
-          <li class="nav-item waves-light" mdbWavesEffect>
-            <a class="nav-link">Link 1</a>
-          </li>
-          <li class="nav-item waves-light" mdbWavesEffect>
-            <a class="nav-link">Link 2</a>
-          </li>
-          <li class="nav-item waves-light" mdbWavesEffect>
-            <a class="nav-link">Link 3</a>
-          </li>
-          <li class="nav-item waves-light" mdbWavesEffect>
-            <a class="nav-link">Link 4</a>
-          </li>
-          <li class="nav-item waves-light" mdbWavesEffect>
-            <a class="nav-link">Link 5</a>
-          </li>
-          <li class="nav-item waves-light" mdbWavesEffect>
-            <a class="nav-link">Link 6</a>
-          </li>
-
-        </ul>
-
-
-      </div>
-      <!-- Grid column -->
-
-      <hr class="clearfix w-100 d-md-none pb-3">
+        <hr class="clearfix w-100 d-md-none pb-3">
 
       <!-- Grid column -->
       <div class="col-md-3 mb-md-0 mb-3 footer-menu" id="footer-middle">
@@ -240,34 +287,44 @@
 
 
       </div>
-      <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
 
       <!-- Grid column -->
-      <div class="col-md-6 mt-md-0 mt-3">
+      <div class="col-md-3 mb-md-0 mb-3 footer-menu">
 
-        <h5 class="text-uppercase">Uczelnia</h5>
+        <h5 class="text-uppercase">O studiach</h5>
 
-        <!-- Content -->
-        <div id="univ-footer-img">
-          <a href="https://prz.edu.pl/" target="_blank"><img src="/assets/prz_footer.png" alt="WEII"/></a>
-          <a href="https://weii.prz.edu.pl/" target="_blank"><img src="/assets/weii.png" alt="WEII"/></a>
-        </div>
+        <ul class="">
+          <li class="nav-item waves-light" mdbWavesEffect>
+            <a class="nav-link">Link 1</a>
+          </li>
+          <li class="nav-item waves-light" mdbWavesEffect>
+            <a class="nav-link">Link 2</a>
+          </li>
+          <li class="nav-item waves-light" mdbWavesEffect>
+            <a class="nav-link">Link 3</a>
+          </li>
+          <li class="nav-item waves-light" mdbWavesEffect>
+            <a class="nav-link">Link 4</a>
+          </li>
+          <li class="nav-item waves-light" mdbWavesEffect>
+            <a class="nav-link">Link 5</a>
+          </li>
+          <li class="nav-item waves-light" mdbWavesEffect>
+            <a class="nav-link">Link 6</a>
+          </li>
 
-        <div class="row">
-          <div class="col">
-            <p>Dziekanat Wydziału<br/>
-              Elektrotechniki i Informatyki<br/>
-              Budynek A, pok. 104</p>
-          </div>
-          <div class="col">
-            <p>Tel. +48 17 865 12 89<br/>
-              Fax. +48 17 854 20 88<br/>
-              E-mail: <a href="mailto:dwe@prz.edu.pl">dwe@prz.edu.pl</a></p>
-          </div>
-        </div>
+        </ul>
+
 
       </div>
       <!-- Grid column -->
+
+      
+      <!-- Grid column -->
+
+      
 
     </div>
     <!-- Grid row -->
@@ -286,3 +343,9 @@
 
 </footer>
 <!-- Footer -->
+
+<div id="scroll-to-top" class="animated fadeIn" *ngIf="showScrollToTop">
+  <a class="btn-floating btn-lg my-0 waves-effect waves-light" [ngx-scroll-to]="'#page-top'">
+    <i class="fa fa-chevron-up"></i>
+  </a>
+</div>

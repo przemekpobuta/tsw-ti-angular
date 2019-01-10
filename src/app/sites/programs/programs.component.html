@@ -1,0 +1,96 @@
+<div class="view view-page-header">
+  <div class="full-bg-img">
+    <div class="mask flex-center rgba-blue-strong">
+      <div class="container">
+        <div class="white-text wow fadeIn">
+
+          <h2 class="header-page">Programy przedmiotów</h2>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="py-5 mt-3">
+
+  <div class="container">
+    <div class="row">
+
+      <!-- page content start -->
+
+      <div class="col-md-12 col-xl-9">
+
+        <div id="program-router">
+            <router-outlet></router-outlet>
+        </div>
+
+          <blockquote class="blockquote bq-secondary program-muted">
+            <p class="warn">Zastrzeżenie</p>
+            <p>Wydział Elektrotechniki i Informatyki Politechniki Rzeszowskiej zastrzega sobie prawo dokonywania zmian i
+              uzupełnień w programach przedmiotów!
+            </p>
+          </blockquote>
+
+      </div>
+      <div class="col-md-12 col-xl-3">
+
+        <!-- <h3 class="nav-header">Programy przedmiotów</h3> -->
+
+        <div class="list-group">
+          <div class="list-group-item programs-list-header blue-gradient">Semestr I</div>
+          <a routerLinkActive="active" routerLink="/programy/programowanie-obiektowe" class="list-group-item list-group-item-action waves-light" mdbWavesEffect>
+            Programowanie obiektowe
+          </a>
+          <a routerLinkActive="active" routerLink="/programy/technologie-sieci-web" class="list-group-item list-group-item-action waves-light" mdbWavesEffect>
+            Technologie sieci Web
+          </a>
+          <a routerLinkActive="active" routerLink="/programy/projektowanie-baz-danych" class="list-group-item list-group-item-action waves-light" mdbWavesEffect>
+            Projektowanie baz danych
+          </a>
+          <a routerLinkActive="active" routerLink="/programy/systemy-rozproszone" class="list-group-item list-group-item-action waves-light" mdbWavesEffect>
+            Systemy rozproszone
+          </a>
+        </div>
+        <div class="list-group">
+          <div class="list-group-item programs-list-header blue-gradient">Semestr II</div>
+          <a routerLinkActive="active" routerLink="/programy/programowanie-w-jezyku-java" class="list-group-item list-group-item-action waves-light" mdbWavesEffect>
+            Programowanie w języku Java
+          </a>
+          <a routerLinkActive="active" routerLink="/programy/sieci-komputerowe" class="list-group-item list-group-item-action waves-light" mdbWavesEffect>
+            Sieci komputerowe
+          </a>
+          <a routerLinkActive="active" routerLink="/programy/aplikacje-bazodanowe" class="list-group-item list-group-item-action waves-light" mdbWavesEffect>
+            Aplikacje bazodanowe
+          </a>
+          <a routerLinkActive="active" routerLink="/programy/przedmiot-obieralny" class="list-group-item list-group-item-action waves-light" mdbWavesEffect>
+            Przedmiot obieralny
+          </a>
+        </div>
+        <div class="list-group">
+          <div class="list-group-item programs-list-header blue-gradient">Przedmioty obieralne</div>
+          <a routerLinkActive="active" routerLink="/programy/grafika-komputerowa" class="list-group-item list-group-item-action waves-light" mdbWavesEffect>
+            Grafika komputerowa
+          </a>
+          <a routerLinkActive="active" routerLink="/programy/programowanie-systemow-ekspertowych" class="list-group-item list-group-item-action waves-light" mdbWavesEffect>
+            Programowanie systemów ekspertowych
+          </a>
+          <a routerLinkActive="active" routerLink="/programy/sztuczna-inteligencja" class="list-group-item list-group-item-action waves-light" mdbWavesEffect>
+            Sztuczna inteligencja
+          </a>
+          <a routerLinkActive="active" routerLink="/programy/technologie-programistyczne-uslug-internetowych" class="list-group-item list-group-item-action waves-light" mdbWavesEffect>
+            Technologie programistyczne usług internetowych
+          </a>
+          <!-- <a class="list-group-item list-group-item-action disabled waves-light" mdbWavesEffect>
+                  Vestibulum ateros
+                </a> -->
+        </div>
+
+      </div>
+
+      <!-- END page content start -->
+
+    </div>
+  </div>
+
+</div>

@@ -1,20 +1,26 @@
-import {AfterContentInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router, RouterStateSnapshot, NavigationStart} from '@angular/router';
+import {AfterContentInit, Component, OnInit, ViewEncapsulation, HostListener} from '@angular/core';
+import {ActivatedRoute, NavigationEnd, Router, RouterStateSnapshot, NavigationStart, ActivationEnd} from '@angular/router';
 import {AuthService} from './auth/auth.service';
 import {User} from './shared/models/user.model';
 import {LoaderService} from './shared/components/loader/loader.service';
 import {ToastrService} from 'ngx-toastr';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ScrollEvent } from 'ngx-scroll-event';
+import { ScrollService } from './shared/services/scroll.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  providers: [NgbModalConfig, NgbModal],
   encapsulation: ViewEncapsulation.Emulated
 })
 export class AppComponent implements OnInit, AfterContentInit {
 
   user: User;
   isPanel = false;
+  isPage = false;
+  showScrollToTop = false;
 
   constructor(
     private router: Router,
@@ -22,9 +28,15 @@ export class AppComponent implements OnInit, AfterContentInit {
     public authService: AuthService,
     private loaderService: LoaderService,
     private alertService: ToastrService,
-    private route: ActivatedRoute
-    ) {
-    }
+    private route: ActivatedRoute,
+    config: NgbModalConfig,
+    private modalService: NgbModal,
+    private scrollService: ScrollService
+  ) {
+      // customize default values of modals used by this component tree
+      config.backdrop = 'static';
+      config.keyboard = false;
+  }
 
   ngOnInit() {
 
@@ -34,7 +46,15 @@ export class AppComponent implements OnInit, AfterContentInit {
           this.isPanel = true;
         } else {
           this.isPanel = false;
+          if (event.url.substr(0, 6) === '/home') {
+            this.isPage = false;
+          } else {
+            this.isPage = true;
+          }
         }
+      }
+      if (event instanceof ActivationEnd) {
+        console.log('ActivationEnd');
       }
     });
 
@@ -59,5 +79,13 @@ export class AppComponent implements OnInit, AfterContentInit {
     this.authService.logout();
     this.router.navigate(['']);
     this.alertService.success('Wylogowano pomyślnie!');
+  }
+
+  handleScroll(event: ScrollEvent) {
+    if (event.isReachingTop) {
+      this.showScrollToTop = false;
+    } else {
+      this.showScrollToTop = true;
+    }
   }
 }

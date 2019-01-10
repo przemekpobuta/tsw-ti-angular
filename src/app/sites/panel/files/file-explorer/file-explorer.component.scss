@@ -115,5 +115,11 @@
 .pusty-folder:hover {
   background-color: inherit !important;
 }
-
-
+.file-invisible {
+  background-color: rgba(0, 0, 0, 0.01);
+  color: rgba(0,0,0,0.6);
+}
+.visibilityToggleTooltip {
+  width: 100px;
+  text-align: center;
+}

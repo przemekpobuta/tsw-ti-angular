@@ -5,6 +5,7 @@ import {FileService} from './file-explorer/services/file.service';
 import {ToastrService} from 'ngx-toastr';
 import {elementEnd} from '@angular/core/src/render3';
 import {LoaderService} from '../../../shared/components/loader/loader.service';
+import { ScrollService } from 'src/app/shared/services/scroll.service';
 
 @Component({
   selector: 'app-files',

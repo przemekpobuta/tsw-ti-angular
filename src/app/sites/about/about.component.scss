@@ -1,0 +1,44 @@
+p {
+    width: 100%;
+}
+.img-section {
+    padding: 5em 0;
+}
+#o-studiach-sections .img-section:first-child {
+    padding-top: 0;
+}
+.img-section img {
+    width: 100%;
+}
+.img-section .section-picture {
+    background-size: cover;
+    height: 100%;
+}
+.img-section .section-text {
+    padding: 2em 0;
+    
+}
+.img-section-right {
+    text-align: right;
+
+}
+.img-section-left .section-text {
+    padding-left: 1.5em;
+}
+.img-section-right .section-text {
+    padding-right: 1.5em;
+}
+.img-a-1 {
+    background: url("https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+}
+.img-a-2 {
+    background: url("https://images.pexels.com/photos/214221/pexels-photo-214221.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+}
+.img-a-3 {
+    background: url("https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80");
+    background-position: center center;
+}
+.img-a-4 {
+    background: url("https://images.pexels.com/photos/935756/pexels-photo-935756.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-position: 50% 50%;
+}

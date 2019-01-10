@@ -1,0 +1,59 @@
+p {
+    text-align: justify;
+}
+.list-group {
+    margin-bottom: 0.5em;
+}
+.programs-list-header, .programs-list-header:hover  {
+    background-color: #303f9f;
+    border: 1px solid #b1aeae !important;
+    color: white;
+
+}
+.list-group-item {
+    box-sizing: border-box;
+}
+.list-group-item.active {
+    background: #f1f1f1;
+    border-color: #cecece;
+    border-left: 3px solid #b3b3b3;
+    // text-shadow: 0px 0px 1px #686868;
+    color: #495057;
+}
+.nav-header {
+    font-size: 1.25em;
+    padding: 0 0 0.5em 0;
+}
+#program-router {
+    // min-height: 75vh;
+}
+
+.dev-icon-list {
+    margin: 15px 0;
+}
+ .dev-icon-list i {
+    color: rgba(33, 150, 243, 1);
+    font-size: 5em;
+    padding: 0 0.2em 0 0;
+  }
+
+h3 {
+    padding: 0.75em 0 0.25em 0;
+}
+
+.program-header {
+    height: 25vh;
+    background: #b3b3b3 url("/assets/home_tech/2.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+    margin-bottom: 1em;
+}
+
+.program-header-list {
+    height: 50vh;
+    background: #b3b3b3 url("/assets/home_tech/3.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+    margin-bottom: 1em;
+}
+

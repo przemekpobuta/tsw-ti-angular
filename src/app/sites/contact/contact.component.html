@@ -1,0 +1,122 @@
+<div class="view view-page-header">
+    <div class="full-bg-img">
+      <div class="mask flex-center rgba-blue-strong">
+        <div class="container">
+          <div class="white-text wow fadeIn">
+  
+            <h2 class="header-page">Kontakt</h2>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="py-5 mt-3">
+  
+    <div class="container">
+      <div class="row">
+  
+        <!-- page content start -->
+        
+        <!--Section: Contact v.1-->
+  
+      <!--Grid column my-4-->
+      <div class="col-lg-5 ">
+  
+        <!--Form with header-->
+        <mdb-card>
+  
+          <mdb-card-body>
+            <!--Header-->
+            <div class="form-header accent-1">
+              <h3>
+                <!-- <i class="fa fa-envelope"></i> -->
+                Formularz kontaktowy</h3>
+            </div>
+  
+            <!-- <p></p> -->
+            <br>
+  
+            <!--Body-->
+            <div class="md-form">
+              <i class="fa fa-user prefix grey-text"></i>
+              <input mdbInputDirective type="text" id="form3" class="form-control">
+              <label for="form3">Imię i Nazwisko</label>
+            </div>
+  
+            <div class="md-form">
+              <i class="fa fa-envelope prefix grey-text"></i>
+              <input mdbInputDirective type="text" id="form2" class="form-control">
+              <label for="form2">Email</label>
+            </div>
+  
+            <div class="md-form">
+              <i class="fa fa-tag prefix grey-text"></i>
+              <input mdbInputDirective type="text" id="form32" class="form-control">
+              <label for="form34">Temat</label>
+            </div>
+  
+            <div class="md-form">
+              <i class="fa fa-pencil prefix grey-text"></i>
+              <textarea mdbInputDirective type="text" id="form8" class="md-textarea"></textarea>
+              <label for="form8">Wiadomość</label>
+            </div>
+  
+            <div class="text-center">
+              <button mdbBtn color="light-blue" class="waves-light" mdbWavesEffect>Wyślij</button>
+            </div>
+  
+          </mdb-card-body>
+  
+        </mdb-card>
+        <!--Form with header-->
+  
+      </div>
+      <!--Grid column-->
+  
+      <!--Grid column-->
+      <div class="col-lg-7">
+  
+        <!--Google map-->
+        <agm-map class="z-depth-1-half map-container" style="height: 400px;" [latitude]="lat" [longitude]="lng">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+  
+        <br>
+        <!--Buttons-->
+        <div class="row text-center">
+          <div class="col-md-4">
+            <a mdbBtn floating="true" color="blue" class="accent-1 waves-light" mdbWavesEffect>
+              <i class="fa fa-map-marker"></i>
+            </a>
+            <p>San Francisco, CA 94126</p>
+            <p>United States</p>
+          </div>
+  
+          <div class="col-md-4">
+            <a mdbBtn floating="true" color="blue" class="accent-1 waves-light" mdbWavesEffect>
+              <i class="fa fa-phone"></i>
+            </a>
+            <p>+ 01 234 567 89</p>
+            <p>Mon - Fri, 8:00-22:00</p>
+          </div>
+  
+          <div class="col-md-4">
+            <a mdbBtn floating="true" color="blue" class="accent-1 waves-light" mdbWavesEffect>
+              <i class="fa fa-envelope"></i>
+            </a>
+            <p>info@gmail.com</p>
+            <p>sale@gmail.com</p>
+          </div>
+        </div>
+  
+      </div>
+      <!--Grid column-->
+  
+        <!-- END page content start -->
+  
+      </div>
+    </div>
+  
+  </div>

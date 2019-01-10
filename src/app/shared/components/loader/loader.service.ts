@@ -11,12 +11,12 @@ export class LoaderService {
   constructor() { }
 
   showLoader() {
-    // this._loaderState.next(true);
-    // console.log('onShow Loader');
+    this._loaderState.next(true);
+    console.log('onShow Loader');
   }
 
   hideLoader() {
-    // console.log('onHide Loader');
-    // this._loaderState.next(false);
+    console.log('onHide Loader');
+    this._loaderState.next(false);
   }
 }

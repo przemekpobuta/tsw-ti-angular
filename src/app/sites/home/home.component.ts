@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoaderService} from '../../shared/components/loader/loader.service';
+import { ScrollService } from 'src/app/shared/services/scroll.service';
 
 @Component({
   selector: 'app-home',
@@ -29,10 +30,13 @@ export class HomeComponent implements OnInit {
   startedHome1Animation = false;
 
   constructor(
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private scrollService: ScrollService
   ) { }
 
   ngOnInit() {
+
+    this.scrollService.triggerScrollToTop();
 
     setInterval(() => {
       this.startedHome1Animation = true;
