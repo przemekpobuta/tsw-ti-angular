@@ -5,12 +5,17 @@
               [containerInside]="true">
     <!--blue-->
     <mdb-navbar-brand>
-      <a class="logo navbar-brand" routerLink="/home">
-        <div class="brand">Studia podyplomowe</div>
-        <strong>
-          <!-- <i class="fa fa-cloud" aria-hidden="true"></i> -->
-          Technologie Internetowe
-          </strong>
+      <a class="row logo navbar-brand" routerLink="/home">
+        <div class="logotype">
+          <i class="fa fa-code" aria-hidden="true"></i>
+        </div>
+        <div class="logotext d-flex flex-column">
+          <div class="brand">Studia podyplomowe</div>
+          <div class="name">
+            Technologie Internetowe
+          </div>
+        </div>
+        
           
       </a>
       <!--TODO: dodać coś o studiach podyplomowych-->
@@ -168,7 +173,7 @@
 
 
 <!-- Footer blue -->
-<footer class="page-footer font-small pt-5">
+<footer class="page-footer font-small">
 
   <!--<div class="container text-center text-md-left">-->
   <!--<div class="row">-->
@@ -187,12 +192,12 @@
 
               <h2>Zainteresowany studiami?</h2>
 
-              <button type="button" class="btn btn-white btn-rounded waves-effect waves-light" mdbWavesEffect>Sprawdź aktualną rekrutację</button>
+              <button type="button" class="btn btn-white btn-rounded waves-effect waves-light" [routerLink]="[ '/rekrutacja' ]" mdbWavesEffect>Sprawdź aktualną rekrutację</button>
 
               <!-- <button type="button" mdbBtn color="white" mdbWavesEffect>Rekrutacja</button> -->
 
               <div class="contact-link">
-                  <a>lub skontaktuj się z nami</a>
+                  <a [routerLink]="['/kontakt']">lub skontaktuj się z nami</a>
               </div>
               
 

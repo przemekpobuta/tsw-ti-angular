@@ -17,6 +17,9 @@ html {
 h1, h2, h3, h4, h5, h6, .p-100 {
   width: 100%;
 }
+a {
+  color: #2196f3;
+}
 .h-article {
   padding: 1em 0;
 }
@@ -83,14 +86,50 @@ h1, h2, h3, h4, h5, h6, .p-100 {
 
 .view-page-header {
   // bg-img w #
-  //background-image: url("/assets/anders-jilden-478920-unsplash.jpg");
-  background-position: 100% 100%;
+  background-image: url("/assets/stefan-stefancik-297983-unsplash.jpg");
+  background-position: 50% 45%;
   background-repeat: no-repeat;
   height: 27vh;
+  // height: 100vh;
   background-attachment: fixed;
   background-size: cover;
   background-color: #2196f3;
+  -webkit-animation-name: LOADING;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-iteration-count: 1;
 }
+
+@-webkit-keyframes LOADING {
+  0% {
+    height: 100vh;
+  }
+  70% {
+    height: 100vh;
+  }
+  100% {
+    height: 27vh;
+  }
+}
+.view-page-header .rgba-blue-strong, .view-page-header .rgba-blue-strong:after {
+  -webkit-animation-name: LOADING-BG;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-animation-iteration-count: 1;
+  background-color: rgba(33, 150, 243, 1);
+}
+@-webkit-keyframes LOADING-BG {
+  0% {
+    background-color: rgba(33, 150, 243, 0.7);
+  }
+  70% {
+    background-color: rgba(33, 150, 243, 0.7);
+  }
+  100% {
+    background-color: rgba(33, 150, 243, 1);
+  }
+}
+
 
 .view-admin-header {
   // bg-img w #
@@ -114,8 +153,6 @@ h1, h2, h3, h4, h5, h6, .p-100 {
   padding-top: 64px;
   font-size: 1.5em;
 }
-
-
 .view-page-100vh {
   height: 100vh;
   background: #2196f3 url("/assets/rawpixel-678089-unsplash.jpg") no-repeat fixed;
@@ -181,10 +218,12 @@ h1, h2, h3, h4, h5, h6, .p-100 {
   background-color: rgba(0,0,0,0.02);
   width: 100%;
 }
-.program-muted p {
-  color: rgba(0,0,0,0.5);
+.blockquote p {
   padding: 0;
   font-size: 0.8em;
+}
+.program-muted p {
+  color: rgba(0,0,0,0.5);
 }
 .program-muted p.warn {
   font-weight: bold;

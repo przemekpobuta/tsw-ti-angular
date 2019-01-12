@@ -12,8 +12,8 @@ import { ScrollService } from './shared/services/scroll.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [NgbModalConfig, NgbModal],
-  encapsulation: ViewEncapsulation.Emulated
+  providers: [NgbModalConfig, NgbModal]
+  // encapsulation: ViewEncapsulation.Emulated
 })
 export class AppComponent implements OnInit, AfterContentInit {
 
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit, AfterContentInit {
           this.isPanel = true;
         } else {
           this.isPanel = false;
-          if (event.url.substr(0, 6) === '/home') {
+          if (event.url.substr(0, 6) === '/home' || event.url.substr(0, 6) === '/') {
             this.isPage = false;
           } else {
             this.isPage = true;

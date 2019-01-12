@@ -20,7 +20,7 @@
       <!-- page content start -->
       <div class="text-section text-section-first">
 
-        <h3 class="h-article">Zasady rekrutacji</h3>
+        <!-- <h3 class="h-article">Zasady rekrutacji</h3> -->
 
         <!-- <ul>
           <li>Rekrutacja na studia podyplomowe "Technologie Internetowe" odbywa się bez egzaminów wstępnych,</li>
@@ -31,7 +31,7 @@
 
         <div class="row rules-cards">
 
-          <div class="col-md-4 mb-1 animated wow fadeInRight" data-wow-delay="0.1s">
+          <div class="col-md-4 mb-1 animated fadeInRight" data-wow-delay="0.1s">
             <!-- card-image  style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);" -->
             <div class="card mb-3">
 
@@ -40,7 +40,7 @@
                 <div>
                   <h3 class="card-icon"><i class="fa fa-check fa-3x" aria-hidden="true"></i></h3>
                   <!-- <h3 class="card-title pt-2"><strong>This is card title</strong></h3> -->
-                  <p>Rekrutacja na studia podyplomowe "Technologie Internetowe" odbywa się bez egzaminów wstępnych</p>
+                  <span>Rekrutacja na studia podyplomowe "Technologie Internetowe" odbywa się <b>bez egzaminów wstępnych</b></span>
                   <!-- <a mdbBtn color="pink" class="waves-light" mdbWavesEffect><i class="fa fa-clone left"></i> View project</a> -->
                 </div>
               </div>
@@ -48,7 +48,7 @@
             </div>
             <!-- Card -->
           </div>
-          <div class="col-md-4 mb-1 animated wow fadeInRight" data-wow-delay="0.2s">
+          <div class="col-md-4 mb-1 animated fadeInRight" data-wow-delay="0.2s">
             <!-- card-image  style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);" -->
             <div class="card  mb-3">
 
@@ -58,7 +58,7 @@
                 <div>
                   <h3 class="card-icon"><i class="fa fa-users fa-3x" aria-hidden="true"></i></h3>
                   <!-- <h3 class="card-title pt-2"><strong>This is card title</strong></h3> -->
-                  <p>O przyjęciu na studia decyduje kolejność zgłoszeń (po spełnieniu formalności procesu rekrutacji)</p>
+                  <span>O przyjęciu na studia decyduje kolejność zgłoszeń (po spełnieniu formalności procesu rekrutacji)</span>
                   <!-- <a mdbBtn color="pink" class="waves-light" mdbWavesEffect><i class="fa fa-clone left"></i> View project</a> -->
                 </div>
               </div>
@@ -66,7 +66,7 @@
             </div>
             <!-- Card -->
           </div>
-          <div class="col-md-4 mb-1 animated wow fadeInRight" data-wow-delay="0.3s">
+          <div class="col-md-4 mb-1 animated fadeInRight" data-wow-delay="0.3s">
             <!-- card-image  style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);" -->
             <div class="card  mb-3">
 
@@ -76,8 +76,8 @@
                 <div>
                   <h3 class="card-icon"><i class="fa fa-calendar fa-3x" aria-hidden="true"></i></h3>
                   <!-- <h3 class="card-title pt-2"><strong>This is card title</strong></h3> -->
-                  <p>Termin składania podań na XIII edycję w roku akademickim 2018/2019 upływa dnia: 30 września 2018
-                    roku!</p>
+                  <span>Termin składania podań na XIII edycję w roku akademickim 2018/2019 upływa dnia: <b>30 września 2018
+                    roku</b>!</span>
                   <!-- <a mdbBtn color="pink" class="waves-light" mdbWavesEffect><i class="fa fa-clone left"></i> View project</a> -->
                 </div>
               </div>
@@ -171,7 +171,7 @@
           <ul>
             <li>Podanie na ustalonym w Politechnice Rzeszowskiej formularzu wydrukowanym z Systemu Internetowej
               Rekrutacji
-              (SIR), podpisane przez kandydata (<a>Tutaj jest dostępny formularz systemu SIR</a>),</li>
+              (SIR), podpisane przez kandydata <a href="">Formularz systemu SIR</a>,</li>
             <li>Odpis dyplomu ukończenia studiów wyższych lub poświadczona kserokopia,</li>
             <li>Kserokopia dowodu osobistego lub innego dokumentu potwierdzającego tożsamość,</li>
             <li>Potwierdzenie wniesienia opłaty rekrutacyjnej w wysokości 85 zł na konto:<br />
@@ -196,11 +196,11 @@
 
           <p>Dziekanat Wydziału Elektrotechniki i Informatyki Politechniki Rzeszowskiej<br />
             ul. W. Pola 2<br />
-            35-959 Rzeszów<br />
+            35-959 Rzeszów<br /><br />
             Budynek A, pok. 104 lub pok. 110<br />
             Tel. +48 17 865 12 89 lub +48 17 865 17 65<br />
             Fax. +48 17 854 20 88<br />
-            E-mail: <a>dwe@prz.edu.pl</a></p>
+            E-mail: <a href="mailto:dwe@prz.edu.pl">dwe@prz.edu.pl</a></p>
 
           <p><a [routerLink]="['/kontakt']">Skontaktuj się z nami</a></p>
 
@@ -219,9 +219,9 @@
 
           <p>Po pozytywnym przejściu procesu rekrutacji każdy student otrzymuje dane dostępowe do zalogowania się na
             stronie studiów podyplomowych "Technologie Internetowe". Znajdą się tam bieżące ogłoszenia, terminy
-            zjazdów,
-            a
-            także harmonogram zajęć w danym semestrze. (<a>Logowanie</a>)</p>
+            zjazdów, a także harmonogram zajęć w danym semestrze.</p>
+
+          <p><a [routerLink]="['/login']">Przejdź do logowania</a></p>
 
         </div>
       </div>

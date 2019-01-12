@@ -15,6 +15,7 @@
   <div class="py-5 mt-3">
   
     <div class="container">
+      
       <div class="row">
   
         <!-- page content start -->
@@ -22,7 +23,7 @@
         <!--Section: Contact v.1-->
   
       <!--Grid column my-4-->
-      <div class="col-lg-5 ">
+      <div class="col-lg-5">
   
         <!--Form with header-->
         <mdb-card>
@@ -30,13 +31,10 @@
           <mdb-card-body>
             <!--Header-->
             <div class="form-header accent-1">
-              <h3>
+              <h4>
                 <!-- <i class="fa fa-envelope"></i> -->
-                Formularz kontaktowy</h3>
+                Formularz kontaktowy</h4>
             </div>
-  
-            <!-- <p></p> -->
-            <br>
   
             <!--Body-->
             <div class="md-form">
@@ -50,6 +48,12 @@
               <input mdbInputDirective type="text" id="form2" class="form-control">
               <label for="form2">Email</label>
             </div>
+
+            <div class="md-form">
+                <i class="fa fa-phone prefix grey-text"></i>
+                <input mdbInputDirective type="text" id="form2" class="form-control">
+                <label for="form2">Telefon</label>
+              </div>
   
             <div class="md-form">
               <i class="fa fa-tag prefix grey-text"></i>
@@ -76,40 +80,33 @@
       <!--Grid column-->
   
       <!--Grid column-->
-      <div class="col-lg-7">
+      <div class="col-lg-7 contact-right-col">
   
-        <!--Google map-->
-        <agm-map class="z-depth-1-half map-container" style="height: 400px;" [latitude]="lat" [longitude]="lng">
-          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-        </agm-map>
+        <div class="z-depth-1 radius-25">
+            <div class="row adrress no-gutters">
+                <div class="col-md-4 d-flex align-items-center justify-content-center">
+                  <!-- <a mdbBtn floating="true" color="blue" class="accent-1 waves-light" mdbWavesEffect> -->
+                    <div class="icon">
+                        <i class="fa fa-university" aria-hidden="true"></i>
+                    </div>
+                  <!-- </a> -->
+                </div>
+                <div class="col-md-8 d-flex align-items-center">
+                  <div class="text-left">
+                    <h5>Politechnika Rzeszowska<br/>im. Ignacego Łukasiewicza</h5>
+                    <p>Wydział Elektrotechniki i Informatyki</p>
+                    <p>ul. W. Pola 2, 35-959 Rzeszów</p>
+                </div>
+                </div>
+            </div>
+    
+            <agm-map class="map-container" style="height: 375px;" [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+              <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map>
+        </div>
   
         <br>
         <!--Buttons-->
-        <div class="row text-center">
-          <div class="col-md-4">
-            <a mdbBtn floating="true" color="blue" class="accent-1 waves-light" mdbWavesEffect>
-              <i class="fa fa-map-marker"></i>
-            </a>
-            <p>San Francisco, CA 94126</p>
-            <p>United States</p>
-          </div>
-  
-          <div class="col-md-4">
-            <a mdbBtn floating="true" color="blue" class="accent-1 waves-light" mdbWavesEffect>
-              <i class="fa fa-phone"></i>
-            </a>
-            <p>+ 01 234 567 89</p>
-            <p>Mon - Fri, 8:00-22:00</p>
-          </div>
-  
-          <div class="col-md-4">
-            <a mdbBtn floating="true" color="blue" class="accent-1 waves-light" mdbWavesEffect>
-              <i class="fa fa-envelope"></i>
-            </a>
-            <p>info@gmail.com</p>
-            <p>sale@gmail.com</p>
-          </div>
-        </div>
   
       </div>
       <!--Grid column-->
@@ -117,6 +114,51 @@
         <!-- END page content start -->
   
       </div>
+      <div class="row text-center pt-4">
+        <h2>Kontakt w sprawach studiów</h2>
+      </div>
+
+      <div class="row text-center persons">
+          <div class="col-md-4">
+            <a mdbBtn floating="true" color="blue" class="icon accent-1 waves-light" mdbWavesEffect>
+              <i class="fa fa-user"></i>
+            </a>
+            <p class="name">mgr inż. <b>Renata Fularska</b></p>
+            <p><b>Kierownik Administracyjny Wydziału Elektrotechniki i Informatyki</b></p>
+            <p>Rekrutacja i zasady przyjęć.</p>
+            <p>Budynek A, pok. 104<br/>
+                Tel. +48 17 865 12 89<br/>
+                Fax. +48 17 854 20 88<br/>
+                E-mail: <a href="mailto:dwe@prz.edu.pl">dwe@prz.edu.pl</a></p>
+          </div>
+  
+          <div class="col-md-4">
+            <a mdbBtn floating="true" color="blue" class="icon accent-1 waves-light" mdbWavesEffect>
+              <i class="fa fa-user"></i>
+            </a>
+            <p class="name">mgr inż. <b>Beata Szczęsna</b></p>
+            <p><b>Starszy referent ds. toku studiów Wydziału Elektrotechniki i Informatyki</b></p>
+            <p>Rekrutacja i bieżąca obsługa studentów.</p>
+            <p>Budynek A, pok. 110<br/>
+                Tel. +48 17 865 12 32<br/>
+                Fax. +48 17 854 20 88<br/>
+                E-mail: <a href="mailto:bs@prz.edu.pl">bs@prz.edu.pl</a></p>
+          </div>
+  
+          <div class="col-md-4">
+            <a mdbBtn floating="true" color="blue" class="icon accent-1 waves-light" mdbWavesEffect>
+              <i class="fa fa-user"></i>
+            </a>
+            <p class="name">dr hab. inż. <b>Jan Prokop</b>, prof. PRz</p>
+            <p><b>Kierownik Studiów Podyplomowych "Technologie Internetowe"</b></p>
+            <p>Kontakt w zakresie planu studiów i programów przedmiotów.</p>
+            <p>Budynek B, pok. 101<br/>
+                Tel. +48 17 865 13 84<br/>
+                Fax. +48 17 854 20 88<br/>
+                E-mail: <a href="mailto:jprokop@prz.edu.pl">jprokop@prz.edu.pl</a></p>
+          </div>
+        </div>
+
     </div>
   
   </div>

@@ -103,7 +103,7 @@ import { AgmCoreModule } from '@agm/core';
     ScrollEventModule,
     OrderModule,
     AgmCoreModule.forRoot({
-      apiKey: 'YOUR_KEY'
+      apiKey: 'AIzaSyC6QJjy5nD9J6rtXNAM399hBPbSPFjQ-QA'
     }),
     FilterPipeModule,
     BrowserAnimationsModule,
