@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     'devicon-cplusplus-plain',
     'devicon-csharp-plain',
     'devicon-mysql-plain',
-    'devicon-mongodb-plain',
+    'devicon-oracle-original',
     'devicon-postgresql-plain',
     'devicon-sourcetree-plain',
     'devicon-photoshop-plain',
