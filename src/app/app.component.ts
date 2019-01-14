@@ -20,6 +20,7 @@ export class AppComponent implements OnInit, AfterContentInit {
   user: User;
   isPanel = false;
   isPage = false;
+  isRecruitment = false;
   showScrollToTop = false;
 
   constructor(
@@ -42,7 +43,10 @@ export class AppComponent implements OnInit, AfterContentInit {
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
-        if (event.url.substr(0, 6) === '/panel') {
+        if (
+          event.url.substr(0, 6) === '/panel' ||
+          event.url.substr(0, 5) === '/user'
+        ) {
           this.isPanel = true;
         } else {
           this.isPanel = false;
@@ -51,6 +55,13 @@ export class AppComponent implements OnInit, AfterContentInit {
           } else {
             this.isPage = true;
           }
+        }
+        if (
+          event.url.substr(0, 11) === '/rekrutacja'
+        ) {
+          this.isRecruitment = true;
+        } else {
+          this.isRecruitment = false;
         }
       }
       if (event instanceof ActivationEnd) {

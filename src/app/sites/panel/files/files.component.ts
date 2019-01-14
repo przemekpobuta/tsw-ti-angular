@@ -6,6 +6,8 @@ import {ToastrService} from 'ngx-toastr';
 import {elementEnd} from '@angular/core/src/render3';
 import {LoaderService} from '../../../shared/components/loader/loader.service';
 import { ScrollService } from 'src/app/shared/services/scroll.service';
+import { AuthService } from 'src/app/auth/auth.service';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-files',

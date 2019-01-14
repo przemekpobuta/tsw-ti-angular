@@ -3,6 +3,7 @@ import {AuthService} from '../../auth/auth.service';
 import {User} from '../../shared/models/user.model';
 import {Subscription} from 'rxjs';
 import {FileService} from './files/file-explorer/services/file.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-panel',
@@ -17,11 +18,15 @@ export class PanelComponent implements OnInit, OnDestroy {
   activeUserSub: Subscription;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.activeUser = this.authService.getCurrentUser();
+    if (this.activeUser.role === 'user') {
+      this.router.navigate(['/user']);
+    }
 
   }
   ngOnDestroy() {

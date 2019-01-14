@@ -56,6 +56,8 @@ import { SztucznaInteligencjaComponent } from './sites/programs/sztuczna-intelig
 import { TechnologieProgramistyczneUslugInternetowychComponent } from './sites/programs/technologie-programistyczne-uslug-internetowych/technologie-programistyczne-uslug-internetowych.component';
 import { DefaultComponent } from './sites/programs/default/default.component';
 import { AgmCoreModule } from '@agm/core';
+import { UserComponent } from './sites/panel/user/user.component';
+import { FaqComponent } from './sites/faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +96,8 @@ import { AgmCoreModule } from '@agm/core';
     SztucznaInteligencjaComponent,
     TechnologieProgramistyczneUslugInternetowychComponent,
     DefaultComponent,
+    UserComponent,
+    FaqComponent,
   ],
   imports: [
     BrowserModule,

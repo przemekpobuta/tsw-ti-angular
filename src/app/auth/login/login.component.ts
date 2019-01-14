@@ -6,6 +6,7 @@ import {first} from 'rxjs/operators';
 
 import {AuthService} from '../auth.service';
 import {LoaderService} from '../../shared/components/loader/loader.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,8 @@ import {LoaderService} from '../../shared/components/loader/loader.service';
 export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
+  loginSub: Subscription;
+  currentUserSub: Subscription;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,8 +35,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     // reset login status
     this.authService.logout();
+    this.loaderService.hideLoader();
   }
   ngOnDestroy() {
+    if (this.loginSub) { this.loginSub.unsubscribe(); }
+    if (this.currentUserSub) { this.currentUserSub.unsubscribe(); }
   }
 
   // convenience getter for easy access to form fields
@@ -44,7 +50,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.alertService.error('Niewłaściwe dane logowania!', 'Błąd logowania');
     } else {
       this.loaderService.showLoader();
-      this.authService.login(this.f.login.value, this.f.password.value)
+      this.loginSub = this.authService.login(this.f.login.value, this.f.password.value)
         .pipe(first())
         .subscribe(
           result => {},
@@ -52,8 +58,14 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.alertService.error(error, 'Błąd logowania');
           },
           () => {
-            this.authService.currentUser$.subscribe(res => {
-              this.router.navigate(['/panel']);
+            this.currentUserSub =  this.authService.currentUser$.subscribe(res => {
+              console.log(res);
+              this.loaderService.hideLoader();
+              if (res.role === 'user') {
+                this.router.navigate(['/user']);
+              } else {
+                this.router.navigate(['/panel']);
+              }
               this.alertService.clear();
             }, () => {
               this.loaderService.hideLoader();

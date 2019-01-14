@@ -31,7 +31,7 @@
 
         <div class="row rules-cards">
 
-          <div class="col-md-4 mb-1 animated fadeInRight" data-wow-delay="0.1s">
+          <div class="col-md-4 mb-1 animated fadeInRight" data-wow-delay="0s">
             <!-- card-image  style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);" -->
             <div class="card mb-3">
 
@@ -40,7 +40,7 @@
                 <div>
                   <h3 class="card-icon"><i class="fa fa-check fa-3x" aria-hidden="true"></i></h3>
                   <!-- <h3 class="card-title pt-2"><strong>This is card title</strong></h3> -->
-                  <span>Rekrutacja na studia podyplomowe "Technologie Internetowe" odbywa się <b>bez egzaminów wstępnych</b></span>
+                  <span>Rekrutacja na studia podyplomowe <b>Technologie Internetowe</b> odbywa się <b>bez egzaminów wstępnych</b></span>
                   <!-- <a mdbBtn color="pink" class="waves-light" mdbWavesEffect><i class="fa fa-clone left"></i> View project</a> -->
                 </div>
               </div>
@@ -66,7 +66,7 @@
             </div>
             <!-- Card -->
           </div>
-          <div class="col-md-4 mb-1 animated fadeInRight" data-wow-delay="0.3s">
+          <div class="col-md-4 mb-1 animated fadeInRight" data-wow-delay="0.4s">
             <!-- card-image  style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);" -->
             <div class="card  mb-3">
 
@@ -76,8 +76,7 @@
                 <div>
                   <h3 class="card-icon"><i class="fa fa-calendar fa-3x" aria-hidden="true"></i></h3>
                   <!-- <h3 class="card-title pt-2"><strong>This is card title</strong></h3> -->
-                  <span>Termin składania podań na XIII edycję w roku akademickim 2018/2019 upływa dnia: <b>30 września 2018
-                    roku</b>!</span>
+                  <span>Już wkrótce <b>IX edycja</b> studiów podyplomowych, która odbędzie się w roku akademickim 2019/2020</span>
                   <!-- <a mdbBtn color="pink" class="waves-light" mdbWavesEffect><i class="fa fa-clone left"></i> View project</a> -->
                 </div>
               </div>
@@ -93,7 +92,7 @@
 
       <div class="recrut-process text-section">
 
-        <h3 class="h-article">Proces rekrutacji</h3>
+        <h3 class="h-article animated wow fadeInUp">Proces rekrutacji</h3>
 
         <div class="container">
           <div class="animated fadeIn">
@@ -109,7 +108,7 @@
                   <p>W kroku pierwszym procesu rekrutacji należy wydrukować podanie o przyjęcie na studia podyplomowe
                     oraz zgromadzić pozostałe wymagane dokumenty wymienione w punkcie: </p>
                   <div class="step-link">
-                    <a><i class="fa fa-file-text-o" aria-hidden="true"></i> Wymagane dokumenty</a>
+                    <a [ngx-scroll-to]="'#step1'" [ngx-scroll-to-offset]="-80"><i class="fa fa-file-text-o" aria-hidden="true"></i> Wymagane dokumenty</a>
                   </div>
                 </div>
 
@@ -128,7 +127,7 @@
                   <p>W kroku drugim podpisane podanie wraz z pozostałymi dokumentami należy złożyć w Dziekanacie
                     Wydziału Elektrotechniki i Informatyki, patrz punkt: </p>
                   <div class="step-link">
-                      <a><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Złożenie dokumentów</a>
+                      <a [ngx-scroll-to]="'#step2'" [ngx-scroll-to-offset]="-80"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Złożenie dokumentów</a>
                   </div>
                 </div>
               </li>
@@ -146,7 +145,7 @@
                   <p>W kroku trzecim, po pozytywnym przejściu procesu rekrutacji, kandydat otrzymuje informację o
                     decyzji przyjęcia na studia podyplomowe oraz dane dostępowe do opcji Logowanie, patrz punkt:</p>
                   <div class="step-link">
-                    <a><i class="fa fa-user-circle-o" aria-hidden="true"></i>Logowanie na stronie studiów podyplomowych</a>
+                    <a [ngx-scroll-to]="'#step3'" [ngx-scroll-to-offset]="-80"><i class="fa fa-user-circle-o" aria-hidden="true"></i>Logowanie na stronie studiów podyplomowych</a>
                   </div>
                 </div>
               </li>
@@ -158,7 +157,7 @@
 
       </div>
 
-      <div class="row text-section left-col-icon  zlozenie-dokumentow">
+      <div class="row text-section left-col-icon zlozenie-dokumentow" id="step1">
         <div class="col-1 icon-left">
           <h3 class="h-article">
             <i class="fa fa-file-text-o" aria-hidden="true"></i>
@@ -184,7 +183,7 @@
         </div>
 
       </div>
-      <div class="row text-section left-col-icon">
+      <div class="row text-section left-col-icon" id="step2">
         <div class="col-1 icon-left">
           <h3 class="h-article">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -207,7 +206,7 @@
         </div>
 
       </div>
-      <div class="row text-section left-col-icon">
+      <div class="row text-section left-col-icon" id="step3">
         <div class="col-1 icon-left">
           <h3 class="h-article">
             <i class="fa fa-user-circle-o" aria-hidden="true"></i>

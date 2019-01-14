@@ -27,6 +27,8 @@ import { ProgramowanieSystemowEkspertowychComponent } from './sites/programs/pro
 import { SztucznaInteligencjaComponent } from './sites/programs/sztuczna-inteligencja/sztuczna-inteligencja.component';
 import { TechnologieProgramistyczneUslugInternetowychComponent } from './sites/programs/technologie-programistyczne-uslug-internetowych/technologie-programistyczne-uslug-internetowych.component';
 import { DefaultComponent } from './sites/programs/default/default.component';
+import { UserComponent } from './sites/panel/user/user.component';
+import { FaqComponent } from './sites/faq/faq.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -51,6 +53,7 @@ const routes: Routes = [
     {path: 'technologie-programistyczne-uslug-internetowych', component: TechnologieProgramistyczneUslugInternetowychComponent}
   ]},
   {path: 'rekrutacja', component: RecruitmentComponent},
+  {path: 'faq', component: FaqComponent},
   {path: 'kontakt', component: ContactComponent},
   {path: 'login', component: LoginComponent},
   {path: 'panel', component: PanelComponent, canActivate: [AuthGuard], children: [
@@ -59,6 +62,7 @@ const routes: Routes = [
       {path: 'accounts', component: AccountsComponent},
       {path: 'account', component: AccountComponent}
     ]},
+  {path: 'user', component: UserComponent, canActivate: [AuthGuard]},
   {path: '**', component: PageNotFoundComponent} // musi być ostatnie
 ];
 

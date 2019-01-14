@@ -171,17 +171,21 @@ footer.page-footer .footer-copyright {
   width: 100%;
   background-color: #2196f3;
   padding: 1.5em;
+  margin-bottom: 0.5em;
 }
 #univ-footer-img a img {
   // padding: 15px 10px;
   height: auto;
   width: auto;
 }
+#univ-footer-img a:hover {
+  
+}
 #univ-footer-img img:first-child {
   padding-left: 0;
 }
 .university-data {
-  padding: 1em 0 0 0;
+  padding: 0em 0 0 0;
 }
 footer h5.text-uppercase {
   padding: 5px 0;
@@ -213,4 +217,8 @@ footer h5.text-uppercase {
   height: 50px;
   background-color: #2196f3;
   color: #45cafc;
+}
+.panel-footer {
+  border-top: 1px solid rgba(0,0,0, 0.1);
+  padding-top: 1.5em;
 }

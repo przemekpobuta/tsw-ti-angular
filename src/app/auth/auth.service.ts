@@ -5,6 +5,7 @@ import { Subject} from 'rxjs';
 import { User } from '../shared/models/user.model';
 import {first, shareReplay, tap} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
+import { LoaderService } from '../shared/components/loader/loader.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class AuthService {
 
   constructor(
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private loaderService: LoaderService
   ) {}
 
   register(user: User) {

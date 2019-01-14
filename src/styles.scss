@@ -3,6 +3,8 @@
 // regular style toast
 @import '~ngx-toastr/toastr.css';
 
+$view-page-header-height: 22vh;
+
 // ::-webkit-scrollbar the scrollbar.
 // ::-webkit-scrollbar-button the buttons on the scrollbar (arrows pointing upwards and downwards).
 // ::-webkit-scrollbar-thumb the draggable scrolling handle.
@@ -20,8 +22,12 @@ h1, h2, h3, h4, h5, h6, .p-100 {
 a {
   color: #2196f3;
 }
+a:hover {
+  color: black;
+}
 .h-article {
   padding: 1em 0;
+  font-size: 1.6em;
 }
 .bg-grey-light {
   background-color: rgba(0, 0, 0, 0.02);
@@ -89,7 +95,7 @@ a {
   background-image: url("/assets/stefan-stefancik-297983-unsplash.jpg");
   background-position: 50% 45%;
   background-repeat: no-repeat;
-  height: 27vh;
+  height: $view-page-header-height; // 27
   // height: 100vh;
   background-attachment: fixed;
   background-size: cover;
@@ -108,7 +114,7 @@ a {
     height: 100vh;
   }
   100% {
-    height: 27vh;
+    height: $view-page-header-height;
   }
 }
 .view-page-header .rgba-blue-strong, .view-page-header .rgba-blue-strong:after {
@@ -136,7 +142,7 @@ a {
   //background-image: url("/assets/anders-jilden-478920-unsplash.jpg");
   background-position: 100% 100%;
   background-repeat: no-repeat;
-  height: 23vh;
+  height: $view-page-header-height;
   background-attachment: fixed;
   background-size: cover;
   //background-color: #2196f3;
@@ -150,8 +156,12 @@ a {
 }
 
 .view-page-header .header-page {
-  padding-top: 64px;
-  font-size: 1.5em;
+  padding-top: 9vh;
+  font-size: 1.8em;
+}
+.view-page-header .container {
+  padding-left: 0;
+  padding-right: 0;
 }
 .view-page-100vh {
   height: 100vh;
@@ -263,7 +273,7 @@ a {
 }
 
 .left-col-icon {
-  padding: 2em 0;
+  padding: 1em 0;
 }
 .left-col-icon-last {
   padding-bottom: 0;
