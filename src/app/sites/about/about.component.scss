@@ -12,6 +12,10 @@ p {
   
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
+    .img-section .col-sm-12 {
+        padding-right: 0px !important;
+        padding-left: 0px !important; 
+    }
 }
 
 // Medium devices (tablets, 768px and up)

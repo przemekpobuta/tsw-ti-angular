@@ -4,6 +4,7 @@
     
     background-size: 100%;
 }
+
 @media (max-width: 575px) {
 }
   
@@ -17,6 +18,7 @@
     .img-100vw {
         height: 35vh;
     }
+    
 }
 
 // Large devices (desktops, 992px and up)
@@ -34,9 +36,7 @@ p {
     width: 100%;
     text-align: justify
 }
-.h-article {
-    padding: 0 0 1em 0;
-}
+
 
 .org-1 {
     background-image: url("https://images.pexels.com/photos/1391371/pexels-photo-1391371.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");

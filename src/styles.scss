@@ -45,6 +45,13 @@ a:hover {
   padding-left: 15px;
   font-size: 1.8em;
 }
+.icon-content .h-article {
+  text-align: center;
+}
+.icon-content .h-article i {
+  padding: 0.5em 0 0.7em 0;
+  font-size: 2.5em;
+}
 
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575px) {
@@ -55,12 +62,17 @@ a:hover {
     padding-top: 0 !important;
     margin-top: 0 !important;
   }
+  .page-container-min {
+    padding-top: 1rem !important;
+    margin-top: 1rem !important;
+  }
   .navbar-dark {
     background: linear-gradient(45deg, #45cafc, #303f9f) !important;
   }
   .view-page-header .header-page {    
-    font-size: 1.3em;
+    padding-top: 12vh;
     padding-left: 1em;
+    font-size: 1.3em;
   }
 
 }
@@ -75,7 +87,13 @@ a:hover {
   .view-100vh-longer {
     min-height: 100vh;
   }
-  
+  .icon-content .h-article {
+    text-align: left;
+  }
+  .icon-content .h-article i {
+    padding: 0;
+    font-size: 1em;
+  }
 }
 
 // Large devices (desktops, 992px and up)

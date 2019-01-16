@@ -33,107 +33,108 @@
 </nav>
 
 <div class="container-files">
+  <div class="table-responsive">
+    <table mdbTable ><!-- striped="true" -->
+      <thead>
+        <!-- *ngIf="!isLoadingData" -->
+        <tr>
+          <!--<th scope="col"></th>-->
+          <th scope="col" colspan="2">Nazwa</th>
+          <th scope="col" class="file-modified">Data modyfikacji</th>
+          <th scope="col" class="file-menu">
+            <!--Akcje-->  
+          </th>
+        </tr>
+      </thead>
+      <tbody>
 
-  <table mdbTable ><!-- striped="true" -->
-    <thead>
-      <!-- *ngIf="!isLoadingData" -->
-      <tr>
-        <!--<th scope="col"></th>-->
-        <th scope="col" colspan="2">Nazwa</th>
-        <th scope="col" class="file-modified">Data modyfikacji</th>
-        <th scope="col" class="file-menu">
-          <!--Akcje-->  
-        </th>
-      </tr>
-    </thead>
-    <tbody>
+      <tr mdbTableCol 
+        *ngFor="let element of fileElements | orderBy: orderType : true"
+        [ngClass]="{'file-visible': element.is_visible, 'file-invisible': !element.is_visible}">
+        <td class="file-icon tr-click" (click)="navigate(element)" ><!-- scope="row" -->
+          <i class="fa fa-folder file-or-folder-icon" aria-hidden="true" *ngIf="element.file_type == 'folder' && element.file_extension == null"></i>
+          <i
+            class="fa file-or-folder-icon"
+            [ngClass]="{
+              'fa-file-o': element.file_type === 'file',
+              'fa-file-archive-o': element.file_type === 'archive',
+              'fa-file-audio-o': element.file_type === 'audio',
+              'fa-file-code-o': element.file_type === 'code',
+              'fa-file-excel-o': element.file_type === 'excel',
+              'fa-file-image-o': element.file_type === 'image',
+              'fa-file-pdf-o': element.file_type === 'pdf',
+              'fa-file-powerpoint-o': element.file_type === 'powerpoint',
+              'fa-file-text-o': element.file_type === 'text',
+              'fa-file-video-o': element.file_type === 'video',
+              'fa-file-word-o': element.file_type === 'word'
+            }"
+            aria-hidden="true"
+            *ngIf="element.file_type != 'folder'">
+          </i>
+        </td>
+        <td class="file-name tr-click" (click)="navigate(element)">
+          <a>{{ element.name }}{{element?.file_extension ? '.' + element.file_extension : '' }}</a>
+        </td>
+        <td class="file-modified tr-click" (click)="navigate(element)">
+          <span>{{element.updated_at}}</span>
+        </td>
+        <td class="file-menu">
 
-    <tr mdbTableCol 
-      *ngFor="let element of fileElements | orderBy: orderType : true"
-      [ngClass]="{'file-visible': element.is_visible, 'file-invisible': !element.is_visible}">
-      <td class="file-icon tr-click" (click)="navigate(element)" ><!-- scope="row" -->
-        <i class="fa fa-folder file-or-folder-icon" aria-hidden="true" *ngIf="element.file_type == 'folder' && element.file_extension == null"></i>
-        <i
-          class="fa file-or-folder-icon"
-          [ngClass]="{
-            'fa-file-o': element.file_type === 'file',
-            'fa-file-archive-o': element.file_type === 'archive',
-            'fa-file-audio-o': element.file_type === 'audio',
-            'fa-file-code-o': element.file_type === 'code',
-            'fa-file-excel-o': element.file_type === 'excel',
-            'fa-file-image-o': element.file_type === 'image',
-            'fa-file-pdf-o': element.file_type === 'pdf',
-            'fa-file-powerpoint-o': element.file_type === 'powerpoint',
-            'fa-file-text-o': element.file_type === 'text',
-            'fa-file-video-o': element.file_type === 'video',
-            'fa-file-word-o': element.file_type === 'word'
-          }"
-          aria-hidden="true"
-          *ngIf="element.file_type != 'folder'">
-        </i>
-      </td>
-      <td class="file-name tr-click" (click)="navigate(element)">
-        <a>{{ element.name }}{{element?.file_extension ? '.' + element.file_extension : '' }}</a>
-      </td>
-      <td class="file-modified tr-click" (click)="navigate(element)">
-        <span>{{element.updated_at}}</span>
-      </td>
-      <td class="file-menu">
-
-        <div class="btn-group" *ngIf="user.role === 'admin' || user.role === 'moderator'">
-          <a color="primary" class="waves-light" (click)="toogleElementVisibility(element)" [mdbTooltip]="visibilityToggleTooltip" placement="bottom">
-            <i
-              class="fa" [ngClass]="{'fa-eye': element.is_visible, 'fa-eye-slash': !element.is_visible}" aria-hidden="true"></i>
-            <!-- fa-eye-slash -->
-          </a>
-        </div>
-
-        <div class="btn-group" *ngIf="user.role === 'user' && element.file_type != 'folder'">
-          <a color="primary" class="waves-light" (click)="downloadFile(element)" mdbTooltip="Pobierz" placement="bottom">
-            <i class="fa fa-download" aria-hidden="true"></i>
-          </a>
-        </div>
-
-        <div class="btn-group" placement="right" *ngIf="user.role === 'admin' || user.role === 'moderator'" mdbDropdown>
-          <a mdbDropdownToggle color="primary" class="waves-light" placement="right">
-            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-          </a>
-
-          <div class="dropdown-menu dropdown-primary dropdown-menu-right">
-            <a class="dropdown-item" (click)="openMoveDialog(element)">
-              <i class="fa fa-folder-open-o" aria-hidden="true"></i>Przenieś
-            </a>
-            <a class="dropdown-item" (click)="openRenameDialog(element)">
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Zmień nazwę
-            </a>
-            <a class="dropdown-item text-red" (click)="deleteElement(element)">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>Usuń
-            </a>
-            <div class="divider dropdown-divider" *ngIf="element.file_type != 'folder'"></div>
-            <a class="dropdown-item" *ngIf="element.file_type != 'folder'" (click)="downloadFile(element)">
-              <i class="fa fa-download" aria-hidden="true"></i>Pobierz
+          <div class="btn-group" *ngIf="user.role === 'admin' || user.role === 'moderator'">
+            <a color="primary" class="waves-light" (click)="toogleElementVisibility(element)" [mdbTooltip]="visibilityToggleTooltip" placement="bottom">
+              <i
+                class="fa" [ngClass]="{'fa-eye': element.is_visible, 'fa-eye-slash': !element.is_visible}" aria-hidden="true"></i>
+              <!-- fa-eye-slash -->
             </a>
           </div>
-        </div>
-      </td>
-    </tr>
-    <tr mdbTableCol class="pusty-folder" *ngIf="(fileElements == null || fileElements == undefined || fileElements.length == 0) && !isLoadingData">
-      <!--<td class="text-left"></td>-->
-      <td class="file-icon">
-        <i class="fa file-or-folder-icon fa-folder-open-o" aria-hidden="true"></i>
-      </td>
-      <td class="file-name text-left">Pusty folder</td>
-    </tr>
-    <tr mdbTableCol class="ladowanie wow fadeIn" *ngIf="isLoadingData && fileElements == []">
-      <!--<td class="text-left"></td>-->
-      <td colspan="4" class="">
-        <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0s"></i>
-        <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0.2s"></i>
-        <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0.4s"></i>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+          <div class="btn-group" *ngIf="user.role === 'user' && element.file_type != 'folder'">
+            <a color="primary" class="waves-light" (click)="downloadFile(element)" mdbTooltip="Pobierz" placement="bottom">
+              <i class="fa fa-download" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <div class="btn-group" placement="right" *ngIf="user.role === 'admin' || user.role === 'moderator'" mdbDropdown>
+            <a mdbDropdownToggle color="primary" class="waves-light" placement="right">
+              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </a>
+
+            <div class="dropdown-menu dropdown-primary dropdown-menu-right">
+              <a class="dropdown-item" (click)="openMoveDialog(element)">
+                <i class="fa fa-folder-open-o" aria-hidden="true"></i>Przenieś
+              </a>
+              <a class="dropdown-item" (click)="openRenameDialog(element)">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Zmień nazwę
+              </a>
+              <a class="dropdown-item text-red" (click)="deleteElement(element)">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>Usuń
+              </a>
+              <div class="divider dropdown-divider" *ngIf="element.file_type != 'folder'"></div>
+              <a class="dropdown-item" *ngIf="element.file_type != 'folder'" (click)="downloadFile(element)">
+                <i class="fa fa-download" aria-hidden="true"></i>Pobierz
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr mdbTableCol class="pusty-folder" *ngIf="(fileElements == null || fileElements == undefined || fileElements.length == 0) && !isLoadingData">
+        <!--<td class="text-left"></td>-->
+        <td class="file-icon">
+          <i class="fa file-or-folder-icon fa-folder-open-o" aria-hidden="true"></i>
+        </td>
+        <td class="file-name text-left">Pusty folder</td>
+      </tr>
+      <tr mdbTableCol class="ladowanie wow fadeIn" *ngIf="isLoadingData && fileElements == []">
+        <!--<td class="text-left"></td>-->
+        <td colspan="4" class="">
+          <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0s"></i>
+          <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0.2s"></i>
+          <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0.4s"></i>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 
 
   <!--<div class="content">-->

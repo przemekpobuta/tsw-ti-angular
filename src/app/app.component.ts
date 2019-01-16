@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, OnInit, ViewEncapsulation, HostListener} from '@angular/core';
+import {AfterContentInit, Component, OnInit, ViewEncapsulation, HostListener, ViewChild} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, RouterStateSnapshot, NavigationStart, ActivationEnd} from '@angular/router';
 import {AuthService} from './auth/auth.service';
 import {User} from './shared/models/user.model';
@@ -7,6 +7,7 @@ import {ToastrService} from 'ngx-toastr';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ScrollEvent } from 'ngx-scroll-event';
 import { ScrollService } from './shared/services/scroll.service';
+// import { NavbarComponent } from 'angular-bootstrap-md/angular-bootstrap-md/navbars';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,8 @@ import { ScrollService } from './shared/services/scroll.service';
   // encapsulation: ViewEncapsulation.Emulated
 })
 export class AppComponent implements OnInit, AfterContentInit {
+
+  // @ViewChild('navbar') navbar: NavbarComponent;
 
   user: User;
   isPanel = false;
@@ -43,6 +46,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
+        // this.navbar.hide();
         if (
           event.url.substr(0, 6) === '/panel' ||
           event.url.substr(0, 5) === '/user'

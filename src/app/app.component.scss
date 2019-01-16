@@ -227,7 +227,7 @@ footer h5.text-uppercase {
   position: fixed;
   bottom: 1em;
   right: 0.5em;
-  
+  z-index: 9999;
 }
 #scroll-to-top a {
   border-radius: 50px;

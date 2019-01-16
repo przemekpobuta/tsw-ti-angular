@@ -8,52 +8,54 @@
 
         </div>
 
-        <div class="content-100vh">
+        <div class="content-100vh row">
+          <div class="col-12">
+              <form class="text-center" [formGroup]="loginForm"><!-- py-5 -->
 
-          <form class="text-center" [formGroup]="loginForm"><!-- py-5 -->
-
-            <!--<p class="h4 mb-4">Login</p>-->
-
-            <!-- Email -->
-            <div class="form-row mb-4">
-              <input
-                type="text"
-                id="defaultLoginFormEmail"
-                class="form-control"
-                formControlName="login"
-                placeholder="login"
-                [ngClass]="{ 'is-invalid': f.login.touched && f.login.invalid }"
-                required>
-              <div *ngIf="f.login.touched && f.login.errors" class="invalid-feedback">
-                <div *ngIf="f.login.errors.required">Please input your email!</div>
-                <!--<div *ngIf="f.login.errors.pattern">Email not valid!</div>-->
-              </div>
-            </div>
-
-            <!-- Password -->
-            <div class="form-row mb-4">
-              <input
-                type="password"
-                id="defaultLoginFormPassword"
-                class="form-control"
-                formControlName="password"
-                placeholder="Password"
-                [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }"
-                required>
-              <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
-                <div *ngIf="f.password.errors.required">Please input your Password!</div>
-              </div>
-            </div>
-
-            <!-- Sign in button -->
-            <button type="button" role="button" class="btn btn-white btn-block my-4" (click)="onSubmit()">Zaloguj</button>
-
-            <!--&lt;!&ndash; Register &ndash;&gt;-->
-            <!--<p>Not a member?-->
-            <!--<a routerLink="/register">Register</a>-->
-            <!--</p>-->
-
-          </form>
+                <!--<p class="h4 mb-4">Login</p>-->
+    
+                <!-- Email -->
+                <div class="form-row mb-4">
+                  <input
+                    type="text"
+                    id="defaultLoginFormEmail"
+                    class="form-control"
+                    formControlName="login"
+                    placeholder="login"
+                    [ngClass]="{ 'is-invalid': f.login.touched && f.login.invalid }"
+                    required>
+                  <div *ngIf="f.login.touched && f.login.errors" class="invalid-feedback">
+                    <div *ngIf="f.login.errors.required">Please input your email!</div>
+                    <!--<div *ngIf="f.login.errors.pattern">Email not valid!</div>-->
+                  </div>
+                </div>
+    
+                <!-- Password -->
+                <div class="form-row mb-4">
+                  <input
+                    type="password"
+                    id="defaultLoginFormPassword"
+                    class="form-control"
+                    formControlName="password"
+                    placeholder="Password"
+                    [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }"
+                    required>
+                  <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Please input your Password!</div>
+                  </div>
+                </div>
+    
+                <!-- Sign in button -->
+                <button type="submit" role="button" class="btn btn-white btn-block my-4" (click)="onSubmit()">Zaloguj</button>
+    
+                <!--&lt;!&ndash; Register &ndash;&gt;-->
+                <!--<p>Not a member?-->
+                <!--<a routerLink="/register">Register</a>-->
+                <!--</p>-->
+    
+              </form>
+          </div>
+          
 
         </div>
 
