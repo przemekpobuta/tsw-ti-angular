@@ -1,5 +1,22 @@
 @import '~angular-bootstrap-md/scss/core/_mixins';
 
+#footer-landing h2 {
+  padding: 0.5em 0;
+  font-size: 1.4rem;
+}
+#footer-landing {
+  height: 40vh;
+  color: white;
+  background-image: url("https://images.unsplash.com/photo-1524508762098-fd966ffb6ef9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  background-size: cover;
+  background-attachment: unset;
+}
+#univ-footer-img a img {
+  // padding: 15px 10px;
+  height: auto;
+  width: auto;
+}
+
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575px) {
   #header-container {
@@ -9,6 +26,7 @@
     //background-position: 0 0;
     //background-size: cover;
   }
+
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -23,12 +41,19 @@
   .mobile-only {
     display: none;
   }
+  #univ-footer-img a img {
+    // height: auto;
+    width: 100%;
+  }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   #header-container {
     width: 720px;
+  }
+  #footer-landing {
+    background-attachment: fixed;
   }
 }
 
@@ -44,6 +69,9 @@
     //-webkit-animation-timing-function: ease;
     //-webkit-animation-iteration-count: initial;
   }
+  #footer-landing h2 {
+    font-size: 2rem !important;
+  }
 }
 
 // Extra large devices (large desktops, 1200px and up)
@@ -51,7 +79,10 @@
   #header-container {
     width: 1110px;
   }
-
+  #univ-footer-img a img {
+    height: auto;
+    width: auto;
+  }
 }
 
 @-webkit-keyframes MOVE-BG {
@@ -136,17 +167,8 @@ footer.page-footer a {
   border-radius: 20px;
   background-color: #2196f3 !important;
 }
-#footer-landing {
-  height: 40vh;
-  color: white;
-  background-image: url("https://images.unsplash.com/photo-1524508762098-fd966ffb6ef9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
-  background-size: cover;
-  background-attachment: fixed;
-}
-#footer-landing h2 {
-  padding: 0.5em 0;
 
-}
+
 #footer-landing button {
   font-size: 1.25em;
   text-transform: none;
@@ -173,11 +195,7 @@ footer.page-footer .footer-copyright {
   padding: 1.5em;
   margin-bottom: 0.5em;
 }
-#univ-footer-img a img {
-  // padding: 15px 10px;
-  height: auto;
-  width: auto;
-}
+
 #univ-footer-img a:hover {
   
 }

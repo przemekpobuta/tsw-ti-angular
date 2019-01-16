@@ -1,3 +1,12 @@
+.rules-cards .card-icon {
+    padding: 1em 0;
+    color: #2196f3
+}
+@media (min-width: 992px) {
+    .rules-cards .card-icon {
+        padding: 2em;
+    }
+}
 .recrut-process {
 
 }
@@ -20,10 +29,7 @@ p {
 .zlozenie-dokumentow ul {
     padding: 1.1rem;
 }
-.rules-cards .card-icon {
-    padding: 2em;
-    color: #2196f3
-}
+
 
 ul.stepper {
     counter-reset: section;

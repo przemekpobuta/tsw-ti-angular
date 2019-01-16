@@ -1,3 +1,35 @@
+.img-100vw {
+    height: 20vh;
+    width: 100%;
+    
+    background-size: 100%;
+}
+@media (max-width: 575px) {
+}
+  
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+    
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .img-100vw {
+        height: 35vh;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .img-100vw {
+        height: 50vh;
+        background-size: 100%;
+    }
+}
 p {
     width: 100%;
     text-align: justify
@@ -5,12 +37,7 @@ p {
 .h-article {
     padding: 0 0 1em 0;
 }
-.img-100vw {
-    height: 50vh;
-    width: 100%;
-    background-attachment: fixed;
-    background-size: 100%;
-} 
+
 .org-1 {
     background-image: url("https://images.pexels.com/photos/1391371/pexels-photo-1391371.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
 }

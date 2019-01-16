@@ -1,8 +1,9 @@
 <app-loading-bar></app-loading-bar>
 <header class="" id="header-top" [ngClass]="{'panel-nav' : isPanel, 'page-nav' : isPage}">
 
-  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav"
-              [containerInside]="true">
+  <mdb-navbar 
+    SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav"
+    [containerInside]="true">
     <!--blue-->
     <mdb-navbar-brand>
       <a class="row logo navbar-brand" routerLink="/home">
@@ -20,14 +21,9 @@
       </a>
       <!--TODO: dodać coś o studiach podyplomowych-->
     </mdb-navbar-brand>
-    <!--TODO: zmienić paski na po rozwinięciu menu-->
+    <!--TODO: zmienić paski na X po rozwinięciu menu-->
     <!--<i class="fa fa-remove" aria-hidden="true"></i>-->
 
-    <!--<links>-->
-    <!--<ul class="navbar-nav mr-auto">-->
-
-    <!--</ul>-->
-    <!--</links>-->
     <links>
       <ul class="navbar-nav ml-auto "><!-- nav-flex-icons -->
         <li class="nav-item waves-light" routerLinkActive="active" routerLink="/o-studiach" mdbWavesEffect>
@@ -88,75 +84,7 @@
         </li>
       </ul>
     </links>
-    <!--<form class="form-inline">-->
-    <!--<div class="md-form mt-0">-->
-    <!--<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
-    <!--</div>-->
-    <!--</form>-->
   </mdb-navbar>
-
-
-  <!--<div class="container-fluid">-->
-  <!--<div class="row justify-content-center">-->
-
-  <!--&lt;!&ndash;<div class="container no-gutters" >&ndash;&gt;-->
-
-  <!--<div class="row no-gutters" id="header-container">-->
-
-  <!--<div class="col-9">&lt;!&ndash;  mt-md-0 mt-3 &ndash;&gt;-->
-  <!--<div id="logo" class="">-->
-  <!--<h5 class="h5-responsive">Politechnika Rzeszowska im. Ignacego Łukasiewicza</h5>-->
-  <!--<h1 class="h1-responsive">Technologie Internetowe</h1>-->
-  <!--<h4 class="h4-responsive">Studia podyplomowe</h4>-->
-
-  <!--</div>-->
-  <!--</div>-->
-
-  <!--<div class="col-3">-->
-  <!--<div id="user-menu">-->
-
-  <!--<button-->
-  <!--mdbBtn-->
-  <!--type="button"-->
-  <!--size="md"-->
-  <!--rounded="false"-->
-  <!--routerLink="/login"-->
-  <!--*ngIf="!authService.isLoggedIn()"-->
-  <!--mdbWavesEffect>-->
-  <!--<i class="fa fa-user" aria-hidden="true"></i> Zaloguj-->
-  <!--</button>&lt;!&ndash; Wyloguj (Marcin Witek) fa-sign-out &ndash;&gt;-->
-
-  <!--<button-->
-  <!--mdbBtn-->
-  <!--type="button"-->
-  <!--size="md"-->
-  <!--rounded="false"-->
-  <!--(click)="onLogout()"-->
-  <!--*ngIf="authService.isLoggedIn()"-->
-  <!--mdbWavesEffect>-->
-  <!--<i class="fa fa-sign-out" aria-hidden="true"></i> Wyloguj <span *ngIf="user">({{user.name}})</span>-->
-  <!--</button>-->
-
-  <!--<button-->
-  <!--mdbBtn-->
-  <!--type="button"-->
-  <!--size="md"-->
-  <!--rounded="false"-->
-  <!--routerLink="/panel"-->
-  <!--*ngIf="authService.isLoggedIn()"-->
-  <!--mdbWavesEffect>-->
-  <!--<i class="fa fa-user" aria-hidden="true"></i> Panel-->
-  <!--</button>-->
-  <!--</div>-->
-  <!--</div>-->
-
-  <!--</div>-->
-
-  <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-  <!--</div>-->
-
-  <!--</div>-->
 
 </header>
 
@@ -303,7 +231,7 @@
           <h5 class="text-uppercase">Uczelnia</h5>
   
           <div class="row">
-            <div class="col-6">
+            <div class="col-sm-15 col-md-6">
                 <div class="university-data">
                   <h6><b>Politechnika Rzeszowska<br/>
                     im. Ignacego Łukasiewicza</b></h6>
@@ -316,7 +244,7 @@
                     
                   </div>
             </div>
-            <div class="col-6">
+            <div class="col-sm-15 col-md-6">
                 <div id="univ-footer-img">
                     <div class="row">
                       <div class="col-12">
@@ -360,8 +288,8 @@
 </footer>
 <!-- Footer -->
 
-<div id="scroll-to-top" class="animated fadeIn" *ngIf="showScrollToTop">
+<!-- <div id="scroll-to-top" class="animated fadeIn" *ngIf="showScrollToTop">
   <a class="btn-floating btn-lg my-0 waves-effect waves-light" [ngx-scroll-to]="'#page-top'">
     <i class="fa fa-chevron-up"></i>
   </a>
-</div>
+</div> -->

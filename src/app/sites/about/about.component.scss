@@ -1,4 +1,41 @@
 p {
+    text-align: justify;
+}
+
+.img-section .section-picture {
+    background-size: cover;
+    height: 25vh;
+}
+@media (max-width: 575px) {
+    
+}
+  
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    
+    .img-section .section-picture {
+        height: 100%;
+    }
+    .img-section-left p {
+        text-align: left;
+    }
+    .img-section-right p {
+        text-align: right;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+}
+p {
     width: 100%;
 }
 .img-section {
@@ -10,23 +47,16 @@ p {
 .img-section img {
     width: 100%;
 }
-.img-section .section-picture {
-    background-size: cover;
-    height: 100%;
-}
 .img-section .section-text {
     padding: 2em 0;
     
 }
-.img-section-right {
-    text-align: right;
 
-}
 .img-section-left .section-text {
-    padding-left: 1.5em;
+    padding: 0 1.5em;
 }
 .img-section-right .section-text {
-    padding-right: 1.5em;
+    padding: 0 1.5em;
 }
 .img-a-1 {
     background: url("https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");

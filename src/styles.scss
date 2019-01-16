@@ -32,20 +32,42 @@ a:hover {
 .bg-grey-light {
   background-color: rgba(0, 0, 0, 0.02);
 }
+.navbar-dark {
+  background: linear-gradient(45deg, #45cafc, #303f9f);
+}
+
+.view-page-header {
+  height: $view-page-header-height;
+  background-color: #2196f3;
+}
+.view-page-header .header-page {
+  padding-top: 9vh;
+  padding-left: 15px;
+  font-size: 1.8em;
+}
 
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575px) {
   body {
 
   }
+  .page-container {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
   .navbar-dark {
     background: linear-gradient(45deg, #45cafc, #303f9f) !important;
   }
+  .view-page-header .header-page {    
+    font-size: 1.3em;
+    padding-left: 1em;
+  }
+
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-
+  
 }
 
 // Medium devices (tablets, 768px and up)
@@ -53,12 +75,36 @@ a:hover {
   .view-100vh-longer {
     min-height: 100vh;
   }
-
+  
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-
+  .navbar-dark {
+    background: none !important;
+  }
+  .view-page-header {
+    // bg-img w #
+    background-image: url("/assets/stefan-stefancik-297983-unsplash.jpg");
+    background-position: 50% 45%;
+    background-repeat: no-repeat;
+    height: $view-page-header-height; // 27
+    // height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #2196f3;
+    -webkit-animation-name: LOADING;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-iteration-count: 1;
+  }
+  .view-page-header .rgba-blue-strong, .view-page-header .rgba-blue-strong:after {
+    -webkit-animation-name: LOADING-BG;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-iteration-count: 1;
+    background-color: rgba(33, 150, 243, 1);
+  }
 }
 
 // Extra large devices (large desktops, 1200px and up)
@@ -90,21 +136,7 @@ a:hover {
   background: linear-gradient(45deg, #45cafc, #303f9f) !important;
 }
 
-.view-page-header {
-  // bg-img w #
-  background-image: url("/assets/stefan-stefancik-297983-unsplash.jpg");
-  background-position: 50% 45%;
-  background-repeat: no-repeat;
-  height: $view-page-header-height; // 27
-  // height: 100vh;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #2196f3;
-  -webkit-animation-name: LOADING;
-  -webkit-animation-duration: 1.5s;
-  -webkit-animation-timing-function: ease-out;
-  -webkit-animation-iteration-count: 1;
-}
+
 
 @-webkit-keyframes LOADING {
   0% {
@@ -117,13 +149,7 @@ a:hover {
     height: $view-page-header-height;
   }
 }
-.view-page-header .rgba-blue-strong, .view-page-header .rgba-blue-strong:after {
-  -webkit-animation-name: LOADING-BG;
-  -webkit-animation-duration: 1.5s;
-  -webkit-animation-timing-function: ease-out;
-  -webkit-animation-iteration-count: 1;
-  background-color: rgba(33, 150, 243, 1);
-}
+
 @-webkit-keyframes LOADING-BG {
   0% {
     background-color: rgba(33, 150, 243, 0.7);
@@ -150,15 +176,12 @@ a:hover {
 
 }
 .view-admin-header .header-page {
-  padding-top: 80px;
+  padding-top: 11vh;
   font-size: 1.5em;
   color: rgba(0,0,0,0.7);
 }
 
-.view-page-header .header-page {
-  padding-top: 9vh;
-  font-size: 1.8em;
-}
+
 .view-page-header .container {
   padding-left: 0;
   padding-right: 0;
