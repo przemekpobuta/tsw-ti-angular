@@ -5,18 +5,19 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <!--<li class="nav-item"> &lt;!&ndash; powrót do katalogu wyżej &ndash;&gt;-->
-        <!--<a class="nav-link" *ngIf="canNavigateUp">-->
-          <!--<i class="fa fa-angle-left" aria-hidden="true"></i>-->
-        <!--</a>-->
-        <!--&lt;!&ndash;&ndash;&gt;-->
-      <!--</li>-->
+      <li class="nav-item">
+        <a class="nav-link" (click)="unselectEditUserAccess()" *ngIf="editAccessAccount">
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </a>
+        <!-- &lt;!&ndash;&ndash;&gt; -->
+      </li>
       <li class="nav-item mr-auto">
-        <span class="nav-link">Użytkownicy</span>
+        <span *ngIf="!editAccessAccount" class="nav-link">Użytkownicy</span>
+        <span *ngIf="editAccessAccount" class="nav-link">Zarządzanie uprawnieniami użytkownika <b>{{ editAccessAccount.login }}</b></span>
       </li>
     </ul>
     <ul class="navbar-nav nav-flex-icons">
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="!editAccessAccount"  mdbTooltip="Dodaj użytkownika" container="body" placement="top">
       <a class="nav-link" (click)="openClickNewAccount()">
         <i class="fa fa-user-plus" aria-hidden="true"></i>
       </a>
@@ -31,74 +32,69 @@
 </nav>
 
 <div class="container-files">
-  <div class="table-responsive">
-  <table mdbTable ><!-- striped="true" -->
-    <thead *ngIf="!isLoadingData">
-      <tr>
-        <th scope="col">Login</th>
-        <th scope="col">Rola</th>
-        <th scope="col">Stworzono</th>
-        <th scope="col">Zmodyfikowano</th>
-        <th scope="col"></th>
+  <div *ngIf="!editAccessAccount" class="table-responsive">
+    <table mdbTable><!-- striped="true" -->
+      <thead *ngIf="!isLoadingData">
+        <tr>
+          <th scope="col">Login</th>
+          <th scope="col">Rola</th>
+          <th scope="col">Stworzono</th>
+          <th scope="col">Zmodyfikowano</th>
+          <th scope="col"></th>
 
-      </tr>
-    </thead>
-    <tbody>
+        </tr>
+      </thead>
+      <tbody>
 
-    <tr mdbTableCol *ngFor="let account of accounts" >
-      <!--<td class="account_icon" >&lt;!&ndash; scope="row" &ndash;&gt;-->
-        <!--<i class="fa fa-user" aria-hidden="true"></i>-->
-        <!--&lt;!&ndash;<i&ndash;&gt;-->
-          <!--&lt;!&ndash;class="fa file-or-folder-icon"&ndash;&gt;-->
-          <!--&lt;!&ndash;aria-hidden="true"&ndash;&gt;-->
-          <!--&lt;!&ndash;*ngIf="element.file_type != 'folder'">&ndash;&gt;-->
-        <!--&lt;!&ndash;</i>&ndash;&gt;-->
-      <!--</td>-->
-      <td class="account_login">
-        <span>{{ account?.login }}</span>
-      </td>
-      <td class="account_role">
-        <span>{{ account?.role }}</span>
-      </td>
-      <td class="account_created_at">
-        <span>{{account?.created_at ? account.created_at : '-' }}</span>
-      </td>
-      <td class="account_updated_at">
-        <span>{{account?.updated_at ? account.updated_at : '-' }}</span>
-      </td>
-      <td class="account_menu">
-
-        <div class="btn-group" placement="right" mdbDropdown>
-
-          <a mdbDropdownToggle color="primary" class="waves-light" placement="right">
-            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+      <tr mdbTableCol *ngFor="let account of accounts" >
+        <!--<td class="account_icon" >&lt;!&ndash; scope="row" &ndash;&gt;-->
+          <!--<i class="fa fa-user" aria-hidden="true"></i>-->
+          <!--&lt;!&ndash;<i&ndash;&gt;-->
+            <!--&lt;!&ndash;class="fa file-or-folder-icon"&ndash;&gt;-->
+            <!--&lt;!&ndash;aria-hidden="true"&ndash;&gt;-->
+            <!--&lt;!&ndash;*ngIf="element.file_type != 'folder'">&ndash;&gt;-->
+          <!--&lt;!&ndash;</i>&ndash;&gt;-->
+        <!--</td>-->
+        <td class="account_login">
+          <span>{{ account?.login }}</span>
+        </td>
+        <td class="account_role">
+          <span>{{ account?.role }}</span>
+        </td>
+        <td class="account_created_at">
+          <span>{{account?.created_at ? account.created_at : '-' }}</span>
+        </td>
+        <td class="account_updated_at">
+          <span>{{account?.updated_at ? account.updated_at : '-' }}</span>
+        </td>
+        <td class="account_actions">
+          <a class="" (click)="onEditUserAccess(account)" *ngIf="canEditUserAccess(account)" mdbTooltip="Edytuj uprawnienia" container="body" placement="top">
+            <i class="fas fa-user-cog"></i>
           </a>
-
-          <div class="dropdown-menu dropdown-primary dropdown-menu-right">
-            <a class="dropdown-item" (click)="openClickEdit(account)">
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edytuj
-            </a>
-            <a class="dropdown-item text-red" (click)="onClickDelete(account)">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>Usuń
-            </a>
-            <!--<div class="divider dropdown-divider"></div>-->
-          </div>
-
-        </div>
-      </td>
-    </tr>
-    <tr mdbTableCol *ngIf="(accounts == null || accounts == undefined || accounts.length == 0) && !isLoadingData">
-      <td class="text-left">Brak użytkowników</td>
-    </tr>
-    <tr mdbTableCol class="ladowanie wow fadeIn" *ngIf="isLoadingData">
-      <!--<td class="text-left"></td>-->
-      <td colspan="5" class="">
-        <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0s"></i>
-        <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0.2s"></i>
-        <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0.4s"></i>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+          <a class="" (click)="openClickEdit(account)" mdbTooltip="Edytuj" container="body" placement="top">
+            <i class="fas fa-user-edit"></i>
+          </a>
+          <a class="text-red" (click)="onClickDelete(account)" mdbTooltip="Usuń" container="body" placement="top">
+            <i class="fas fa-user-times"></i>
+          </a>
+        </td>
+      </tr>
+      <tr mdbTableCol *ngIf="(accounts == null || accounts == undefined || accounts.length == 0) && !isLoadingData">
+        <td class="text-left">Brak użytkowników</td>
+      </tr>
+      <tr mdbTableCol class="ladowanie wow fadeIn" *ngIf="isLoadingData">
+        <!--<td class="text-left"></td>-->
+        <td colspan="5" class="">
+          <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0s"></i>
+          <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0.2s"></i>
+          <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0.4s"></i>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="editAccessAccount">
+      <app-files-manager [mode]="fileManagerMode" [editAccessAccount]="editAccessAccount">
+      </app-files-manager>
   </div>
 </div>

@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import {FileElement} from '../models/file-element.model';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {HttpClient, HttpEventType, HttpRequest, HttpResponse} from '@angular/common/http';
-import {environment} from '../../../../../../environments/environment';
 import {tap} from 'rxjs/operators';
 import {ResponseContentType} from '@angular/http';
-import {PanelComponent} from '../../../panel.component';
+import { environment } from 'src/environments/environment';
 
 export interface IFileService {
   add(fileElement: FileElement);
@@ -28,7 +27,10 @@ export class FileService implements IFileService {
   }
 
   getFiles() {
-    return this.http.get(environment.api_url + 'files/');
+      return this.http.get(environment.api_url + 'files/');
+  }
+  getFilesWithAccess(user_id: number) {
+      return this.http.get(environment.api_url + 'files/' + user_id);
   }
 
   createFolder(name: string, parent_uuid: string) {
@@ -147,5 +149,9 @@ export class FileService implements IFileService {
   clone(element: FileElement) {
     // console.log(JSON.stringify(element));
     return JSON.parse(JSON.stringify(element));
+  }
+
+  toggleFileVisibilityForUser(user_id: number, file_uuid) {
+    return this.http.put(environment.api_url + 'files/' + user_id + '/' + file_uuid, {});
   }
 }

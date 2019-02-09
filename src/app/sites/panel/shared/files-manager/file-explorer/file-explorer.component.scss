@@ -71,7 +71,7 @@
 }
 .file-menu {
   text-align: right;
-  width: 90px;
+  // width: 90px;
 }
 .file-menu .btn-group {
   display: inline;
@@ -114,11 +114,39 @@
 .pusty-folder:hover {
   background-color: inherit !important;
 }
+.file-visible {
+  background-color: rgba(0, 255, 0, 0.2);
+  // color: rgba(0,0,0,0.6);
+}
 .file-invisible {
-  background-color: rgba(0, 0, 0, 0.01);
-  color: rgba(0,0,0,0.6);
+  background-color: rgba(255, 0, 0, 0.2);
+  // color: rgba(0,0,0,0.6);
 }
 .visibilityToggleTooltip {
   width: 100px;
   text-align: center;
+}
+.clickable {
+  cursor: pointer;
+}
+.navbar-edit-user-access {
+  background: rgba(0,0,0,0.2) !important;
+  .nav-link {
+    color: rgba(0,0,0,0.85) !important;
+  }
+  tr:hover {
+    background-color: inherit;
+  }
+}
+
+.fa-toggle-on {
+  color: #27ae60;
+}
+.fa-toggle-off {
+  color: rgba(0,0,0,0.75);
+}
+#toolbar {
+  .navbar-nav .nav-link {
+    padding-left: 0;
+  }
 }

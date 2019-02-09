@@ -158,6 +158,10 @@ ul.stepper li > a .label {
     margin-left: 3.13rem;
     padding: .94rem;
     background-color: #fff;
+    p {
+        text-align: left;
+        font-size: 1em;
+    }
 }
 .step-link a {
     font-weight: normal;
@@ -165,5 +169,5 @@ ul.stepper li > a .label {
     text-align: right
 }
 .step-link a i {
-    padding: 0 0.5em;
+    padding: 0.2em 0.5em;
 }

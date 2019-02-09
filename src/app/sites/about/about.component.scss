@@ -24,11 +24,11 @@ p {
     .img-section .section-picture {
         height: 100%;
     }
-    .img-section-left p {
-        text-align: left;
-    }
-    .img-section-right p {
-        text-align: right;
+    .img-section-left, .img-section-right {
+        p, li {
+            text-align: justify;
+        }
+        
     }
 }
 

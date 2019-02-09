@@ -6,6 +6,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {DeleteAccountComponent} from './modals/delete-account/delete-account.component';
 import {EditAccountComponent} from './modals/edit-account/edit-account.component';
 import {LoaderService} from '../../../shared/components/loader/loader.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-accounts',
@@ -17,12 +18,15 @@ export class AccountsComponent implements OnInit, OnDestroy {
 
   accountsSub: Subscription;
   accounts: User[] = [];
+  editAccessAccount: User;
   isLoadingData: boolean;
+  fileManagerMode = 'edit-user-access';
 
   constructor(
     private accountsService: AccountsService,
     private modalService: NgbModal,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -48,6 +52,7 @@ export class AccountsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.unselectEditUserAccess();
     this.accountsSub.unsubscribe();
   }
 
@@ -96,6 +101,21 @@ export class AccountsComponent implements OnInit, OnDestroy {
         console.error(dismiss);
         this.getAccountsReq();
       });
+  }
+  onEditUserAccess(account: User) {
+    console.log(account);
+    this.editAccessAccount = account;
+  }
+  canEditUserAccess(account: User) {
+    const currentUser = this.authService.getCurrentUser();
+    if (account.login === currentUser.login) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  unselectEditUserAccess() {
+    this.editAccessAccount = undefined;
   }
 
 }

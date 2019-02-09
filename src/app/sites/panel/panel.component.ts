@@ -2,8 +2,9 @@ import {Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angul
 import {AuthService} from '../../auth/auth.service';
 import {User} from '../../shared/models/user.model';
 import {Subscription} from 'rxjs';
-import {FileService} from './files/file-explorer/services/file.service';
 import { Router } from '@angular/router';
+import { FileService } from './shared/files-manager/file-explorer/services/file.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-panel',
@@ -19,7 +20,8 @@ export class PanelComponent implements OnInit, OnDestroy {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private alertService: ToastrService
   ) { }
 
   ngOnInit() {
@@ -27,6 +29,9 @@ export class PanelComponent implements OnInit, OnDestroy {
     if (this.activeUser.role === 'user') {
       this.router.navigate(['/user']);
     }
+    setTimeout(() => {
+      this.alertService.success('test123!');
+    });
 
   }
   ngOnDestroy() {

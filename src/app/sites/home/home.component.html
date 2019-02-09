@@ -1,8 +1,8 @@
 <div class="view view-100vh" id="home-1">
   <div class="full-bg-img">
-    <div class="mask flex-center pattern-5"><!-- -->
+    <div class="mask flex-center pattern-2"><!--  pattern-5 -->
       <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.6s">
+        <div class="text-center wow fadeInUp" data-wow-delay="0"><!-- 0.3s -->
 
           <div class="icon-slider" [ngClass]="{'animateLeftRight': startedHome1Animation}">
             <i class="bounce" [class]="activeIcon"></i>
@@ -10,23 +10,12 @@
 
           <h2>Zdobądź wiedzę pożądaną na rynku pracy!</h2>
 
-          <h5>Najbliższa planowana edycja studiów podyplomowych<br/>"Technologie Internetowe" - październik 2019.</h5>
-          <br/>
-          <button
-            mdbBtn
-            type="button"
-            color="white"
-            [ngx-scroll-to]="'#home-2'"
-            mdbWavesEffect>
+          <h5>Najnowsze technologie. Praktyczna wiedza. Nieograniczone możliwości.</h5>
+          <br />
+          <button mdbBtn type="button" color="white" [ngx-scroll-to]="'#home-2'" mdbWavesEffect>
             <i class="fa fa-angle-double-down" aria-hidden="true"></i> Dowiedz się więcej
           </button>
-          <button
-            mdbBtn
-            type="button"
-            color="white"
-            outline="true"
-            [routerLink]="['/rekrutacja']"
-            mdbWavesEffect>
+          <button mdbBtn type="button" color="white" outline="true" [routerLink]="['/rekrutacja']" mdbWavesEffect>
             <i class="fa fa-briefcase" aria-hidden="true"></i> Rekrutacja
           </button>
         </div>
@@ -35,9 +24,11 @@
   </div>
 </div>
 
-<div class="view view-100vh-longer" id="home-2"><!-- view-100vh -->
+<div class="view view-100vh-longer" id="home-2">
+  <!-- view-100vh -->
   <div class="full-bg-img">
-    <div class="flex-center mask-longer"><!--  -->
+    <div class="flex-center mask-longer">
+      <!--  -->
       <div class="container">
         <div class="white-text wow" data-wow-delay="1s">
 
@@ -181,7 +172,8 @@
 
 <div class="view view-100vh" id="home-3">
   <div class="full-bg-img">
-    <div class="mask flex-center rgba-blue-grey-strong"><!-- rgba-orange-light -->
+    <div class="mask flex-center rgba-blue-grey-strong">
+      <!-- rgba-orange-light -->
       <div class="container">
         <div class="white-text wow fadeIn" data-wow-delay="0.6s">
 
@@ -190,7 +182,8 @@
           </h2>
           <p class="">O przyjęcie na studia podyplomowe "Technologie Internetowe" mogą ubiegać się wszystkie osoby
             posiadające dyplom licencjata, inżyniera lub magistra, zainteresowane poszerzeniem swojej wiedzy o elementy
-            informatyki z dziedziny nowoczesnych technologii internetowych. W szczególności studia "Technologie Internetowe" adresowane są do:</p>
+            informatyki z dziedziny nowoczesnych technologii internetowych. W szczególności studia "Technologie
+            Internetowe" adresowane są do:</p>
 
           <ul>
             <!--Carousel Wrapper-->
@@ -200,19 +193,23 @@
                 <li>osób projektujących, programujących i wdrażających rozwiązania internetowe i intranetowe,</li>
               </mdb-carousel-item>
               <mdb-carousel-item>
-                <li>administratorów sieci komputerowych i osób zarządzających witrynami sieci Web, a także bazami danych</li>
+                <li>administratorów sieci komputerowych i osób zarządzających witrynami sieci Web, a także bazami
+                  danych</li>
               </mdb-carousel-item>
               <mdb-carousel-item>
-                <li>pracowników działów informatycznych podmiotów gospodarczych, urzędów administracji samorządowej i rządowej</li>
+                <li>pracowników działów informatycznych podmiotów gospodarczych, urzędów administracji samorządowej i
+                  rządowej</li>
               </mdb-carousel-item>
               <mdb-carousel-item>
-                <li>nauczycieli informatyki pragnących podnieść swoje kwalifikacje do nauczania przedmiotów z zakresu tematyki studiów</li>
+                <li>nauczycieli informatyki pragnących podnieść swoje kwalifikacje do nauczania przedmiotów z zakresu
+                  tematyki studiów</li>
               </mdb-carousel-item>
               <mdb-carousel-item>
                 <li>absolwentów wyższych uczelni o kierunkach nieinformatycznych zainteresowanych tematyką studiów,</li>
               </mdb-carousel-item>
               <mdb-carousel-item>
-                <li>a także wszystkich pasjonatów programowania usług sieciowych, tworzenia witryn responsywnych i programowania urządzeń mobilnych</li>
+                <li>a także wszystkich pasjonatów programowania usług sieciowych, tworzenia witryn responsywnych i
+                  programowania urządzeń mobilnych</li>
               </mdb-carousel-item>
 
             </mdb-carousel>
@@ -234,7 +231,8 @@
 
 <div class="view view-100vh-longer" id="home-4">
   <div class="full-bg-img">
-    <div class="mask-longer flex-center rgba-indigo-strong"><!--  -->
+    <div class="mask-longer flex-center rgba-indigo-strong">
+      <!--  -->
       <div class="container">
         <div class="white-text wow" data-wow-delay="1s">
 
@@ -274,7 +272,8 @@
 
 <div class="view-auto" id="home-technology">
   <div class="full-bg-img">
-    <div class="mask flex-center"><!-- rgba-blue-strong -->
+    <div class="mask flex-center">
+      <!-- rgba-blue-strong -->
       <div class="container">
         <div class="text text-center wow" data-wow-delay="1s">
 
@@ -288,13 +287,13 @@
             <div class="row text-center">
 
               <!--Grid column-->
-              <div class="col-lg-4 col-md-12 mb-4 wow fadeInUp" data-wow-delay="0.5s"  >
+              <div class="col-lg-4 col-md-12 mb-4 wow fadeInUp" data-wow-delay="0.5s">
 
                 <div class="card-item">
 
-                  <div class="view overlay rounded z-depth-1 waves-light" routerLink="/programy/programowanie-obiektowe" mdbWavesEffect>
-                    <img src="/assets/home_tech/1.jpg" class="img-fluid"
-                         alt="Sample project image">
+                  <div class="view overlay rounded z-depth-1 waves-light" routerLink="/programy/programowanie-obiektowe"
+                    mdbWavesEffect>
+                    <img src="/assets/home_tech/1.jpg" class="img-fluid" alt="Sample project image">
                     <a>
                       <div class="mask rgba-blue-strong flex-center">
                         <p class="white-text"><i class="fa fa-arrow-right left"></i> Dowiedz się więcej</p>
@@ -329,9 +328,9 @@
 
                 <div class="card-item">
                   <!--Featured image-->
-                  <div class="view overlay rounded z-depth-1  waves-light" routerLink="/programy/technologie-sieci-web" mdbWavesEffect>
-                    <img src="/assets/home_tech/2.jpg" class="img-fluid"
-                         alt="Sample project image">
+                  <div class="view overlay rounded z-depth-1  waves-light" routerLink="/programy/technologie-sieci-web"
+                    mdbWavesEffect>
+                    <img src="/assets/home_tech/2.jpg" class="img-fluid" alt="Sample project image">
                     <a>
                       <div class="mask rgba-blue-strong flex-center">
                         <p class="white-text"><i class="fa fa-arrow-right left"></i> Dowiedz się więcej</p>
@@ -371,9 +370,9 @@
 
                 <div class="card-item">
                   <!--Featured image-->
-                  <div class="view overlay rounded z-depth-1  waves-light" routerLink="/programy/programowanie-w-jezyku-java" mdbWavesEffect>
-                    <img src="/assets/home_tech/3.jpg" class="img-fluid"
-                         alt="Sample project image">
+                  <div class="view overlay rounded z-depth-1  waves-light" routerLink="/programy/programowanie-w-jezyku-java"
+                    mdbWavesEffect>
+                    <img src="/assets/home_tech/3.jpg" class="img-fluid" alt="Sample project image">
                     <a>
                       <div class="mask rgba-blue-strong flex-center">
                         <p class="white-text"><i class="fa fa-arrow-right left"></i> Dowiedz się więcej</p>
@@ -390,7 +389,8 @@
                       <i class="devicon-java-plain"></i>
                     </div>
                     <p class="text">Platformy Java SE, EE, ME. Programowanie aplikacji z GUI (AWT, Swing, JavaFX).
-                      Programowanie serwletów, obsługa baz danych (JDBC, JPA), przetwarzanie dokumentów JSON i XML (SAX,
+                      Programowanie serwletów, obsługa baz danych (JDBC, JPA), przetwarzanie dokumentów JSON i XML
+                      (SAX,
                       Stax,
                       DOM), JAXB. Technologia JavaBeans, EJB, JSF. Java ME (biblioteka LWUIT). Programowanie urządzeń
                       mobilnych
@@ -411,12 +411,12 @@
             <div class="row white-text-center">
 
               <!--Grid column-->
-              <div class="col-lg-4 col-md-12 mb-4 wow fadeInUp" data-wow-delay="0.3s" >
+              <div class="col-lg-4 col-md-12 mb-4 wow fadeInUp" data-wow-delay="0.3s">
 
                 <div class="card-item">
-                  <div class="view overlay rounded z-depth-1 waves-light" routerLink="/programy/projektowanie-baz-danych" mdbWavesEffect>
-                    <img src="/assets/home_tech/4.jpg" class="img-fluid"
-                         alt="Sample project image">
+                  <div class="view overlay rounded z-depth-1 waves-light" routerLink="/programy/projektowanie-baz-danych"
+                    mdbWavesEffect>
+                    <img src="/assets/home_tech/4.jpg" class="img-fluid" alt="Sample project image">
                     <a>
                       <div class="mask rgba-blue-strong flex-center">
                         <p class="white-text"><i class="fa fa-arrow-right left"></i> Dowiedz się więcej</p>
@@ -450,9 +450,9 @@
               <div class="col-lg-4 col-md-12 mb-4 wow fadeInUp" data-wow-delay="0.4s">
 
                 <div class="card-item">
-                  <div class="view overlay rounded z-depth-1 waves-light" routerLink="/programy/sieci-komputerowe" mdbWavesEffect>
-                    <img src="/assets/home_tech/5.jpg" class="img-fluid"
-                         alt="Sample project image">
+                  <div class="view overlay rounded z-depth-1 waves-light" routerLink="/programy/sieci-komputerowe"
+                    mdbWavesEffect>
+                    <img src="/assets/home_tech/5.jpg" class="img-fluid" alt="Sample project image">
                     <a>
                       <div class="mask rgba-blue-strong flex-center">
                         <p class="white-text"><i class="fa fa-arrow-right left"></i> Dowiedz się więcej</p>
@@ -483,9 +483,9 @@
               <div class="col-lg-4 col-md-12 mb-4 wow fadeInUp" data-wow-delay="0.5s">
 
                 <div class="card-item">
-                  <div class="view overlay rounded z-depth-1 waves-light" routerLink="/programy/przedmiot-obieralny" mdbWavesEffect>
-                    <img src="/assets/home_tech/6.jpg" class="img-fluid"
-                         alt="Sample project image">
+                  <div class="view overlay rounded z-depth-1 waves-light" routerLink="/programy/przedmiot-obieralny"
+                    mdbWavesEffect>
+                    <img src="/assets/home_tech/6.jpg" class="img-fluid" alt="Sample project image">
                     <a>
                       <div class="mask rgba-blue-strong flex-center">
                         <p class="white-text"><i class="fa fa-arrow-right left"></i> Dowiedz się więcej</p>
@@ -522,4 +522,24 @@
       </div>
     </div>
   </div>
+</div>
+
+<app-footer-banner [type]="'banner'"></app-footer-banner>
+
+<div id="top-news" class="animated wow fadeInDown" data-wow-delay="0.3s">
+    <div class="top-news-inner">
+      <div class="top-news-announcement-banner container">
+        <div class="row">
+          <div class="col-12 info">
+            Najbliższa planowana edycja studiów podyplomowych "Technologie Internetowe" - październik 2019! 
+            <a class="action" [routerLink]="['/rekrutacja']">
+              <mdb-icon far icon="fa-newspaper"></mdb-icon> Sprawdź aktualności
+            </a>
+          </div>
+          <!-- <div class="col-2 action ">
+            <b><i icon="fa fa-newspaper"></i> Sprawdź aktualności</b>
+          </div> -->
+        </div>
+      </div>
+    </div>
 </div>

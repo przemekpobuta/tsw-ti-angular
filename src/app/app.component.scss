@@ -1,16 +1,6 @@
 @import '~angular-bootstrap-md/scss/core/_mixins';
 
-#footer-landing h2 {
-  padding: 0.5em 0;
-  font-size: 1.4rem;
-}
-#footer-landing {
-  height: 40vh;
-  color: white;
-  background-image: url("https://images.unsplash.com/photo-1524508762098-fd966ffb6ef9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
-  background-size: cover;
-  background-attachment: unset;
-}
+
 #univ-footer-img a img {
   // padding: 15px 10px;
   height: auto;
@@ -109,14 +99,14 @@
 }
 .logo .logotype {
   position: absolute;
-  top: -6px;
+  top: 0px;
   left:0;
-  font-size: 40px;
+  font-size: 35px;
 }
 .logo .logotext {
   display: flex;
   position: relative;
-  left: 55px;
+  left: 62px;
   top: 0;
 }
 .logo .brand, .logo .name {
@@ -240,3 +230,5 @@ footer h5.text-uppercase {
   border-top: 1px solid rgba(0,0,0, 0.1);
   padding-top: 1.5em;
 }
+
+

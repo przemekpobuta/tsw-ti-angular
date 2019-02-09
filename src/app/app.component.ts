@@ -1,5 +1,6 @@
 import {AfterContentInit, Component, OnInit, ViewEncapsulation, HostListener, ViewChild} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, RouterStateSnapshot, NavigationStart, ActivationEnd} from '@angular/router';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import {AuthService} from './auth/auth.service';
 import {User} from './shared/models/user.model';
 import {LoaderService} from './shared/components/loader/loader.service';
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 
   // @ViewChild('navbar') navbar: NavbarComponent;
 
+  faCoffee = faCoffee;
   user: User;
   isPanel = false;
   isPage = false;
@@ -52,20 +54,15 @@ export class AppComponent implements OnInit, AfterContentInit {
           event.url.substr(0, 5) === '/user'
         ) {
           this.isPanel = true;
+          this.isPage = true;
         } else {
           this.isPanel = false;
           if (event.url.substr(0, 6) === '/home' || event.url.substr(0, 6) === '/') {
             this.isPage = false;
           } else {
             this.isPage = true;
+            console.log('isPage', this.isPage);
           }
-        }
-        if (
-          event.url.substr(0, 11) === '/rekrutacja'
-        ) {
-          this.isRecruitment = true;
-        } else {
-          this.isRecruitment = false;
         }
       }
       if (event instanceof ActivationEnd) {

@@ -19,16 +19,11 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PanelComponent } from './sites/panel/panel.component';
 import { FilesComponent } from './sites/panel/files/files.component';
-import { FileExplorerComponent } from './sites/panel/files/file-explorer/file-explorer.component';
-import { NewFolerDialogComponent } from './sites/panel/files/file-explorer/modals/new-foler-dialog/new-foler-dialog.component';
-import { RenameDialogComponent } from './sites/panel/files/file-explorer/modals/rename-dialog/rename-dialog.component';
 import { ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
 import { AboutComponent } from './sites/about/about.component';
 import { LoadingBarComponent } from './shared/components/loader/loading-bar/loading-bar.component';
 import { LoaderService} from './shared/components/loader/loader.service';
 import { NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
-import { MoveDialogComponent } from './sites/panel/files/file-explorer/modals/move-dialog/move-dialog.component';
-import { UploadDialogComponent } from './sites/panel/files/file-explorer/modals/upload-dialog/upload-dialog.component';
 import { FilterPipeModule} from 'ngx-filter-pipe';
 import { AccountsComponent } from './sites/panel/accounts/accounts.component';
 import { AccountsService} from './sites/panel/accounts/accounts.service';
@@ -51,13 +46,21 @@ import { SieciKomputeroweComponent } from './sites/programs/sieci-komputerowe/si
 import { AplikacjeBazodanoweComponent } from './sites/programs/aplikacje-bazodanowe/aplikacje-bazodanowe.component';
 import { PrzedmiotObieralnyComponent } from './sites/programs/przedmiot-obieralny/przedmiot-obieralny.component';
 import { GrafikaKomputerowaComponent } from './sites/programs/grafika-komputerowa/grafika-komputerowa.component';
-import { ProgramowanieSystemowEkspertowychComponent } from './sites/programs/programowanie-systemow-ekspertowych/programowanie-systemow-ekspertowych.component';
 import { SztucznaInteligencjaComponent } from './sites/programs/sztuczna-inteligencja/sztuczna-inteligencja.component';
-import { TechnologieProgramistyczneUslugInternetowychComponent } from './sites/programs/technologie-programistyczne-uslug-internetowych/technologie-programistyczne-uslug-internetowych.component';
 import { DefaultComponent } from './sites/programs/default/default.component';
 import { AgmCoreModule } from '@agm/core';
 import { UserComponent } from './sites/panel/user/user.component';
 import { FaqComponent } from './sites/faq/faq.component';
+import { FooterBannerComponent } from './shared/components/footer-banner/footer-banner.component';
+import { FileExplorerComponent } from './sites/panel/shared/files-manager/file-explorer/file-explorer.component';
+import { NewFolerDialogComponent } from './sites/panel/shared/files-manager/file-explorer/modals/new-foler-dialog/new-foler-dialog.component';
+import { RenameDialogComponent } from './sites/panel/shared/files-manager/file-explorer/modals/rename-dialog/rename-dialog.component';
+import { MoveDialogComponent } from './sites/panel/shared/files-manager/file-explorer/modals/move-dialog/move-dialog.component';
+import { UploadDialogComponent } from './sites/panel/shared/files-manager/file-explorer/modals/upload-dialog/upload-dialog.component';
+import { ProgramowanieSystemowEkspertowychComponent } from './sites/programs/programowanie-systemow-ekspertowych/programowanie-systemow-ekspertowych.component';
+import { TechnologieProgramistyczneUslugInternetowychComponent } from './sites/programs/technologie-programistyczne-uslug-internetowych/technologie-programistyczne-uslug-internetowych.component';
+import { FilesManagerComponent } from './sites/panel/shared/files-manager/files-manager.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -98,24 +101,27 @@ import { FaqComponent } from './sites/faq/faq.component';
     DefaultComponent,
     UserComponent,
     FaqComponent,
+    FooterBannerComponent,
+    FilesManagerComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ToastrModule.forRoot({
+      timeOut: 8000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
     ScrollEventModule,
     OrderModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC6QJjy5nD9J6rtXNAM399hBPbSPFjQ-QA'
     }),
     FilterPipeModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      timeOut: 8000,
-      positionClass: 'toast-bottom-right',
-      preventDuplicates: true,
-    }),
     NgbModalModule,
     ReactiveFormsModule,
     ProgressbarModule.forRoot(),

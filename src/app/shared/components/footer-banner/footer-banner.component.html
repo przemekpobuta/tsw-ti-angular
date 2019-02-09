@@ -1,0 +1,29 @@
+<div id="footer-landing" class="view">
+  
+        <div class="mask flex-center rgba-blue-strong">
+          <div class="container">
+            <div class="text-center">
+
+              <div *ngIf="type == 'banner'">
+
+                <h2>Zainteresowany studiami?</h2>
+
+                <button type="button" class="btn btn-white btn-rounded waves-effect waves-light" [routerLink]="[ '/rekrutacja' ]" mdbWavesEffect>Sprawdź aktualną rekrutację</button>
+
+                <div class="contact-link">
+                    <a [routerLink]="['/kontakt']">lub skontaktuj się z nami</a>
+                </div>
+
+              </div>
+              
+              <div *ngIf="type == 'basic'">
+
+                <h2>Zdobądź wiedzę pożądaną na rynku pracy!</h2>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+  
+  </div>

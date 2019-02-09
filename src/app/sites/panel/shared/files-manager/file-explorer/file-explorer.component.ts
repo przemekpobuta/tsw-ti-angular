@@ -17,6 +17,8 @@ import { ScrollService } from 'src/app/shared/services/scroll.service';
 })
 export class FileExplorerComponent implements OnInit {
 
+  @Input() mode: string;
+  @Input() editAccessAccount: User;
   @Input() fileElements: FileElement[];
   @Input() canNavigateUp: string;
   @Input() path: string;
@@ -26,7 +28,7 @@ export class FileExplorerComponent implements OnInit {
   @Output() folderAdded = new EventEmitter<{ name: string }>();
   @Output() elementRemoved = new EventEmitter<FileElement>();
   @Output() elementRenamed = new EventEmitter<FileElement>();
-  @Output() elementToggledVisibility = new EventEmitter<FileElement>();
+  @Output() elementToggledVisibility = new EventEmitter<{user: User, fileElement: FileElement}>();
   @Output() elementMoved = new EventEmitter<FileElement>();
   @Output() navigatedDown = new EventEmitter<FileElement>();
   @Output() navigatedUp = new EventEmitter();
@@ -47,6 +49,7 @@ export class FileExplorerComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('mode:', this.mode);
     console.log(this.currentRoot);
     this.user = this.authService.getCurrentUser();
   }
@@ -60,20 +63,25 @@ export class FileExplorerComponent implements OnInit {
     //  TODO: request downloadElement
   }
 
-  toogleElementVisibility(element) {
+  toogleElementVisibility(user: User, element: FileElement) {
     console.log('Toogle visibility');
     //  TODO: toogle visibility
     element.is_visible = !element.is_visible;
-    this.elementToggledVisibility.emit(element);
+    this.elementToggledVisibility.emit({
+      user: user,
+      fileElement: element
+    });
   }
 
   navigate(element: FileElement) {
-    if (element.file_type === 'folder') {
-      this.navigatedDown.emit(element);
-    } else {
-      this.downloadFile(element);
-    }
-    this.scrollService.triggerScrollToTop();
+    // if (this.mode === 'view') {
+      if (element.file_type === 'folder') {
+        this.navigatedDown.emit(element);
+        this.scrollService.triggerScrollToTop();
+      } else {
+        this.downloadFile(element);
+      }
+    // }
   }
 
   navigateUp() {
@@ -157,7 +165,9 @@ export class FileExplorerComponent implements OnInit {
   }
 
   downloadFile(element: FileElement) {
-    this.fileDownloaded.emit(element);
+    if (this.mode !== 'edit-user-access') {
+      this.fileDownloaded.emit(element);
+    }
   }
 
   // openMenu(event: MouseEvent, viewChild: any) { // viewChild: MatMenuTrigger

@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { LoaderService } from 'src/app/shared/components/loader/loader.service';
 import { User } from 'src/app/shared/models/user.model';
-import { FileService } from '../files/file-explorer/services/file.service';
+import { FileService } from '../shared/files-manager/file-explorer/services/file.service';
 
 @Component({
   selector: 'app-user',

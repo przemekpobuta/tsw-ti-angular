@@ -28,23 +28,18 @@
   color: rgba(0,0,0,0.7);
 }
 .list-group-item.active {
-  z-index: 2;
-  color: #fff;
-  //background-color: #2196f3;
-  border-color: rgba(0, 0, 0, 0.125);
+  // z-index: 2;
+  background-color: rgba(0,0,0,0.03);
+  color: rgba(0,0,0,0.7);
+  border: 1px solid rgba(0, 0, 0, 0.125);
   border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
+  // border-bottom: 1px solid transparent;
 }
 .panel-container {
   min-height: 73vh;
 }
 #toolbar {
   background: rgba(0,0,0,0.1);
-}
-.list-group-item.active {
-  background-color: rgba(0,0,0,0.03);
-  color: rgba(0,0,0,0.7);
-  //border-color: ;
 }
 .list-group-item {
   padding: 0.95rem 1.25rem;

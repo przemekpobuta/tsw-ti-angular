@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    this.scrollService.triggerScrollToTop();
+    // this.scrollService.triggerScrollToTop();
 
     setInterval(() => {
       this.startedHome1Animation = true;

@@ -1,20 +1,2 @@
-<div class="file-explorer-container">
-
-  <app-file-explorer
-    [fileElements]="fileElements | async" [path]="currentPath"
-    [canNavigateUp]="canNavigateUp"
-    [currentRoot]="currentRoot"
-    [isLoadingData]="isLoadingData"
-    (folderAdded)="addFolder($event)"
-    (elementRemoved)="removeElement($event)"
-    (navigatedDown)="navigateToFolder($event)"
-    (navigatedUp)="navigateUp()"
-    (elementRenamed)="renameElement($event)"
-    (elementToggledVisibility)="toggleVisibilityElement($event)"
-    (elementMoved)="moveElement($event)"
-    (fileDownloaded)="downloadFile($event)"
-    (filesUploaded)="uploadedFiles()"
-    >
-  </app-file-explorer>
-
-</div>
+<app-files-manager [mode]="mode">
+</app-files-manager>

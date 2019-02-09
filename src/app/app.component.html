@@ -1,10 +1,11 @@
 <app-loading-bar></app-loading-bar>
-<header class="" id="header-top" [ngClass]="{'panel-nav' : isPanel, 'page-nav' : isPage}">
+<header id="header-top" [ngClass]="{'panel-nav' : isPanel, 'page-nav' : isPage}">
 
   <mdb-navbar
     #navbar
     SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav"
     [containerInside]="true">
+    
     <!--blue-->
     <mdb-navbar-brand>
       <a class="row logo navbar-brand" routerLink="/home">
@@ -17,74 +18,73 @@
             Technologie Internetowe
           </div>
         </div>
-        
-          
       </a>
-      <!--TODO: dodać coś o studiach podyplomowych-->
     </mdb-navbar-brand>
     <!--TODO: zmienić paski na X po rozwinięciu menu-->
     <!--<i class="fa fa-remove" aria-hidden="true"></i>-->
-
+    
     <links>
-      <ul class="navbar-nav ml-auto "><!-- nav-flex-icons -->
-        <li class="nav-item waves-light" routerLinkActive="active" routerLink="/o-studiach" mdbWavesEffect>
-          <a class="nav-link">O studiach <span class="sr-only">(current)</span></a>
-        </li>
-        <!--<li class="nav-item waves-light" mdbWavesEffect>-->
-        <!--<a class="nav-link">O studiach</a>-->
-        <!--</li>-->
-        <li class="nav-item waves-light" routerLinkActive="active" routerLink="/organizacja" mdbWavesEffect>
-          <a class="nav-link">Organizacja</a>
-        </li>
-        <li class="nav-item waves-light" routerLinkActive="active" routerLink="/plan-studiow" mdbWavesEffect>
-          <a class="nav-link">Plan studiów</a>
-        </li>
-        <li class="nav-item waves-light" routerLinkActive="active" routerLink="/programy" mdbWavesEffect>
-        <a class="nav-link">Programy</a>
-        </li>
-        <li class="nav-item waves-light" routerLinkActive="active" routerLink="/rekrutacja" mdbWavesEffect>
-          <a class="nav-link">Rekrutacja</a>
-        </li>
-        <!--<li class="nav-item waves-light" mdbWavesEffect>-->
-        <!--<a class="nav-link">FAQ</a>-->
-        <!--</li>-->
-        <li class="nav-item waves-light" routerLinkActive="active" routerLink="/kontakt" mdbWavesEffect>
-          <a class="nav-link">Kontakt</a>
-        </li>
-        <li
-          class="nav-item waves-light"
-          routerLinkActive="active"
-          routerLink="/login"
-          *ngIf="!authService.isLoggedIn()"
-          mdbWavesEffect>
-          <a class="nav-link">
-            <span class="mobile-only">Zaloguj </span>
-            <i class="fa fa-user-circle-o" aria-hidden="true" mdbTooltip="Zaloguj" placement="bottom"></i>
-          </a>
-        </li>
-        <li
-          class="nav-item waves-light"
-          routerLinkActive="active"
-          routerLink="/panel"
-          *ngIf="authService.isLoggedIn()"
-          mdbWavesEffect>
-          <a class="nav-link">
-            <span class="mobile-only">Panel użytkownika </span>
-            <i class="fa fa-user-circle-o" aria-hidden="true" mdbTooltip="Panel użytkownika" placement="bottom"></i>
-          </a>
-        </li>
-        <li
-          class="nav-item waves-light"
-          (click)="onLogout()"
-          *ngIf="authService.isLoggedIn()"
-          mdbWavesEffect>
-          <a class="nav-link">
-            <span class="mobile-only">Wyloguj ({{ user ? user.login : '' }}) </span>
-            <i class="fa fa-sign-out" aria-hidden="true" mdbTooltip="Wyloguj ({{ user ? user.login : '' }})" placement="bottom"></i>
-          </a>
-        </li>
-      </ul>
+    <ul class="navbar-nav ml-auto "><!-- nav-flex-icons -->
+      <li class="nav-item waves-light" *ngIf="isPage" mdbTooltip="Strona główna" placement="bottom" mdbWavesEffect>
+        <a routerLink="/home" routerLinkActive="active" class="nav-link">
+          <span class="mobile-only">Strona główna </span>
+          <i class="fas fa-home"></i>
+        </a>
+      </li>
+      <li class="nav-item waves-light" *ngIf="!isPanel" routerLinkActive="active" routerLink="/o-studiach" mdbWavesEffect>
+        <a class="nav-link">O studiach <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item waves-light" *ngIf="!isPanel" routerLinkActive="active" routerLink="/organizacja" mdbWavesEffect>
+        <a class="nav-link">Organizacja</a>
+      </li>
+      <li class="nav-item waves-light" *ngIf="!isPanel" routerLinkActive="active" routerLink="/plan-studiow" mdbWavesEffect>
+        <a class="nav-link">Plan studiów</a>
+      </li>
+      <li class="nav-item waves-light" *ngIf="!isPanel" routerLinkActive="active" routerLink="/programy" mdbWavesEffect>
+      <a class="nav-link">Programy</a>
+      </li>
+      <li class="nav-item waves-light" *ngIf="!isPanel" routerLinkActive="active" routerLink="/rekrutacja" mdbWavesEffect>
+        <a class="nav-link">Rekrutacja</a>
+      </li>
+      <li class="nav-item waves-light" *ngIf="!isPanel" routerLinkActive="active" routerLink="/kontakt" mdbWavesEffect>
+        <a class="nav-link">Kontakt</a>
+      </li>
+      <li
+        class="nav-item waves-light"
+        *ngIf="!authService.isLoggedIn()"
+        mdbTooltip="Zaloguj"
+        placement="bottom"
+        mdbWavesEffect>
+        <a class="nav-link" routerLinkActive="active" routerLink="/login">
+          <span class="mobile-only">Zaloguj </span>
+          <i class="fas fa-sign-in-alt"></i>
+        </a>
+      </li>
+      <li
+        class="nav-item waves-light"
+        *ngIf="authService.isLoggedIn()"
+        mdbTooltip="Panel użytkownika"
+        placement="bottom"
+        mdbWavesEffect>
+        <a class="nav-link" routerLinkActive="active" routerLink="/panel">
+          <span class="mobile-only">Panel użytkownika </span>
+          <i class="fas fa-user-circle"></i>
+        </a>
+      </li>
+      <li
+        class="nav-item waves-light"
+        mdbTooltip="Wyloguj ({{ user ? user.login : '' }})"
+        placement="bottom"
+        *ngIf="authService.isLoggedIn()"
+        mdbWavesEffect>
+        <a class="nav-link" (click)="onLogout()">
+          <span class="mobile-only">Wyloguj ({{ user ? user.login : '' }}) </span>
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+      </li>
+    </ul>
     </links>
+
   </mdb-navbar>
 
 </header>
@@ -95,56 +95,18 @@
       <div id="page-top"></div>
       <router-outlet></router-outlet>
   </div>
-  
-
 </main>
 <!--Main Layout-->
 
 
 <!-- Footer blue -->
-<footer class="page-footer font-small" [ngClass]="{'panel-footer' : isPanel}">
+<footer class="page-footer font-small mt-4" [ngClass]="{'panel-footer' : isPanel}">
 
   <!--<div class="container text-center text-md-left">-->
   <!--<div class="row">-->
   <!--<h5 class="text-uppercase">Uczelnia</h5>-->
   <!--</div>-->
   <!--</div>-->
-
-  <div id="footer-landing" class="view mb-4" *ngIf="!isPanel">
-  
-    <!-- <div class="view"> -->
-      <!-- <div class="full-bg-img"> -->
-        <div class="mask flex-center rgba-blue-strong">
-          <div class="container">
-            <div class="text-center">
-              <!--  wow fadeInUp" data-wow-delay="0.6s" -->
-
-              <div *ngIf="!isRecruitment">
-
-                <h2>Zainteresowany studiami?</h2>
-
-                <button type="button" class="btn btn-white btn-rounded waves-effect waves-light" [routerLink]="[ '/rekrutacja' ]" mdbWavesEffect>Sprawdź aktualną rekrutację</button>
-
-                <!-- <button type="button" mdbBtn color="white" mdbWavesEffect>Rekrutacja</button> -->
-
-                <div class="contact-link">
-                    <a [routerLink]="['/kontakt']">lub skontaktuj się z nami</a>
-                </div>
-
-              </div>
-              <div *ngIf="isRecruitment">
-
-                <h2>Zdobądź wiedzę pożądaną na rynku pracy!</h2>
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-      <!-- </div> -->
-    <!-- </div> -->
-  
-  </div>
 
   <!-- Footer Links -->
   <div id="footer-menu" class="container text-center text-md-left">
@@ -296,3 +258,4 @@
     <i class="fa fa-chevron-up"></i>
   </a>
 </div>
+
