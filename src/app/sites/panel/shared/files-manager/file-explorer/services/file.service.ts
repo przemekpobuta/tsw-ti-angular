@@ -98,6 +98,10 @@ export class FileService implements IFileService {
             // The upload is complete
             progress.complete();
           }
+        },
+        err => {
+          console.error('JAKIŚ BŁĄD');
+          // return
         });
       }
 

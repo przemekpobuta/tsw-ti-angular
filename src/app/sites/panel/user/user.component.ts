@@ -15,6 +15,7 @@ import { FileService } from '../shared/files-manager/file-explorer/services/file
 export class UserComponent implements OnInit {
 
   user: User;
+  mode = 'view';
 
   constructor(
     private router: Router,

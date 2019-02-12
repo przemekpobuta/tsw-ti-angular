@@ -129,13 +129,11 @@ export class FileExplorerComponent implements OnInit {
     const uploadDialogRef = this.modalService.open(UploadDialogComponent, this.modalOptions);
     uploadDialogRef.componentInstance.parent_uuid = this.currentRoot ? this.currentRoot.uuid : '';
 
-    console.log(this.currentRoot.uuid);
-
     uploadDialogRef.result.then(res => {
         if (res) {
           // this.folderAdded.emit({ name: res });
+          console.log(res);
         }
-        console.log(res);
         this.filesUploaded.emit();
       },
       dismiss => {

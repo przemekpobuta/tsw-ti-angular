@@ -19,14 +19,14 @@ import { ScrollService } from './shared/services/scroll.service';
 })
 export class AppComponent implements OnInit, AfterContentInit {
 
-  // @ViewChild('navbar') navbar: NavbarComponent;
-
   faCoffee = faCoffee;
   user: User;
   isPanel = false;
   isPage = false;
   isRecruitment = false;
   showScrollToTop = false;
+
+  
 
   constructor(
     private router: Router,
@@ -39,7 +39,6 @@ export class AppComponent implements OnInit, AfterContentInit {
     private modalService: NgbModal,
     private scrollService: ScrollService
   ) {
-      // customize default values of modals used by this component tree
       config.backdrop = 'static';
       config.keyboard = false;
   }

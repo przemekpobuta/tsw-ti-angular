@@ -51,6 +51,7 @@ export class  UploadDialogComponent implements OnInit {
   closeDialog() {
     // if everything was uploaded already, just close the dialog
     if (this.uploadSuccessful) {
+      // return this.activeModal.close();
       return this.activeModal.close();
     }
 
@@ -60,17 +61,20 @@ export class  UploadDialogComponent implements OnInit {
     // start the upload and save the progress map
     this.progress = this.fileService.upload(this.files, this.parent_uuid);
     console.log(this.progress);
-    for (const key in this.progress) {
-      this.progress[key].progress.subscribe(
-        val => {
-          console.log(val);
-        },
-        err => {
-          console.log(err);
-          this.error = err;
-          this.alertService.error('Błąd przesyłania plików!');
-          this.activeModal.dismiss(err);
-        });
+    if (this.progress) {
+      for (let key of this.progress) {
+        this.progress[key].progress.subscribe(
+          val => {
+            console.log(val);
+          },
+          error => {
+            console.log(error);
+            this.error = error;
+            this.alertService.error('Błąd przesyłania plików!');
+            this.activeModal.dismiss(error);
+          }
+        );
+      }
     }
 
     // convert the progress map into an array

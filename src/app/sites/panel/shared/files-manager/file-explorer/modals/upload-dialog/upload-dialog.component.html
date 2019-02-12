@@ -51,5 +51,14 @@
     Anuluj
   </button>
   <!-- (click)="basicModal.hide()" -->
-  <button type="button" mdbBtn color="primary" class="relative waves-light" [disabled]="!canBeClosed" (click)="closeDialog()" mdbWavesEffect>{{ primaryButtonText }}</button>
+  <button 
+    type="button" 
+    mdbBtn 
+    color="primary" 
+    class="relative waves-light" 
+    [disabled]="!canBeClosed"
+    (click)="closeDialog()"
+    mdbWavesEffect>
+    {{ primaryButtonText }}
+  </button>
 </div>

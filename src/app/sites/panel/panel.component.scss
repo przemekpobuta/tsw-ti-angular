@@ -26,14 +26,19 @@
 
 .list-group-item {
   color: rgba(0,0,0,0.7);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 .list-group-item.active {
   // z-index: 2;
   background-color: rgba(0,0,0,0.03);
   color: rgba(0,0,0,0.7);
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border: 1px solid #d8d8d8;
   border-top: 1px solid transparent;
-  // border-bottom: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+.list-group-item:last-of-type {
+  border-bottom: 1px solid #d8d8d8;
 }
 .panel-container {
   min-height: 73vh;
