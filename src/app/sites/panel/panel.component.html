@@ -42,6 +42,9 @@
           <a class="list-group-item waves-light" routerLinkActive="active" routerLink="/panel/files" mdbWavesEffect>
             <i class="fa fa-folder" aria-hidden="true"></i> Pliki
           </a>
+          <a class="list-group-item waves-light" routerLinkActive="active" routerLink="/panel/news" *ngIf="activeUser.role === 'admin'" mdbWavesEffect>
+            <i class="fas fa-newspaper"></i> Aktualności
+          </a>
           <a class="list-group-item waves-light" routerLinkActive="active" routerLink="/panel/accounts" *ngIf="activeUser.role === 'admin'" mdbWavesEffect>
             <i class="fa fa-users" aria-hidden="true"></i> Użytkownicy
           </a>

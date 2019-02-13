@@ -62,6 +62,8 @@ import { TechnologieProgramistyczneUslugInternetowychComponent } from './sites/p
 import { FilesManagerComponent } from './sites/panel/shared/files-manager/files-manager.component';
 import { CommonModule } from '@angular/common';
 import { NewsService } from './shared/services/news.service';
+import { NewsComponent } from './sites/news/news.component';
+import { NewsManagementComponent } from './sites/panel/news-management/news-management.component';
 
 @NgModule({
   declarations: [
@@ -104,6 +106,8 @@ import { NewsService } from './shared/services/news.service';
     FaqComponent,
     FooterBannerComponent,
     FilesManagerComponent,
+    NewsComponent,
+    NewsManagementComponent,
   ],
   imports: [
     BrowserModule,

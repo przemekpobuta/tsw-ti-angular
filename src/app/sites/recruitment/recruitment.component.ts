@@ -11,12 +11,9 @@ export class RecruitmentComponent implements OnInit {
 
   // items = [{name: 1}, {name: 2}, {name: 3}];
 
-  news: News[] = [];
-
   constructor(private newsService: NewsService) { }
 
   ngOnInit() {
-    this.news = this.newsService.getAllNews();
   }
 
 }

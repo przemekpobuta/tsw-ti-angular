@@ -29,6 +29,8 @@ import { TechnologieProgramistyczneUslugInternetowychComponent } from './sites/p
 import { DefaultComponent } from './sites/programs/default/default.component';
 import { UserComponent } from './sites/panel/user/user.component';
 import { FaqComponent } from './sites/faq/faq.component';
+import { NewsComponent } from './sites/news/news.component';
+import { NewsManagementComponent } from './sites/panel/news-management/news-management.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -55,12 +57,14 @@ const routes: Routes = [
   {path: 'rekrutacja', component: RecruitmentComponent},
   {path: 'faq', component: FaqComponent},
   {path: 'kontakt', component: ContactComponent},
+  {path: 'aktualnosci', component: NewsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'panel', component: PanelComponent, canActivate: [AuthGuard], children: [
       {path: '', redirectTo: 'files', pathMatch: 'full' },
       {path: 'files', component: FilesComponent},
       {path: 'accounts', component: AccountsComponent},
-      {path: 'account', component: AccountComponent}
+      {path: 'account', component: AccountComponent},
+      {path: 'news', component: NewsManagementComponent}
     ]},
   {path: 'user', component: UserComponent, canActivate: [AuthGuard]},
   {path: '**', component: PageNotFoundComponent} // musi być ostatnie
