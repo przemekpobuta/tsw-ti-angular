@@ -55,16 +55,16 @@
             <!--&lt;!&ndash;*ngIf="element.file_type != 'folder'">&ndash;&gt;-->
           <!--&lt;!&ndash;</i>&ndash;&gt;-->
         <!--</td>-->
-        <td class="account_login">
+        <td class="account_login click" (click)="onEditUserAccess(account)">
           <span>{{ account?.login }}</span>
         </td>
-        <td class="account_role">
+        <td class="account_role click" (click)="onEditUserAccess(account)">
           <span>{{ account?.role }}</span>
         </td>
-        <td class="account_created_at">
+        <td class="account_created_at click" (click)="onEditUserAccess(account)">
           <span>{{account?.created_at ? account.created_at : '-' }}</span>
         </td>
-        <td class="account_updated_at">
+        <td class="account_updated_at click" (click)="onEditUserAccess(account)">
           <span>{{account?.updated_at ? account.updated_at : '-' }}</span>
         </td>
         <td class="account_actions">

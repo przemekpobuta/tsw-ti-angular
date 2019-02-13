@@ -29,14 +29,16 @@ export class PanelComponent implements OnInit, OnDestroy {
     if (this.activeUser.role === 'user') {
       this.router.navigate(['/user']);
     }
-    setTimeout(() => {
-      this.alertService.success('test123!');
-    });
 
   }
   ngOnDestroy() {
     // this.activeUserSub.unsubscribe();
   }
+  // onClickAccounts() {
+  //   // routerLink="/panel/accounts"
+  //   this.router.navigateByUrl('/panel/accounts', { skipLocationChange: true });
+  //   setTimeout(() => this.router.navigate('/panel/accounts'));
+  // }
 
 
 }

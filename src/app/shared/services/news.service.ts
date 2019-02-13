@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { News } from '../models/news.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class NewsService {
 
-  private homeBar = '';
+  // TODO: news management
+  // TODO: mobile adjusty
+  // TODO: zmiany Marcina w panelu
+
+  private homeBar = 'Najbliższa planowana edycja studiów podyplomowych "Technologie Internetowe" - październik 2019!';
   private news: News[] = [
       {
         id: 1,

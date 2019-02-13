@@ -526,12 +526,13 @@
 
 <app-footer-banner [type]="'banner'"></app-footer-banner>
 
-<div id="top-news" class="animated wow fadeInDown" data-wow-delay="0.3s">
+<div id="top-news" class="animated wow fadeInDown" data-wow-delay="0.3s" *ngIf="homeBarNews">
     <div class="top-news-inner">
       <div class="top-news-announcement-banner container">
         <div class="row">
           <div class="col-12 info">
-            Najbliższa planowana edycja studiów podyplomowych "Technologie Internetowe" - październik 2019! 
+            <!-- Najbliższa planowana edycja studiów podyplomowych "Technologie Internetowe" - październik 2019! -->
+            {{ homeBarNews }}
             <a class="action" [routerLink]="['/rekrutacja']">
               <mdb-icon far icon="fa-newspaper"></mdb-icon> Sprawdź aktualności
             </a>

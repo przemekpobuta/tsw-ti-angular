@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { News } from 'src/app/shared/models/news.model';
+import { NewsService } from 'src/app/shared/services/news.service';
 
 @Component({
   selector: 'app-recruitment',
@@ -7,11 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecruitmentComponent implements OnInit {
 
-  items = [{name: 1}, {name: 2}, {name: 3}];
+  // items = [{name: 1}, {name: 2}, {name: 3}];
 
-  constructor() { }
+  news: News[] = [];
+
+  constructor(private newsService: NewsService) { }
 
   ngOnInit() {
+    this.news = this.newsService.getAllNews();
   }
 
 }

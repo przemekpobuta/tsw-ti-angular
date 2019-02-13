@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoaderService} from '../../shared/components/loader/loader.service';
 import { ScrollService } from 'src/app/shared/services/scroll.service';
+import { NewsService } from 'src/app/shared/services/news.service';
 
 @Component({
   selector: 'app-home',
@@ -28,15 +29,19 @@ export class HomeComponent implements OnInit {
   activeIcon = this.home1Icons[0];
   activeIconCounter = -1;
   startedHome1Animation = false;
+  homeBarNews: string;
 
   constructor(
     private loaderService: LoaderService,
-    private scrollService: ScrollService
+    private scrollService: ScrollService,
+    private newsService: NewsService
   ) { }
 
   ngOnInit() {
 
     // this.scrollService.triggerScrollToTop();
+
+    this.homeBarNews = this.newsService.getHomeBar();
 
     setInterval(() => {
       this.startedHome1Animation = true;

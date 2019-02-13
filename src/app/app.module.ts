@@ -61,6 +61,7 @@ import { ProgramowanieSystemowEkspertowychComponent } from './sites/programs/pro
 import { TechnologieProgramistyczneUslugInternetowychComponent } from './sites/programs/technologie-programistyczne-uslug-internetowych/technologie-programistyczne-uslug-internetowych.component';
 import { FilesManagerComponent } from './sites/panel/shared/files-manager/files-manager.component';
 import { CommonModule } from '@angular/common';
+import { NewsService } from './shared/services/news.service';
 
 @NgModule({
   declarations: [
@@ -135,7 +136,8 @@ import { CommonModule } from '@angular/common';
     LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    ScrollService
+    ScrollService,
+    NewsService
   ],
   bootstrap: [AppComponent],
   entryComponents: [
