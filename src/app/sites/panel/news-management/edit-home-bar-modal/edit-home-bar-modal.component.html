@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">Edytuj pasek informacyjny</h4>
+  <button type="button" class="close" aria-describedby="modal-title" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <form [formGroup]="formGroup">
+
+    <div class="md-form">
+      <textarea type="text" id="homeBar" class="md-textarea form-control" formControlName="homeBar" mdbInput></textarea>
+      <label for="inputLogin">Treść paska informacyjnego</label>
+    </div>
+
+  </form>
+
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" (click)="onDelete()">Usuń</button>
+  <button type="button" class="btn btn-grey" (click)="activeModal.dismiss('cancel click')">Zamknij</button>
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="onClickSave()"
+    [disabled]="!formGroup.valid">
+    Zapisz
+  </button>
+</div>

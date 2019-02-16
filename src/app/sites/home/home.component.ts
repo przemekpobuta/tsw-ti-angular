@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
     // this.scrollService.triggerScrollToTop();
 
     this.homeBarNews = this.newsService.getHomeBar();
+    console.log('homeBarNews', this.homeBarNews);
 
     setInterval(() => {
       this.startedHome1Animation = true;

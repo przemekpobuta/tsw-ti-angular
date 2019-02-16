@@ -64,6 +64,9 @@ import { CommonModule } from '@angular/common';
 import { NewsService } from './shared/services/news.service';
 import { NewsComponent } from './sites/news/news.component';
 import { NewsManagementComponent } from './sites/panel/news-management/news-management.component';
+import { EditHomeBarModalComponent } from './sites/panel/news-management/edit-home-bar-modal/edit-home-bar-modal.component';
+import { EditNewsModalComponent } from './sites/panel/news-management/edit-news-modal/edit-news-modal.component';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -108,6 +111,8 @@ import { NewsManagementComponent } from './sites/panel/news-management/news-mana
     FilesManagerComponent,
     NewsComponent,
     NewsManagementComponent,
+    EditHomeBarModalComponent,
+    EditNewsModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -116,6 +121,7 @@ import { NewsManagementComponent } from './sites/panel/news-management/news-mana
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    QuillModule,
     ToastrModule.forRoot({
       timeOut: 8000,
       positionClass: 'toast-bottom-right',
@@ -150,7 +156,9 @@ import { NewsManagementComponent } from './sites/panel/news-management/news-mana
     RenameDialogComponent,
     MoveDialogComponent,
     DeleteAccountComponent,
-    EditAccountComponent
+    EditAccountComponent,
+    EditHomeBarModalComponent,
+    EditNewsModalComponent
   ]
 })
 export class AppModule { }

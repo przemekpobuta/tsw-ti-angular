@@ -4,6 +4,9 @@
 @import '../node_modules/ngx-toastr/toastr.css';
 // @import '~ngx-toastr/toastr-bs4-alert';
 
+@import '../node_modules/quill/dist/quill.bubble.css';
+@import '../node_modules/quill/dist/quill.snow.css';
+
 $view-page-header-height: 22vh;
 
 // ::-webkit-scrollbar the scrollbar.

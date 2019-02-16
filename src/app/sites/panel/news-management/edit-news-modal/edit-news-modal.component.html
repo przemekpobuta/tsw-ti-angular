@@ -1,0 +1,57 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-title">
+      {{ mode == 'add' ? 'Dodawanie aktualności' : '' }}
+      {{ mode == 'edit' ? 'Edytowanie aktualności' : '' }}
+    </h4>
+    <button type="button" class="close" aria-describedby="modal-title" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  
+    <form [formGroup]="formGroup">
+
+        <div class="row">
+          <div class="col-md-6">
+              <div class="md-form my-3">
+                <input type="text" id="titleInput" class="form-control" formControlName="title" [validateSuccess]="false" mdbInputDirective>
+                <label for="titleInput">Tytuł</label>
+              </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="md-form my-3">
+              <input type="text" id="dateInput" class="form-control" formControlName="date" mdbInputDirective>
+              <label for="dateInput">Data zmiany</label>
+            </div>
+          </div>
+        </div>
+              
+      <div class="">
+        <!-- <textarea type="text" id="contentInput" class="md-textarea form-control" formControlName="content" mdbInput></textarea> -->
+        <label for="contentInput">Treść</label>
+        <quill-editor
+          #content
+          [sanitize]="true"
+          [modules]="modules"
+          [formControl]="formGroup.controls['content']">
+        </quill-editor>
+
+      </div>
+      
+    </form>
+  
+  </div>
+  
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="onDelete()">Usuń</button>
+    <button type="button" class="btn btn-grey" (click)="activeModal.dismiss('cancel click')">Zamknij</button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="onClickSave()"
+      [disabled]="!formGroup.valid">
+      Zapisz
+    </button>
+  </div>
+  
