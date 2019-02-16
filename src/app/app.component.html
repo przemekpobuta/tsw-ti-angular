@@ -25,10 +25,11 @@
     
     <links>
     <ul class="navbar-nav ml-auto "><!-- nav-flex-icons -->
-      <li class="nav-item waves-light" *ngIf="isPage" mdbTooltip="Strona główna" placement="bottom" mdbWavesEffect>
+      <li class="nav-item waves-light" *ngIf="isPage" mdbTooltip="{{ isPanel ? 'Powrót do strony' : 'Strona główna' }}" placement="bottom" mdbWavesEffect>
         <a routerLink="/home" routerLinkActive="active" class="nav-link">
-          <i class="fas fa-home"></i> 
-          <span class="mobile-only">Strona główna </span>
+          <i class="fas fa-home" [ngClass]="{'display-only': !isPanel}"></i> 
+          <span class="mobile-only">
+          {{ isPanel ? 'Powrót do strony' : 'Strona główna' }}</span>
         </a>
       </li>
       <li class="nav-item waves-light" *ngIf="!isPanel" routerLinkActive="active" routerLink="/o-studiach" mdbWavesEffect>
@@ -56,7 +57,7 @@
         placement="bottom"
         mdbWavesEffect>
         <a class="nav-link" routerLinkActive="active" routerLink="/login">
-          <i class="fas fa-sign-in-alt"></i> 
+          <i class="fas fa-sign-in-alt display-only"></i> 
           <span class="mobile-only">Zaloguj </span>
         </a>
       </li>
@@ -67,7 +68,7 @@
         placement="bottom"
         mdbWavesEffect>
         <a class="nav-link" routerLinkActive="active" routerLink="/panel">
-          <i class="fas fa-user-circle"></i> 
+          <i class="fas fa-user-circle" [ngClass]="{'display-only': !isPanel}"></i> 
           <span class="mobile-only">Panel użytkownika </span>
         </a>
       </li>
@@ -78,7 +79,7 @@
         *ngIf="authService.isLoggedIn()"
         mdbWavesEffect>
         <a class="nav-link" (click)="onLogout()">
-          <i class="fas fa-sign-out-alt"></i> 
+          <i class="fas fa-sign-out-alt" [ngClass]="{'display-only': !isPanel}"></i> 
           <span class="mobile-only">Wyloguj ({{ user ? user.login : '' }}) </span>
         </a>
       </li>
@@ -185,11 +186,11 @@
 
 
       </div>
-           
+          
 
       <hr class="clearfix w-100 d-md-none pb-3">
 
-       <div class="col-md-6 mt-md-0 mt-3 footer-logo">
+      <div class="col-md-6 mt-md-0 mt-3 footer-logo">
 
           <h5 class="text-uppercase">Uczelnia</h5>
   
@@ -202,8 +203,8 @@
                     Elektrotechniki i Informatyki<br/>
                     Budynek A, pok. 104</p>
                   <p>Tel. +48 17 865 12 89<br/>
-                     Fax. +48 17 854 20 88<br/>
-                     E-mail. <a href="mailto:dwe@prz.edu.pl">dwe@prz.edu.pl</a></p>
+                    Fax. +48 17 854 20 88<br/>
+                    E-mail. <a href="mailto:dwe@prz.edu.pl">dwe@prz.edu.pl</a></p>
                     
                   </div>
             </div>
@@ -258,4 +259,3 @@
     <i class="fa fa-chevron-up"></i>
   </a>
 </div>
-

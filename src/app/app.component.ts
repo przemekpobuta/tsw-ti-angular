@@ -8,6 +8,7 @@ import {ToastrService} from 'ngx-toastr';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ScrollEvent } from 'ngx-scroll-event';
 import { ScrollService } from './shared/services/scroll.service';
+import { NavbarComponent } from 'angular-bootstrap-md';
 // import { NavbarComponent } from 'angular-bootstrap-md/angular-bootstrap-md/navbars';
 
 @Component({
@@ -19,14 +20,14 @@ import { ScrollService } from './shared/services/scroll.service';
 })
 export class AppComponent implements OnInit, AfterContentInit {
 
+  @ViewChild('navbar') navbar: NavbarComponent;
+
   faCoffee = faCoffee;
   user: User;
   isPanel = false;
   isPage = false;
   isRecruitment = false;
   showScrollToTop = false;
-
-  
 
   constructor(
     private router: Router,
@@ -46,6 +47,7 @@ export class AppComponent implements OnInit, AfterContentInit {
   ngOnInit() {
 
     this.router.events.subscribe(event => {
+      this.navbar.hide();
       if (event instanceof NavigationStart) {
         // this.navbar.hide();
         if (
@@ -60,12 +62,12 @@ export class AppComponent implements OnInit, AfterContentInit {
             this.isPage = false;
           } else {
             this.isPage = true;
-            console.log('isPage', this.isPage);
+            // console.log('isPage', this.isPage);
           }
         }
       }
       if (event instanceof ActivationEnd) {
-        console.log('ActivationEnd');
+        // console.log('ActivationEnd');
       }
     });
 

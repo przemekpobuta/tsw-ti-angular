@@ -14,7 +14,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { TokenInterceptor} from './auth/iterceptors/token.interceptor';
 import { ErrorInterceptor} from './auth/iterceptors/error.interceptor';
 import { AuthGuard} from './auth/guards/auth-guard.service';
-import { ToastrModule} from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PanelComponent } from './sites/panel/panel.component';
@@ -67,6 +66,7 @@ import { NewsManagementComponent } from './sites/panel/news-management/news-mana
 import { EditHomeBarModalComponent } from './sites/panel/news-management/edit-home-bar-modal/edit-home-bar-modal.component';
 import { EditNewsModalComponent } from './sites/panel/news-management/edit-news-modal/edit-news-modal.component';
 import { QuillModule } from 'ngx-quill';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -118,15 +118,15 @@ import { QuillModule } from 'ngx-quill';
     BrowserModule,
     CommonModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    QuillModule,
     ToastrModule.forRoot({
       timeOut: 8000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    QuillModule,
     ScrollEventModule,
     OrderModule,
     AgmCoreModule.forRoot({

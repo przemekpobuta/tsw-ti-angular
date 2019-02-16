@@ -1,3 +1,6 @@
+.top-news-announcement-banner .info {
+  text-align: center;
+}
 #home-1 h2, #home-1 h5 {
   text-shadow: rgba(0,0,0,0.75) 1px 1px 0px;
 }
@@ -169,7 +172,9 @@
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-
+  .top-news-announcement-banner .info {
+    text-align: left;
+  }
 }
 
 // Extra large devices (large desktops, 1200px and up)

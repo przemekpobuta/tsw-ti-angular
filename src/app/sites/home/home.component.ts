@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     'devicon-java-plain',
     'devicon-c-plain',
     'devicon-cplusplus-plain',
-    'devicon-csharp-plain',
+    'devicon-dot-net-plain',
     'devicon-mysql-plain',
     'devicon-oracle-original',
     'devicon-postgresql-plain',

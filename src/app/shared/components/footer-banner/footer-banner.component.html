@@ -4,23 +4,23 @@
           <div class="container">
             <div class="text-center">
 
-              <div *ngIf="type == 'banner'">
+              <div>
 
                 <h2>Zainteresowany studiami?</h2>
 
                 <button type="button" class="btn btn-white btn-rounded waves-effect waves-light" [routerLink]="[ '/aktualnosci' ]" mdbWavesEffect>Sprawdź aktualności</button>
 
-                <div class="contact-link">
+                <div class="contact-link" *ngIf="type == 'banner'">
                     <a [routerLink]="['/rekrutacja']">lub dowiedz się więcej o rekrutacji</a>
                 </div>
 
               </div>
               
-              <div *ngIf="type == 'basic'">
+              <!-- <div *ngIf="type == 'basic'">
 
                 <h2>Zdobądź wiedzę pożądaną na rynku pracy!</h2>
 
-              </div>
+              </div> -->
 
             </div>
           </div>

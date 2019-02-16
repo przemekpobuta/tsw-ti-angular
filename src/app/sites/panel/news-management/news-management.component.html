@@ -29,15 +29,14 @@
 <div class="news_container container-news">
 
   <div class="table-responsive">
-    <table mdbTable><!-- striped="true" -->
-      <thead *ngIf="!isLoadingData">
+    <table mdbTable>
+      <!-- <thead *ngIf="!isLoadingData">
         <tr>
           <th scope="col">Tytuł</th>
           <th scope="col">Data dodania</th>
           <th scope="col"></th>
-
         </tr>
-      </thead>
+      </thead> -->
       <tbody>
 
       <tr mdbTableCol *ngFor="let newsItem of news" >

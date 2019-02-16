@@ -2,12 +2,12 @@ import {Component, OnDestroy, OnInit, Input} from '@angular/core';
 import {FileElement} from './file-explorer/models/file-element.model';
 import {Observable, Subscription} from 'rxjs';
 import {FileService} from './file-explorer/services/file.service';
-import {ToastrService} from 'ngx-toastr';
 import {elementEnd} from '@angular/core/src/render3';
 import { ScrollService } from 'src/app/shared/services/scroll.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { User } from 'src/app/shared/models/user.model';
 import { LoaderService } from 'src/app/shared/components/loader/loader.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-files-manager',
@@ -54,10 +54,10 @@ export class FilesManagerComponent implements OnInit, OnDestroy {
 
   getFilesByMode() {
     if (this.mode === 'edit-user-access') {
-      console.log('getFilesWithAccess');
+      // console.log('getFilesWithAccess');
       return this.fileService.getFilesWithAccess(this.editAccessAccount.id);
     } else {
-      console.log('getFiles');
+      // console.log('getFiles');
       return this.fileService.getFiles();
     }
   }
@@ -119,7 +119,6 @@ export class FilesManagerComponent implements OnInit, OnDestroy {
   }
 
   removeElement(element: FileElement) {
-    // TODO: remove at API
     this.fileService.delete(element.uuid).subscribe(res => {
       console.log(res);
       this.fileService.deleteLocal(element.uuid);
@@ -132,7 +131,9 @@ export class FilesManagerComponent implements OnInit, OnDestroy {
       () => {
         this.getFilesRequest();
       });
-    // this.updateFileElementQuery();
+
+    // TEST
+    // this.alertService.error('Defghi');
   }
 
   navigateToFolder(element: FileElement) {
@@ -155,6 +156,7 @@ export class FilesManagerComponent implements OnInit, OnDestroy {
   }
 
   moveElement(moveTo: FileElement) {
+    
     // this.fileService.update(event.element.id, { parent: event.moveTo.id });
     this.fileService.update(moveTo.uuid, {parent_uuid: moveTo.parent_uuid}).subscribe(
       res => {
@@ -167,7 +169,7 @@ export class FilesManagerComponent implements OnInit, OnDestroy {
       () => {
         this.getFilesRequest();
       }
-    );
+      );
     this.updateFileElementQuery();
   }
   downloadFile(element: FileElement) {

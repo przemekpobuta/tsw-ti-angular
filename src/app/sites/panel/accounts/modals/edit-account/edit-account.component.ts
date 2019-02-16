@@ -143,7 +143,8 @@ export class EditAccountComponent implements OnInit, OnDestroy {
         this.updateUserReq = this.accountsService.updateAccount(updateUser, this.account.id).subscribe(
           res => {
             this.alertService.success('Zaktualizowano użytkownika!');
-            this.initEditForm();
+            // this.initEditForm();
+            this.activeModal.close('Zarejestrowano');
           },
           err => {
             this.alertService.error('Nie udało się zaktualizować użytkownika!');
@@ -154,10 +155,7 @@ export class EditAccountComponent implements OnInit, OnDestroy {
       }
     }
 
-
     // console.log(this.accountForm);
-
-    // this.activeModal.close(newUser);
   }
 
 }

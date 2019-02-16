@@ -14,14 +14,14 @@ export class NewsService {
     {
       id: 0,
       title: 'Title of the news',
-      date: '19/08/2018',
+      date: '2018-08-12',
       content: '<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat '
              + 'facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis debitis.</p>'
     },
     {
       id: 1,
       title: 'Title of the news',
-      date: '21/08/2018',
+      date: '2018-08-15',
       content: '<p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat '
              + 'facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis debitis.</p>'
     }

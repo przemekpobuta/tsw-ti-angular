@@ -106,10 +106,19 @@ a:hover {
   }
 }
 
+@media (max-width: 991px) {
+  .display-only {
+    display: none; 
+  }
+}
+
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .navbar-dark {
     // background: none !important;
+  }
+  .mobile-only {
+    display: none;
   }
   .view-page-header {
     // bg-img w #
@@ -340,8 +349,12 @@ a:hover {
 .page-container {
   
 }
-ngb-modal-window {
-  overflow: auto;
+ngb-modal-window, .modal-open .modal {
+  overflow-y: auto;
 }
-
-
+.modal-open {
+  overflow-y: hidden !important;
+}
+#toast-container > div {
+  opacity:1;
+}
