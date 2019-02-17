@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {LoaderService} from '../../shared/components/loader/loader.service';
 import { ScrollService } from 'src/app/shared/services/scroll.service';
 import { NewsService } from 'src/app/shared/services/news.service';
+import { Subscription } from 'rxjs';
+import { News } from 'src/app/shared/models/news.model';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   home1Icons = [
     'devicon-html5-plain',
@@ -31,6 +33,8 @@ export class HomeComponent implements OnInit {
   startedHome1Animation = false;
   homeBarNews: string;
 
+  getHomeBarSub: Subscription;
+
   constructor(
     private loaderService: LoaderService,
     private scrollService: ScrollService,
@@ -41,9 +45,16 @@ export class HomeComponent implements OnInit {
 
     // this.scrollService.triggerScrollToTop();
 
-    this.homeBarNews = this.newsService.getHomeBar();
+    this.getHomeBarSub = this.newsService.getHomeBar().subscribe(
+      (data: News) => {
+        this.homeBarNews = data.content;
+      },
+      err => {
+        console.error(err);
+      }
+    );
     console.log('homeBarNews', this.homeBarNews);
-
+    
     setInterval(() => {
       this.startedHome1Animation = true;
       this.activeIconCounter++;
@@ -55,6 +66,9 @@ export class HomeComponent implements OnInit {
 
     // this.loaderService.show();
 
+  }
+  ngOnDestroy() {
+    if (this.getHomeBarSub) { this.getHomeBarSub.unsubscribe(); }
   }
 
 }

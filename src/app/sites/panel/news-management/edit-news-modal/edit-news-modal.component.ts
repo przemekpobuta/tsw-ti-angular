@@ -21,11 +21,17 @@ export class EditNewsModalComponent implements OnInit, OnDestroy {
   @ViewChild('content') content: QuillEditorComponent;
 
   formGroup: FormGroup;
-  news: News;
+  news: News = {
+    title: '',
+    created_at: '',
+    content: ''
+  };
   isLoadingData = false; // TODO
 
   getNewsSub: Subscription;
   updateNewsSub: Subscription;
+  addNewsSub: Subscription;
+  deleteNewsSub: Subscription;
 
   modules = {
     toolbar: [
@@ -52,15 +58,10 @@ export class EditNewsModalComponent implements OnInit, OnDestroy {
     private alertService: ToastrService
   ) { }
 
-  ngOnInit() {
-
-    if (this.mode === 'edit') {
-      this.getNews(this.news_id);
-    }
-
+  initFormGroup() {
     this.formGroup = this.formBuilder.group({
       title: [this.news.title, [Validators.required, Validators.minLength(5)]],
-      date: [{value: this.news.date, disabled: true}, Validators.required],
+      created_at: [{value: this.news.created_at, disabled: true}, Validators.required],
       content: [this.news.content]
     });
 
@@ -91,45 +92,95 @@ export class EditNewsModalComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnDestroy() {
-    // if (this.getHomeBarSub) {
-    //   this.getHomeBarSub.unsubscribe();
-    // }
+  ngOnInit() {
+
+    if (this.mode === 'edit') {
+      this.reqGetNews();
+    } else {
+    }
+    this.initFormGroup();
+
+
   }
 
-  getNews(id: number) {
-    this.news = this.newsService.getNews(id);
-    console.log('getNews', this.news);
+  ngOnDestroy() {
+    if (this.getNewsSub) { this.getNewsSub.unsubscribe(); }
+    if (this.updateNewsSub) { this.updateNewsSub.unsubscribe(); }
+    if (this.deleteNewsSub) { this.deleteNewsSub.unsubscribe(); }
+    if (this.addNewsSub) { this.addNewsSub.unsubscribe(); }
+  }
+
+  reqGetNews() {
+    this.getNewsSub = this.newsService.getNews(this.news_id).subscribe(
+      (date: News) => {
+        this.news = date;
+        console.log(date);
+        this.initFormGroup();
+      },
+      err => {
+        this.alertService.error(err, 'Bład pobierania aktualności');
+      }
+    );
   }
 
   get titleInput() { return this.formGroup.controls['title']; }
-  get dateInput() { return this.formGroup.controls['date']; }
+  get createdAtInput() { return this.formGroup.controls['created_at']; }
   get contentInput() { return this.formGroup.controls['content']; }
 
   onClickSave() {
-    const newNews: News = {
-      id: this.news.id,
-      title: this.titleInput.value,
-      date: this.dateInput.value,
-      content: this.contentInput.value
-    };
 
-    console.log('Updated news:', newNews);
-    this.newsService.updateNews(newNews);
+    let newNews: News;
 
-    // this.updateHomeBarSub = this.newsService.updateHomeBar(newhomeBar).subscribe(
-    //   res => {
-    //     this.alertService.success('Zaktualizowano użytkownika!');
-    //     this.getHomeBar();
-    //   },
-    //   err => {
-    //     this.alertService.error('Nie udało się zaktualizować użytkownika!');
-    //   }
-    // );
+    if (this.mode === 'edit') {
+      newNews = {
+        id: this.news.id,
+        title: this.titleInput.value,
+        content: this.contentInput.value
+      };
+      this.updateNewsSub = this.newsService.updateNews(newNews).subscribe(
+        res => {
+          this.alertService.success('Zapisano aktualność!');
+          this.reqGetNews();
+        },
+        err => {
+          this.alertService.error(err, 'Nie udało się zaktualizować aktualności!');
+        }
+      );
+    } else {
+      newNews = {
+        title: this.titleInput.value,
+        content: this.contentInput.value
+      };
+      this.addNewsSub = this.newsService.addNews(newNews).subscribe(
+        res => {
+          this.alertService.success('Dodano aktualność!');
+          this.activeModal.dismiss('Dodano aktualność!');
+        },
+        err => {
+          this.alertService.error(err, 'Nie udało się zaktualizować aktualności!');
+        }
+      );
+    }
+
+    // console.log('Updated news:', newNews);
+    // this.newsService.updateNews(newNews);
 
   }
   onDelete() {
-    this.newsService.deleteNews(this.news_id);
+    // this.newsService.deleteNews(this.news_id);
+
+    this.deleteNewsSub = this.newsService.deleteNews(this.news_id).subscribe(
+      res => {
+        this.alertService.success('Usunięto aktualność');
+      },
+      err => {
+        this.alertService.error(err, 'Błąd usuwania aktualności');
+      },
+      () => {
+        this.reqGetNews();
+      }
+    );
+
     this.activeModal.close('Wyczyszczono pasek');
   }
 

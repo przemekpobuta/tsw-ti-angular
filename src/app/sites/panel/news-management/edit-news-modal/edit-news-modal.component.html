@@ -12,17 +12,17 @@
     <form [formGroup]="formGroup">
 
         <div class="row">
-          <div class="col-md-6">
+          <div class="" [ngClass]="{'col-md-6': mode === 'edit', 'col-md-12': mode === 'add'}">
               <div class="md-form my-3">
                 <input type="text" id="titleInput" class="form-control" formControlName="title" [validateSuccess]="false" mdbInputDirective>
                 <label for="titleInput">Tytuł</label>
               </div>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-6" *ngIf="mode === 'edit'">
             <div class="md-form my-3">
-              <input type="text" id="dateInput" class="form-control" formControlName="date" mdbInputDirective>
-              <label for="dateInput">Data zmiany</label>
+              <input type="text" id="dateInput" class="form-control" formControlName="created_at" mdbInputDirective>
+              <label for="dateInput">Data utworzenia</label>
             </div>
           </div>
         </div>

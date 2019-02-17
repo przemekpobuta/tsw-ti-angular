@@ -1,6 +1,7 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation, AfterViewInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {LoaderService} from '../loader.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-loading-bar',
@@ -8,9 +9,9 @@ import {LoaderService} from '../loader.service';
   styleUrls: ['./loading-bar.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class LoadingBarComponent implements OnInit, OnDestroy {
+export class LoadingBarComponent implements AfterViewInit, OnInit, OnDestroy {
 
-  show = false;
+  show: boolean;
   private subscription: Subscription;
 
   constructor(
@@ -19,14 +20,21 @@ export class LoadingBarComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // console.log('loader state: ' + this.show);
-    this.subscription = this.loaderService.navItem$.subscribe(state => {
-        this.show = state;
-        // console.log('loader state changed: ' + state);
-      });
+    this.show = false;
+  }
 
+  ngAfterViewInit() {
+    this.subscription = this.loaderService.navItem$.subscribe(
+      res => {
+        this.show = res;
+      }
+    );
   }
+
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (this.subscription) { this.subscription.unsubscribe(); }
   }
+
+
 
 }

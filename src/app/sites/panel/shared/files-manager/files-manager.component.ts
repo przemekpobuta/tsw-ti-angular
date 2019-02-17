@@ -119,21 +119,20 @@ export class FilesManagerComponent implements OnInit, OnDestroy {
   }
 
   removeElement(element: FileElement) {
-    this.fileService.delete(element.uuid).subscribe(res => {
-      console.log(res);
-      this.fileService.deleteLocal(element.uuid);
-      this.alertService.success('Usunięto pomyślnie!');
-    },
+    this.fileService.delete(element.uuid).subscribe(
+      res => {
+        console.log(res);
+        this.fileService.deleteLocal(element.uuid);
+        this.alertService.success('Usunięto pomyślnie!');
+      },
       error => {
         console.error(error);
         this.alertService.error(error);
       },
       () => {
         this.getFilesRequest();
-      });
-
-    // TEST
-    // this.alertService.error('Defghi');
+      }
+    );
   }
 
   navigateToFolder(element: FileElement) {
@@ -156,7 +155,6 @@ export class FilesManagerComponent implements OnInit, OnDestroy {
   }
 
   moveElement(moveTo: FileElement) {
-    
     // this.fileService.update(event.element.id, { parent: event.moveTo.id });
     this.fileService.update(moveTo.uuid, {parent_uuid: moveTo.parent_uuid}).subscribe(
       res => {

@@ -22,7 +22,7 @@ import { ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
 import { AboutComponent } from './sites/about/about.component';
 import { LoadingBarComponent } from './shared/components/loader/loading-bar/loading-bar.component';
 import { LoaderService} from './shared/components/loader/loader.service';
-import { NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalModule, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { FilterPipeModule} from 'ngx-filter-pipe';
 import { AccountsComponent } from './sites/panel/accounts/accounts.component';
 import { AccountsService} from './sites/panel/accounts/accounts.service';
@@ -147,7 +147,8 @@ import { ToastrModule } from 'ngx-toastr';
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     ScrollService,
-    NewsService
+    NewsService,
+    NgbActiveModal
   ],
   bootstrap: [AppComponent],
   entryComponents: [
