@@ -41,6 +41,40 @@
   //width: 2em;
 }
 
+#top-news {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  .top-news-inner {
+    // background-color: #2196f3;
+    padding-top: 76px;
+    background-color: rgba(0,0,0,0.6);  
+    .top-news-announcement-banner {
+      color: rgba(255,255,255,0.9);
+      // font-weight: bold;
+      text-align: left;
+      width: 100%;
+      padding: 12px 0;
+      font-size: 1em;
+      .row {
+        margin: 0;
+      }
+      .info {
+
+      }
+      a.action {
+        font-weight: bold;
+        color: rgba(255,255,255,0.95);
+      }
+      a.action:hover {
+        color: rgba(255,255,255,0.75);
+      }
+
+    }
+  }
+}
+
 @media (max-width: 575px) {
   body {
   }
@@ -112,6 +146,11 @@
   #home-technology h2 {
     //font-size: 1;
     font-weight: bold;
+  }
+  #top-news {
+    .top-news-inner {
+      padding-top: 58px;
+    }
   }
 
 
@@ -326,38 +365,6 @@ mdb-card-body p {
   //padding-bottom: 5rem !important;
 }
 
-#top-news {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  .top-news-inner {
-    // background-color: #2196f3;
-    padding-top: 76px;
-    background-color: rgba(0,0,0,0.6);  
-    .top-news-announcement-banner {
-      color: rgba(255,255,255,0.9);
-      // font-weight: bold;
-      text-align: left;
-      width: 100%;
-      padding: 12px 0;
-      font-size: 1em;
-      .row {
-        margin: 0;
-      }
-      .info {
 
-      }
-      a.action {
-        font-weight: bold;
-        color: rgba(255,255,255,0.95);
-      }
-      a.action:hover {
-        color: rgba(255,255,255,0.75);
-      }
-
-    }
-  }
-}
 
 

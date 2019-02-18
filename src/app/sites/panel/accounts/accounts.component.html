@@ -69,7 +69,7 @@
           <a class="" (click)="openClickEdit(account)" mdbTooltip="Edytuj" container="body" placement="top">
             <i class="fas fa-user-edit"></i>
           </a>
-          <a class="text-red" (click)="onClickDelete(account)" mdbTooltip="Usuń" container="body" placement="top">
+          <a class="text-red" (click)="onClickDelete(account)" *ngIf="account?.login !== 'admin'" mdbTooltip="Usuń" container="body" placement="top">
             <i class="fas fa-user-times"></i>
           </a>
         </td>

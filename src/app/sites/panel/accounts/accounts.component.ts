@@ -21,6 +21,7 @@ export class AccountsComponent implements OnInit, OnDestroy {
   editAccessAccount: User;
   isLoadingData: boolean;
   fileManagerMode = 'edit-user-access';
+  currentUserLogin = this.authService.getCurrentUser().login;
 
   constructor(
     private accountsService: AccountsService,
