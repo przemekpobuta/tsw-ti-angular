@@ -1,6 +1,5 @@
 @import '~angular-bootstrap-md/scss/core/_mixins';
 
-
 #univ-footer-img a img {
   // padding: 15px 10px;
   height: auto;
@@ -14,25 +13,35 @@
 .logo .logotype {
   position: absolute;
   top: 0px;
-  left:0;
+  left: 0;
   font-size: 35px;
+  width: 125px;
+  background-image: url('/assets/logo.png');
+  background-repeat: no-repeat;
+  background-position: 50%;
+  span {
+    opacity: 0;
+    text-indent: -9999px;
+  }
 }
 .logo .logotext {
   display: flex;
   position: relative;
-  left: 62px;
-  top: 0;
+  left: 140px;
+  top: -4px;
 }
-.logo .brand, .logo .name {
+.logo .brand,
+.logo .name {
   display: inline;
 }
 .logo .brand {
   font-size: 0.6em;
   margin: 0;
   padding: 0;
+  margin-top: -3px;
   margin-bottom: -5px;
   text-transform: uppercase !important;
-  color: rgba(255,255,255,0.8)
+  color: rgba(255, 255, 255, 0.8);
   // position: absolute;
   // top: 3px;
 }
@@ -41,7 +50,9 @@
   margin: 0;
   font-weight: bold;
 }
-#logo h1, #logo h4, #logo h5 {
+#logo h1,
+#logo h4,
+#logo h5 {
   padding: 2px 0;
   margin: 0;
   background-color: white;
@@ -50,19 +61,42 @@
   //font-size: 1em;
 }
 
+mdb-navbar {
+  /deep/ .container {
+    .navbar-toggler {
+      .navbar-toggler-icon {
+        background-image: url('/assets/menu-outline.svg');
+      }
+    }
+  }
+  &.mobile-nav-show {
+    /deep/ .container {
+      .navbar-toggler {
+        .navbar-toggler-icon {
+          background-image: url('/assets/close-outline.svg');
+        }
+      }
+    }
+  }
+}
+
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575px) {
   #header-container {
     width: 100%;
   }
+  .logo {
+    height: 35px;
+    .logotype {
+      font-size: 28px;
+    }
+    .logotext {
+      display: none !important;
+    }
+  }
   .logo .name {
     font-size: 0.8em;
   }
-  .view {
-    //background-position: 0 0;
-    //background-size: cover;
-  }
-
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -128,7 +162,6 @@
 }
 
 #header-top {
-
 }
 
 .main-inner {
@@ -143,9 +176,7 @@ footer.page-footer a {
   color: #000;
 }
 .footer-logo {
-
 }
-
 
 #user-menu {
   text-align: right;
@@ -156,7 +187,6 @@ footer.page-footer a {
   border-radius: 20px;
   background-color: #2196f3 !important;
 }
-
 
 #footer-landing button {
   font-size: 1.25em;
@@ -170,8 +200,8 @@ footer.page-footer a {
 }
 footer.page-footer .footer-copyright {
   overflow: hidden;
-  background-color: rgba(255,255,255,1);
-  color: rgba(0,0,0, 0.5);
+  background-color: rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 #univ-footer-img {
@@ -186,7 +216,6 @@ footer.page-footer .footer-copyright {
 }
 
 #univ-footer-img a:hover {
-  
 }
 #univ-footer-img img:first-child {
   padding-left: 0;
@@ -226,7 +255,6 @@ footer h5.text-uppercase {
   color: #45cafc;
 }
 .panel-footer {
-  border-top: 1px solid rgba(0,0,0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 1.5em;
 }
-

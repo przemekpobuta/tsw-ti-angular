@@ -1,10 +1,25 @@
-import {AfterContentInit, Component, OnInit, ViewEncapsulation, HostListener, ViewChild} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router, RouterStateSnapshot, NavigationStart, ActivationEnd} from '@angular/router';
+import {
+  AfterContentInit,
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  HostListener,
+  ViewChild,
+  AfterViewInit
+} from '@angular/core';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterStateSnapshot,
+  NavigationStart,
+  ActivationEnd
+} from '@angular/router';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import {AuthService} from './auth/auth.service';
-import {User} from './shared/models/user.model';
-import {LoaderService} from './shared/components/loader/loader.service';
-import {ToastrService} from 'ngx-toastr';
+import { AuthService } from './auth/auth.service';
+import { User } from './shared/models/user.model';
+import { LoaderService } from './shared/components/loader/loader.service';
+import { ToastrService } from 'ngx-toastr';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ScrollEvent } from 'ngx-scroll-event';
 import { ScrollService } from './shared/services/scroll.service';
@@ -18,8 +33,7 @@ import { NavbarComponent } from 'angular-bootstrap-md';
   providers: [NgbModalConfig, NgbModal]
   // encapsulation: ViewEncapsulation.Emulated
 })
-export class AppComponent implements OnInit, AfterContentInit {
-
+export class AppComponent implements OnInit {
   @ViewChild('navbar') navbar: NavbarComponent;
 
   faCoffee = faCoffee;
@@ -28,6 +42,7 @@ export class AppComponent implements OnInit, AfterContentInit {
   isPage = false;
   isRecruitment = false;
   showScrollToTop = false;
+  thisYear: Date;
 
   constructor(
     private router: Router,
@@ -40,11 +55,12 @@ export class AppComponent implements OnInit, AfterContentInit {
     private modalService: NgbModal,
     private scrollService: ScrollService
   ) {
-      config.backdrop = 'static';
-      config.keyboard = false;
+    config.backdrop = 'static';
+    config.keyboard = false;
   }
 
   ngOnInit() {
+    this.thisYear = new Date();
 
     this.router.events.subscribe(event => {
       this.navbar.hide();
@@ -58,7 +74,10 @@ export class AppComponent implements OnInit, AfterContentInit {
           this.isPage = true;
         } else {
           this.isPanel = false;
-          if (event.url.substr(0, 6) === '/home' || event.url.substr(0, 6) === '/') {
+          if (
+            event.url.substr(0, 6) === '/home' ||
+            event.url.substr(0, 6) === '/'
+          ) {
             this.isPage = false;
           } else {
             this.isPage = true;
@@ -74,18 +93,12 @@ export class AppComponent implements OnInit, AfterContentInit {
     if (this.authService.getCurrentUser()) {
       this.user = this.authService.getCurrentUser();
     } else {
-      this.authService.currentUser$.subscribe(
-        user => {
-          this.user = user;
-          // this.user = this.authService.getCurrentUser();
-          // console.log(result);
-        }
-      );
+      this.authService.currentUser$.subscribe(user => {
+        this.user = user;
+        // this.user = this.authService.getCurrentUser();
+        // console.log(result);
+      });
     }
-
-  }
-  ngAfterContentInit() {
-
   }
 
   onLogout() {

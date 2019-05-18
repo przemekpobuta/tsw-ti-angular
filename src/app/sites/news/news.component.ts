@@ -10,7 +10,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit, OnDestroy {
-
   news: News[];
   getNewsSub: Subscription;
   error: boolean;
@@ -19,20 +18,26 @@ export class NewsComponent implements OnInit, OnDestroy {
   constructor(
     private newsService: NewsService,
     private alertService: ToastrService
-    ) { }
+  ) {}
 
   ngOnInit() {
     // this.news = this.newsService.getAllNews();
     this.getNewsSub = this.newsService.getAllNews().subscribe(
       (data: News[]) => {
         console.log(data);
-        this.news = data;
+
+        this.news = data.filter(art => {
+          if (art.id !== 2) {
+            return true;
+          } else {
+            return false;
+          }
+        });
       },
       err => {
         this.error = true;
       },
-      () => {
-      }
+      () => {}
     );
   }
 

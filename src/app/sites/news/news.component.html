@@ -3,9 +3,7 @@
     <div class="mask flex-center rgba-blue-strong">
       <div class="container flex-center">
         <div class="white-text animated fadeIn header-page-container">
-
           <h2 class="header-page">Aktualności</h2>
-
         </div>
       </div>
     </div>
@@ -13,62 +11,55 @@
 </div>
 
 <div class="py-5 bg-grey-light">
-
   <div class="container">
     <div class="row">
       <div class="col-12">
-
-      <div class="news-section">
-
-        <section class="my-3">
-
-          <div class="row news-item" *ngFor="let newsItem of news">
-
-            <div class="col-lg-12">
-
-              <div class="row pb-3">
-                <div class="col-8">
-                  <h3 class="font-weight-bold mb-3"><strong>
-                    {{ newsItem.title }}
-                  </strong></h3>
+        <div class="news-section">
+          <section class="my-3">
+            <div class="row news-item" *ngFor="let newsItem of news">
+              <div class="col-lg-12">
+                <div class="row pb-3">
+                  <div class="col-8">
+                    <h3 class="font-weight-bold mb-3">
+                      <strong>
+                        {{ newsItem.title }}
+                      </strong>
+                    </h3>
+                  </div>
+                  <div class="col-4 date">
+                    <p>
+                      {{ newsItem.updated_at | date: "dd/MM/yyyy" }}
+                    </p>
+                  </div>
                 </div>
-                <div class="col-4 date">
-                  <p>
-                    {{ newsItem.created_at | date: 'dd/MM/yyyy' }}
-                  </p>
-                </div>
-              </div>
 
-              <div class="html-container" [innerHTML]="newsItem.content">
+                <div
+                  class="html-container"
+                  [innerHTML]="newsItem.content"
+                ></div>
+                <!-- {{ newsItem.content }} -->
               </div>
-              <!-- {{ newsItem.content }} -->
-            
-            </div>
-            <div class="col-lg-12">
-              <hr class="my-3">
+              <div class="col-lg-12">
+                <hr class="my-3" />
+              </div>
             </div>
 
-          </div>
-
-          <div class="row news-item" *ngIf="(news == null || news == undefined || news.length == 0) && !isLoadingData">
-
-            <div class="col-lg-12">
-
-              <h4>Brak aktualności</h4>
-
-            </div>  
-
-          </div>
-
-        </section>
-
+            <div
+              class="row news-item"
+              *ngIf="
+                (news == null || news == undefined || news.length == 0) &&
+                !isLoadingData
+              "
+            >
+              <div class="col-lg-12">
+                <h4>Brak aktualności</h4>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
-
     </div>
-      
   </div>
-  </div>
-
 </div>
 
 <app-footer-banner [type]="'banner'"></app-footer-banner>

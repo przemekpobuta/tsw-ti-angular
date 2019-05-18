@@ -1,108 +1,174 @@
 <app-loading-bar></app-loading-bar>
-<header id="header-top" [ngClass]="{'panel-nav' : isPanel, 'page-nav' : isPage}">
-
+<header
+  id="header-top"
+  [ngClass]="{ 'panel-nav': isPanel, 'page-nav': isPage }"
+>
   <mdb-navbar
     #navbar
-    SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav"
-    [containerInside]="true">
-    
-    <!--blue-->
+    SideClass="navbar fixed-top navbar-expand-xl navbar-dark scrolling-navbar intro-fixed-nav"
+    [ngClass]="{ 'mobile-nav-show': navbar.showClass }"
+    [containerInside]="true"
+  >
     <mdb-navbar-brand>
       <a class="row logo navbar-brand" routerLink="/home">
         <div class="logotype">
-          <i class="fa fa-code" aria-hidden="true"></i>
+          <!-- <i class="fa fa-code" aria-hidden="true"></i> -->
+          <span>TI->PRO</span>
         </div>
         <div class="logotext d-flex flex-column">
-          <div class="brand">Studia podyplomowe</div>
           <div class="name">
             Technologie Internetowe
           </div>
+          <div class="brand">Studia podyplomowe</div>
         </div>
       </a>
     </mdb-navbar-brand>
-    <!--TODO: zmienić paski na X po rozwinięciu menu-->
-    <!--<i class="fa fa-remove" aria-hidden="true"></i>-->
-    
+
     <links>
-    <ul class="navbar-nav ml-auto "><!-- nav-flex-icons -->
-      <li class="nav-item waves-light" *ngIf="isPage" mdbTooltip="{{ isPanel ? 'Powrót do strony' : 'Strona główna' }}" placement="bottom" mdbWavesEffect>
-        <a routerLink="/home" routerLinkActive="active" class="nav-link">
-          <i class="fas fa-home" [ngClass]="{'display-only': !isPanel}"></i> 
-          <span class="mobile-only">
-          {{ isPanel ? 'Powrót do strony' : 'Strona główna' }}</span>
-        </a>
-      </li>
-      <li class="nav-item waves-light" *ngIf="!isPanel" routerLinkActive="active" routerLink="/o-studiach" mdbWavesEffect>
-        <a class="nav-link">O studiach <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item waves-light" *ngIf="!isPanel" routerLinkActive="active" routerLink="/organizacja" mdbWavesEffect>
-        <a class="nav-link">Organizacja</a>
-      </li>
-      <li class="nav-item waves-light" *ngIf="!isPanel" routerLinkActive="active" routerLink="/plan-studiow" mdbWavesEffect>
-        <a class="nav-link">Plan studiów</a>
-      </li>
-      <li class="nav-item waves-light" *ngIf="!isPanel" routerLinkActive="active" routerLink="/programy" mdbWavesEffect>
-      <a class="nav-link">Programy</a>
-      </li>
-      <li class="nav-item waves-light" *ngIf="!isPanel" routerLinkActive="active" routerLink="/rekrutacja" mdbWavesEffect>
-        <a class="nav-link">Rekrutacja</a>
-      </li>
-      <li class="nav-item waves-light" *ngIf="!isPanel" routerLinkActive="active" routerLink="/kontakt" mdbWavesEffect>
-        <a class="nav-link">Kontakt</a>
-      </li>
-      <li
-        class="nav-item waves-light"
-        *ngIf="!authService.isLoggedIn()"
-        mdbTooltip="Zaloguj"
-        placement="bottom"
-        mdbWavesEffect>
-        <a class="nav-link" routerLinkActive="active" routerLink="/login">
-          <i class="fas fa-sign-in-alt display-only"></i> 
-          <span class="mobile-only">Zaloguj </span>
-        </a>
-      </li>
-      <li
-        class="nav-item waves-light"
-        *ngIf="authService.isLoggedIn()"
-        mdbTooltip="Panel użytkownika"
-        placement="bottom"
-        mdbWavesEffect>
-        <a class="nav-link" routerLinkActive="active" routerLink="/panel">
-          <i class="fas fa-user-circle" [ngClass]="{'display-only': !isPanel}"></i> 
-          <span class="mobile-only">Panel użytkownika </span>
-        </a>
-      </li>
-      <li
-        class="nav-item waves-light"
-        mdbTooltip="Wyloguj ({{ user ? user.login : '' }})"
-        placement="bottom"
-        *ngIf="authService.isLoggedIn()"
-        mdbWavesEffect>
-        <a class="nav-link" (click)="onLogout()">
-          <i class="fas fa-sign-out-alt" [ngClass]="{'display-only': !isPanel}"></i> 
-          <span class="mobile-only">Wyloguj ({{ user ? user.login : '' }}) </span>
-        </a>
-      </li>
-    </ul>
+      <ul class="navbar-nav ml-auto ">
+        <!-- nav-flex-icons -->
+        <li
+          class="nav-item waves-light"
+          *ngIf="isPage"
+          mdbTooltip="{{ isPanel ? 'Powrót do strony' : 'Strona główna' }}"
+          placement="bottom"
+          mdbWavesEffect
+        >
+          <a routerLink="/home" routerLinkActive="active" class="nav-link">
+            <i class="fas fa-home" [ngClass]="{ 'display-only': !isPanel }"></i>
+            <span class="mobile-only">
+              {{ isPanel ? 'Powrót do strony' : 'Strona główna' }}</span
+            >
+          </a>
+        </li>
+        <li
+          class="nav-item waves-light"
+          *ngIf="!isPanel"
+          routerLinkActive="active"
+          routerLink="/o-studiach"
+          mdbWavesEffect
+        >
+          <a class="nav-link"
+            >O studiach <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li
+          class="nav-item waves-light"
+          *ngIf="!isPanel"
+          routerLinkActive="active"
+          routerLink="/organizacja"
+          mdbWavesEffect
+        >
+          <a class="nav-link">Organizacja</a>
+        </li>
+        <li
+          class="nav-item waves-light"
+          *ngIf="!isPanel"
+          routerLinkActive="active"
+          routerLink="/plan-studiow"
+          mdbWavesEffect
+        >
+          <a class="nav-link">Plan studiów</a>
+        </li>
+        <li
+          class="nav-item waves-light"
+          *ngIf="!isPanel"
+          routerLinkActive="active"
+          routerLink="/programy"
+          mdbWavesEffect
+        >
+          <a class="nav-link">Programy</a>
+        </li>
+        <li
+          class="nav-item waves-light"
+          *ngIf="!isPanel"
+          routerLinkActive="active"
+          routerLink="/rekrutacja"
+          mdbWavesEffect
+        >
+          <a class="nav-link">Rekrutacja</a>
+        </li>
+        <li
+          class="nav-item waves-light"
+          *ngIf="!isPanel"
+          routerLinkActive="active"
+          routerLink="/faq"
+          mdbWavesEffect
+        >
+          <a class="nav-link">FAQ</a>
+        </li>
+        <li
+          class="nav-item waves-light"
+          *ngIf="!isPanel"
+          routerLinkActive="active"
+          routerLink="/kontakt"
+          mdbWavesEffect
+        >
+          <a class="nav-link">Kontakt</a>
+        </li>
+        <li
+          class="nav-item waves-light"
+          *ngIf="!authService.isLoggedIn()"
+          mdbTooltip="Zaloguj"
+          placement="bottom"
+          mdbWavesEffect
+        >
+          <a class="nav-link" routerLinkActive="active" routerLink="/login">
+            <i class="fas fa-sign-in-alt display-only"></i>
+            <span class="mobile-only">Zaloguj </span>
+          </a>
+        </li>
+        <li
+          class="nav-item waves-light"
+          *ngIf="authService.isLoggedIn()"
+          mdbTooltip="Panel użytkownika"
+          placement="bottom"
+          mdbWavesEffect
+        >
+          <a class="nav-link" routerLinkActive="active" routerLink="/panel">
+            <i
+              class="fas fa-user-circle"
+              [ngClass]="{ 'display-only': !isPanel }"
+            ></i>
+            <span class="mobile-only">Panel użytkownika </span>
+          </a>
+        </li>
+        <li
+          class="nav-item waves-light"
+          mdbTooltip="Wyloguj ({{ user ? user.login : '' }})"
+          placement="bottom"
+          *ngIf="authService.isLoggedIn()"
+          mdbWavesEffect
+        >
+          <a class="nav-link" (click)="onLogout()">
+            <i
+              class="fas fa-sign-out-alt"
+              [ngClass]="{ 'display-only': !isPanel }"
+            ></i>
+            <span class="mobile-only"
+              >Wyloguj ({{ user ? user.login : '' }})
+            </span>
+          </a>
+        </li>
+      </ul>
     </links>
-
   </mdb-navbar>
-
 </header>
 
 <!--Main Layout-->
 <main id="main-container" detect-scroll (onScroll)="handleScroll($event)">
   <div class="main-inner">
-      <div id="page-top"></div>
-      <router-outlet></router-outlet>
+    <div id="page-top"></div>
+    <router-outlet></router-outlet>
   </div>
 </main>
 <!--Main Layout-->
 
-
 <!-- Footer blue -->
-<footer class="page-footer font-small mt-4" [ngClass]="{'panel-footer' : isPanel}">
-
+<footer
+  class="page-footer font-small mt-4"
+  [ngClass]="{ 'panel-footer': isPanel }"
+>
   <!--<div class="container text-center text-md-left">-->
   <!--<div class="row">-->
   <!--<h5 class="text-uppercase">Uczelnia</h5>-->
@@ -111,20 +177,17 @@
 
   <!-- Footer Links -->
   <div id="footer-menu" class="container text-center text-md-left">
-
     <!-- Grid row -->
     <div class="row">
-
-
-
       <!-- Grid column -->
       <div class="col-md-3 mb-md-0 mb-3 footer-menu" id="footer-middle">
-
         <h5 class="text-uppercase">Menu</h5>
 
         <ul class="">
           <li class="nav-item waves-light" mdbWavesEffect>
-            <a class="nav-link" routerLink="/home">Strona główna <span class="sr-only">(current)</span></a>
+            <a class="nav-link" routerLink="/home"
+              >Strona główna <span class="sr-only">(current)</span></a
+            >
           </li>
           <li class="nav-item waves-light" mdbWavesEffect>
             <a class="nav-link" routerLink="/o-studiach">O studiach</a>
@@ -148,114 +211,140 @@
             <a class="nav-link" routerLink="/kontakt">Kontakt</a>
           </li>
         </ul>
-
-
       </div>
 
-        <hr class="clearfix w-100 d-md-none pb-3">
+      <hr class="clearfix w-100 d-md-none pb-3" />
 
       <!-- Grid column -->
       <div class="col-md-3 mb-md-0 mb-3 footer-menu">
-
         <h5 class="text-uppercase">Programy</h5>
 
         <ul class="">
-          <li class="nav-item waves-light" [routerLink]="['/programy/programowanie-obiektowe']" mdbWavesEffect>
+          <li
+            class="nav-item waves-light"
+            [routerLink]="['/programy/programowanie-obiektowe']"
+            mdbWavesEffect
+          >
             <a class="nav-link">Programowanie obiektowe</a>
           </li>
-          <li class="nav-item waves-light" [routerLink]="['/programy/technologie-sieci-web']" mdbWavesEffect>
+          <li
+            class="nav-item waves-light"
+            [routerLink]="['/programy/technologie-sieci-web']"
+            mdbWavesEffect
+          >
             <a class="nav-link">Technologie sieci Web</a>
           </li>
-          <li class="nav-item waves-light" [routerLink]="['/programy/projektowanie-baz-danych']" mdbWavesEffect>
+          <li
+            class="nav-item waves-light"
+            [routerLink]="['/programy/projektowanie-baz-danych']"
+            mdbWavesEffect
+          >
             <a class="nav-link">Projektowanie baz danych</a>
           </li>
-          <li class="nav-item waves-light" [routerLink]="['/programy/systemy-rozproszone']" mdbWavesEffect>
+          <li
+            class="nav-item waves-light"
+            [routerLink]="['/programy/systemy-rozproszone']"
+            mdbWavesEffect
+          >
             <a class="nav-link">Systemy rozproszone</a>
           </li>
-          <li class="nav-item waves-light" [routerLink]="['/programy/programowanie-w-jezyku-java']" mdbWavesEffect>
+          <li
+            class="nav-item waves-light"
+            [routerLink]="['/programy/programowanie-w-jezyku-java']"
+            mdbWavesEffect
+          >
             <a class="nav-link">Programowanie w języku Java</a>
           </li>
-          <li class="nav-item waves-light" [routerLink]="['/programy/sieci-komputerowe']" mdbWavesEffect>
+          <li
+            class="nav-item waves-light"
+            [routerLink]="['/programy/sieci-komputerowe']"
+            mdbWavesEffect
+          >
             <a class="nav-link">Sieci komputerowe</a>
           </li>
-          <li class="nav-item waves-light" [routerLink]="['/programy/aplikacje-bazodanowe']" mdbWavesEffect>
-              <a class="nav-link">Aplikacje bazodanowe</a>
-            </li>
-
+          <li
+            class="nav-item waves-light"
+            [routerLink]="['/programy/aplikacje-bazodanowe']"
+            mdbWavesEffect
+          >
+            <a class="nav-link">Aplikacje bazodanowe</a>
+          </li>
         </ul>
-
-
       </div>
-          
 
-      <hr class="clearfix w-100 d-md-none pb-3">
+      <hr class="clearfix w-100 d-md-none pb-3" />
 
       <div class="col-md-6 mt-md-0 mt-3 footer-logo">
+        <h5 class="text-uppercase">Uczelnia</h5>
 
-          <h5 class="text-uppercase">Uczelnia</h5>
-  
-          <div class="row">
-            <div class="col-sm-15 col-md-6">
-                <div class="university-data">
-                  <h6><b>Politechnika Rzeszowska<br/>
-                    im. Ignacego Łukasiewicza</b></h6>
-                  <p>Dziekanat Wydziału<br/>
-                    Elektrotechniki i Informatyki<br/>
-                    Budynek A, pok. 104</p>
-                  <p>Tel. +48 17 865 12 89<br/>
-                    Fax. +48 17 854 20 88<br/>
-                    E-mail. <a href="mailto:dwe@prz.edu.pl">dwe@prz.edu.pl</a></p>
-                    
-                  </div>
-            </div>
-            <div class="col-sm-15 col-md-6">
-                <div id="univ-footer-img">
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="img zoom">
-                            <a href="https://prz.edu.pl/" target="_blank"><img src="/assets/prz_footer.png" alt="WEII"/></a>
-                        </div>
-                      </div>
-                      <div class="col-12">
-                          <div class="img zoom">
-                            <a href="https://weii.prz.edu.pl/" target="_blank"><img src="/assets/weii.png" alt="WEII"/></a>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
+        <div class="row">
+          <div class="col-sm-15 col-md-6">
+            <div class="university-data">
+              <h6>
+                <b
+                  >Politechnika Rzeszowska<br />
+                  im. Ignacego Łukasiewicza</b
+                >
+              </h6>
+              <p>
+                Dziekanat Wydziału<br />
+                Elektrotechniki i Informatyki<br />
+                Budynek A, pok. 104
+              </p>
+              <p>
+                Tel. +48 17 865 12 89<br />
+                Fax. +48 17 854 20 88<br />
+                E-mail. <a href="mailto:dwe@prz.edu.pl">dwe@prz.edu.pl</a>
+              </p>
             </div>
           </div>
-          <!-- Content -->
-          
-  
-          
-  
+          <div class="col-sm-15 col-md-6">
+            <div id="univ-footer-img">
+              <div class="row">
+                <div class="col-12">
+                  <div class="img zoom">
+                    <a href="https://prz.edu.pl/" target="_blank"
+                      ><img src="/assets/prz_footer.png" alt="WEII"
+                    /></a>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="img zoom">
+                    <a href="https://weii.prz.edu.pl/" target="_blank"
+                      ><img src="/assets/weii.png" alt="WEII"
+                    /></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- Grid column -->
-      
-
+        <!-- Content -->
+      </div>
+      <!-- Grid column -->
     </div>
     <!-- Grid row -->
-
   </div>
   <!-- Footer Links -->
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">
-    Copyright © 2002 - 2018 Wydział Elektrotechniki i Informatyki,
-    Politechnika Rzeszowska im. Ignacego Łukasiewicza
+    Copyright © 2002 - {{ thisYear | date: 'y' }} Wydział Elektrotechniki i
+    Informatyki, Politechnika Rzeszowska im. Ignacego Łukasiewicza
   </div>
-  <div class="footer-copyright text-center py-3">Wszystkie prawa zastrzeżone</div>
-
+  <div class="footer-copyright text-center py-3">
+    Wszystkie prawa zastrzeżone
+  </div>
 
   <!-- Copyright -->
-  
-
 </footer>
 <!-- Footer -->
 
 <div id="scroll-to-top" class="animated fadeIn" *ngIf="showScrollToTop">
-  <a class="btn-floating btn-lg my-0 waves-effect waves-light" [ngx-scroll-to]="'#page-top'">
+  <a
+    class="btn-floating btn-lg my-0 waves-effect waves-light"
+    [ngx-scroll-to]="'#page-top'"
+  >
     <i class="fa fa-chevron-up"></i>
   </a>
 </div>

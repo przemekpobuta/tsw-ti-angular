@@ -1,33 +1,43 @@
-
-
-<nav class="navbar navbar-expand-lg navbar-light scrolling-navbar navbar-dark blue-gradient" id="toolbar">
+<nav
+  class="navbar navbar-expand-lg navbar-light scrolling-navbar navbar-dark blue-gradient"
+  id="toolbar"
+>
   <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button> -->
   <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item mr-auto">
-        <span class="nav-link">Aktualności</span>
-      </li>
-    </ul>
-    <ul class="navbar-nav nav-flex-icons">
-      <li class="nav-item" mdbTooltip="Edytuj pasek informacyjny" container="body" placement="top">
-        <a class="nav-link" (click)="openEditHomeBarModal()">
-          <i class="fas fa-window-maximize"></i>
-        </a>
-      </li>
-      <li class="nav-item" mdbTooltip="Dodaj aktualność" container="body" placement="top">
-          <a class="nav-link" (click)="openEditNewsModal('add')">
-            <i class="fas fa-plus-square"></i>
-          </a>
-        </li>
-    </ul>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item mr-auto">
+      <span class="nav-link">Aktualności</span>
+    </li>
+  </ul>
+  <ul class="navbar-nav nav-flex-icons">
+    <li
+      class="nav-item"
+      mdbTooltip="Edytuj pasek informacyjny"
+      container="body"
+      placement="top"
+    >
+      <a class="nav-link" (click)="openEditHomeBarModal()">
+        <i class="fas fa-window-maximize"></i>
+      </a>
+    </li>
+    <li
+      class="nav-item"
+      mdbTooltip="Dodaj aktualność"
+      container="body"
+      placement="top"
+    >
+      <a class="nav-link" (click)="openEditNewsModal('add')">
+        <i class="fas fa-plus-square"></i>
+      </a>
+    </li>
+  </ul>
   <!-- </div> -->
 </nav>
 
 <div class="news_container container-news">
-
   <div class="table-responsive">
     <table mdbTable>
       <!-- <thead *ngIf="!isLoadingData">
@@ -38,36 +48,71 @@
         </tr>
       </thead> -->
       <tbody>
-
-      <tr mdbTableCol *ngFor="let newsItem of news" >
-        <td class="news_title click" (click)="openEditNewsModal('edit', newsItem)">
-          <span>{{ newsItem?.title }}</span>
-        </td>
-        <td class="news_date click" (click)="openEditNewsModal('edit', newsItem)">
-          <span>{{ newsItem?.date }}</span>
-        </td>
-        <td class="news_actions">
-          <a class="" (click)="openEditNewsModal('edit', newsItem)" mdbTooltip="Edytuj" container="body" placement="top">
-            <i class="fas fa-edit"></i>
-          </a>
-          <a class="text-red" (click)="onDeleteNews(newsItem)" mdbTooltip="Usuń" container="body" placement="top">
-            <i class="fas fa-trash-alt"></i>
-          </a>
-        </td>
-      </tr>
-      <tr mdbTableCol *ngIf="(news == null || news == undefined || news.length == 0) && !isLoadingData">
-        <td class="text-left">Brak aktualności</td>
-      </tr>
-      <tr mdbTableCol class="ladowanie wow fadeIn" *ngIf="isLoadingData">
-        <!--<td class="text-left"></td>-->
-        <td colspan="5" class="">
-          <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0s"></i>
-          <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0.2s"></i>
-          <i class="fa fa-circle wow pulse infinite" aria-hidden="true" data-wow-delay="0.4s"></i>
-        </td>
-      </tr>
+        <tr mdbTableCol *ngFor="let newsItem of news">
+          <td
+            class="news_title click"
+            (click)="openEditNewsModal('edit', newsItem)"
+          >
+            <span>{{ newsItem?.title }}</span>
+          </td>
+          <td
+            class="news_date click"
+            (click)="openEditNewsModal('edit', newsItem)"
+          >
+            <span>{{ newsItem?.updated_at }}</span>
+          </td>
+          <td class="news_actions">
+            <a
+              class=""
+              (click)="openEditNewsModal('edit', newsItem)"
+              mdbTooltip="Edytuj"
+              container="body"
+              placement="top"
+            >
+              <i class="fas fa-edit"></i>
+            </a>
+            <a
+              class="text-red"
+              (click)="onDeleteNews(newsItem)"
+              *ngIf="newsItem.id != 2"
+              mdbTooltip="Usuń"
+              container="body"
+              placement="top"
+            >
+              <i class="fas fa-trash-alt"></i>
+            </a>
+          </td>
+        </tr>
+        <tr
+          mdbTableCol
+          *ngIf="
+            (news == null || news == undefined || news.length == 0) &&
+            !isLoadingData
+          "
+        >
+          <td class="text-left">Brak aktualności</td>
+        </tr>
+        <tr mdbTableCol class="ladowanie wow fadeIn" *ngIf="isLoadingData">
+          <!--<td class="text-left"></td>-->
+          <td colspan="5" class="">
+            <i
+              class="fa fa-circle wow pulse infinite"
+              aria-hidden="true"
+              data-wow-delay="0s"
+            ></i>
+            <i
+              class="fa fa-circle wow pulse infinite"
+              aria-hidden="true"
+              data-wow-delay="0.2s"
+            ></i>
+            <i
+              class="fa fa-circle wow pulse infinite"
+              aria-hidden="true"
+              data-wow-delay="0.4s"
+            ></i>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
-        
 </div>

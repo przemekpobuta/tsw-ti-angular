@@ -14,7 +14,6 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
   styleUrls: ['./edit-news-modal.component.scss']
 })
 export class EditNewsModalComponent implements OnInit, OnDestroy {
-
   @Input() news_id: number;
   @Input() mode: string;
 
@@ -23,7 +22,7 @@ export class EditNewsModalComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
   news: News = {
     title: '',
-    created_at: '',
+    updated_at: '',
     content: ''
   };
   isLoadingData = false; // TODO
@@ -35,19 +34,19 @@ export class EditNewsModalComponent implements OnInit, OnDestroy {
 
   modules = {
     toolbar: [
-      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+      ['bold', 'italic', 'underline', 'strike'], // toggled buttons
       ['blockquote', 'code-block'],
-      [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ header: 1 }, { header: 2 }], // custom button values
+      [{ list: 'ordered' }, { list: 'bullet' }],
       // [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-      [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-      [{ 'direction': 'rtl' }],                         // text direction
+      [{ indent: '-1' }, { indent: '+1' }], // outdent/indent
+      [{ direction: 'rtl' }], // text direction
       // [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
       // [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
       // [{ 'align': [] }],
-      ['clean'],                                         // remove formatting button
-      ['link']                                            // link and image, video
+      ['clean'], // remove formatting button
+      ['link'] // link and image, video
     ]
   };
 
@@ -56,58 +55,62 @@ export class EditNewsModalComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private newsService: NewsService,
     private alertService: ToastrService
-  ) { }
+  ) {}
 
   initFormGroup() {
     this.formGroup = this.formBuilder.group({
       title: [this.news.title, [Validators.required, Validators.minLength(5)]],
-      created_at: [{value: this.news.created_at, disabled: true}, Validators.required],
+      updated_at: [
+        { value: this.news.updated_at, disabled: true },
+        Validators.required
+      ],
       content: [this.news.content]
     });
 
-    this.formGroup
-      .controls
-      .content
-      .valueChanges.pipe(
+    this.formGroup.controls.content.valueChanges
+      .pipe(
         debounceTime(400),
         distinctUntilChanged()
       )
-      .subscribe((data) => {
+      .subscribe(data => {
         // tslint:disable-next-line:no-console
         console.log('native fromControl value changes with debounce', data);
         this.news.content = data;
         console.log('this.news.content', this.news.content);
       });
 
-    this.content
-      .onContentChanged
+    this.content.onContentChanged
       .pipe(
         debounceTime(400),
         distinctUntilChanged()
       )
-      .subscribe((data) => {
+      .subscribe(data => {
         // tslint:disable-next-line:no-console
         console.log('view child + directly subscription', data);
       });
-
   }
 
   ngOnInit() {
-
     if (this.mode === 'edit') {
       this.reqGetNews();
     } else {
     }
     this.initFormGroup();
-
-
   }
 
   ngOnDestroy() {
-    if (this.getNewsSub) { this.getNewsSub.unsubscribe(); }
-    if (this.updateNewsSub) { this.updateNewsSub.unsubscribe(); }
-    if (this.deleteNewsSub) { this.deleteNewsSub.unsubscribe(); }
-    if (this.addNewsSub) { this.addNewsSub.unsubscribe(); }
+    if (this.getNewsSub) {
+      this.getNewsSub.unsubscribe();
+    }
+    if (this.updateNewsSub) {
+      this.updateNewsSub.unsubscribe();
+    }
+    if (this.deleteNewsSub) {
+      this.deleteNewsSub.unsubscribe();
+    }
+    if (this.addNewsSub) {
+      this.addNewsSub.unsubscribe();
+    }
   }
 
   reqGetNews() {
@@ -123,12 +126,17 @@ export class EditNewsModalComponent implements OnInit, OnDestroy {
     );
   }
 
-  get titleInput() { return this.formGroup.controls['title']; }
-  get createdAtInput() { return this.formGroup.controls['created_at']; }
-  get contentInput() { return this.formGroup.controls['content']; }
+  get titleInput() {
+    return this.formGroup.controls['title'];
+  }
+  get updatedAtInput() {
+    return this.formGroup.controls['updated_at'];
+  }
+  get contentInput() {
+    return this.formGroup.controls['content'];
+  }
 
   onClickSave() {
-
     let newNews: News;
 
     if (this.mode === 'edit') {
@@ -143,7 +151,10 @@ export class EditNewsModalComponent implements OnInit, OnDestroy {
           this.reqGetNews();
         },
         err => {
-          this.alertService.error(err, 'Nie udało się zaktualizować aktualności!');
+          this.alertService.error(
+            err,
+            'Nie udało się zaktualizować aktualności!'
+          );
         }
       );
     } else {
@@ -157,14 +168,16 @@ export class EditNewsModalComponent implements OnInit, OnDestroy {
           this.activeModal.dismiss('Dodano aktualność!');
         },
         err => {
-          this.alertService.error(err, 'Nie udało się zaktualizować aktualności!');
+          this.alertService.error(
+            err,
+            'Nie udało się zaktualizować aktualności!'
+          );
         }
       );
     }
 
     // console.log('Updated news:', newNews);
     // this.newsService.updateNews(newNews);
-
   }
   onDelete() {
     // this.newsService.deleteNews(this.news_id);
@@ -183,5 +196,4 @@ export class EditNewsModalComponent implements OnInit, OnDestroy {
 
     this.activeModal.close('Wyczyszczono pasek');
   }
-
 }
